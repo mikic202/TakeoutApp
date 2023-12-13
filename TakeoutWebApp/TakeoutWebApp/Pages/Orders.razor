@@ -1,9 +1,9 @@
-﻿@page "/weather"
+﻿@page "/orders"
 @inject HttpClient Http
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Orders</PageTitle>
 
-<h1>Weather</h1>
+<h1>Orders</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
@@ -16,17 +16,17 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Order Date</th>
+                <th>Ordered Items</th>
+                <th>Location</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var forecast in forecasts)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.time.ToShortTimeString()</td>
                     <td>@forecast.TemperatureC</td>
                     <td>@forecast.TemperatureF</td>
                     <td>@forecast.Summary</td>
@@ -47,6 +47,8 @@ else
     public class WeatherForecast
     {
         public DateOnly Date { get; set; }
+
+        public TimeOnly time { get; set; }
 
         public int TemperatureC { get; set; }
 
