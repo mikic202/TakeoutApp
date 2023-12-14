@@ -1030,3 +1030,13 @@ D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\Takeout
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\refint\TakeoutWebApp.dll
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\TakeoutWebApp.pdb
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\ref\TakeoutWebApp.dll
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\wwwroot\_framework\Blazored.LocalStorage.wasm
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\wwwroot\_framework\Blazored.LocalStorage.wasm.gz
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\Blazored.LocalStorage.dll
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\webcil\Blazored.LocalStorage.wasm
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\compressed\ibb0wydskx.gz
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.wasm.gz
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Authorization.dll
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Authorization.wasm
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\compressed\ocozp7l65r.gz

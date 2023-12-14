@@ -1,4 +1,8 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProv
+
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Takeout</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -24,7 +28,22 @@
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
             </NavLink>
         </div>
+        <div class="nav-item px-3">
+            <AuthorizeView>
+                <NotAuthorized>
+                    <NavLink class="nav-link" href="login">
+                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true">Login</span>
+                    </NavLink>
+                </NotAuthorized>
+                <Authorized>
+                    <a class="nav-link" @onclick="Logout" style="cursor: pointer">
+                        <span class="pointer-event oi-account-logout" aria-hidden="true"></span>
+                    </a>
+                </Authorized>
+            </AuthorizeView>
+        </div>
     </nav>
+
 </div>
 
 @code {
@@ -35,5 +54,11 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async void Logout()
+    {
+        await LocalStorage.RemoveItemAsync("username");
+        await AuthStateProv.GetAuthenticationStateAsync();
     }
 }
