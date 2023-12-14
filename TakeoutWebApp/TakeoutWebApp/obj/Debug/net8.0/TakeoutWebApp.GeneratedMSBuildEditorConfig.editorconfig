@@ -34,8 +34,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/Orders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/_Imports.razor]
