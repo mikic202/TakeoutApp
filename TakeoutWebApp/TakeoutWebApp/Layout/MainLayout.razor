@@ -1,4 +1,8 @@
 ﻿@inherits LayoutComponentBase
+
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProv
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -7,7 +11,16 @@
     <main>
         <div class="top-row px-4">
             <a href="https://github.com/mikic202/TakeoutApp" target="_blank">About</a>
-            <a href="login">Sign In</a>
+            <AuthorizeView>
+                <NotAuthorized>
+                <a href="login">Sign In</a>
+                </NotAuthorized>
+                <Authorized>
+                    <a class="nav-link" @onclick="Logout" style="cursor: pointer">
+                        Logout
+                    </a>
+                </Authorized>
+            </AuthorizeView>
         </div>
 
         <article class="content px-4">
@@ -15,3 +28,11 @@
         </article>
     </main>
 </div>
+
+@code{
+    private async void Logout()
+    {
+        await LocalStorage.RemoveItemAsync("username");
+        await AuthStateProv.GetAuthenticationStateAsync();
+    }
+}

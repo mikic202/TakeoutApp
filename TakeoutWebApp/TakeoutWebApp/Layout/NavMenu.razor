@@ -28,20 +28,6 @@
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
             </NavLink>
         </div>
-        <div class="nav-item px-3">
-            <AuthorizeView>
-                <NotAuthorized>
-                    <NavLink class="nav-link" href="login">
-                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true">Login</span>
-                    </NavLink>
-                </NotAuthorized>
-                <Authorized>
-                    <a class="nav-link" @onclick="Logout" style="cursor: pointer">
-                        <span class="pointer-event oi-account-logout" aria-hidden="true"></span>
-                    </a>
-                </Authorized>
-            </AuthorizeView>
-        </div>
     </nav>
 
 </div>
