@@ -1,0 +1,16 @@
+﻿syntax = "proto3";
+
+package signin;
+
+service LoggingInProvider {
+  rpc Signin (SigninRequest) returns (SigninReply);
+}
+
+message SigninRequest {
+  string name = 1;
+}
+
+message SigninReply {
+  string message = 1;
+  bool outcome = 2;
+}
