@@ -1,0 +1,2 @@
+D:\semestr 5\NET\TakeoutApp\GRPC_Server\GRPC_Server\obj\Debug\net8.0\GRPC_Server.csproj.AssemblyReference.cache
+D:\semestr 5\NET\TakeoutApp\GRPC_Server\GRPC_Server\obj\Debug\net8.0\GRPC_Server.GeneratedMSBuildEditorConfig.editorconfig
