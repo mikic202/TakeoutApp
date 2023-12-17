@@ -1,5 +1,7 @@
 ﻿using Blazored.LocalStorage;
+using Grpc.Net.Client;
 using Microsoft.AspNetCore.Components.Authorization;
+using Signin;
 using System.Security.Claims;
 
 namespace TakeoutWebApp
@@ -16,7 +18,7 @@ namespace TakeoutWebApp
 		{
 			var state = new AuthenticationState(new System.Security.Claims.ClaimsPrincipal());
 
-			string username = await _localStoarage.GetItemAsStringAsync("username");
+            string username = await _localStoarage.GetItemAsStringAsync("username");
 			if (!string.IsNullOrEmpty(username))
 			{
 				var identity = new ClaimsIdentity(new[]

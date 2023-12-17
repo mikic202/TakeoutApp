@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "frAo8raF1zqhWSkvAY+gt3X6kIK30z96YYsc8E2yj8L3kqaoXEzfjltnaeodFpCIM6tiA/zDT4HsX14C/5vrkA==",
+  "dgSpecHash": "nH3y7QXk0u1kColaXMKQCTybz1gxmLF3LKsNVFvnnLl8XzI29nM5Zhey5H1Tj7KWUIvMCya9mJOru/511BFDjQ==",
   "success": true,
   "projectFilePath": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\TakeoutWebApp.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.core.api\\2.59.0\\grpc.core.api.2.59.0.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.net.client\\2.59.0\\grpc.net.client.2.59.0.nupkg.sha512",
+    "C:\\Users\\mikol\\.nuget\\packages\\grpc.net.client.web\\2.59.0\\grpc.net.client.web.2.59.0.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.net.common\\2.59.0\\grpc.net.common.2.59.0.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.tools\\2.60.0\\grpc.tools.2.60.0.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\microsoft.aspnetcore.authorization\\8.0.0\\microsoft.aspnetcore.authorization.8.0.0.nupkg.sha512",

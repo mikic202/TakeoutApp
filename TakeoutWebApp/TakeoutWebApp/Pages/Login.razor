@@ -2,6 +2,7 @@
 @inject NavigationManager NavigationMenager
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvid
+@inject Grpc.Net.Client.GrpcChannel Channel
 
 <h3>Login</h3>
 
@@ -24,6 +25,10 @@
 
 	private async void HandleLogin()
 	{
+		Console.WriteLine("Log me in!");
+		var client = new Signin.LoggingInProvider.LoggingInProviderClient(Channel);
+		Console.WriteLine("Log me in!");
+		var reply = await client.SigninAsync(new Signin.SigninRequest { Name = "GreeterClient" });
 		Console.WriteLine("Log me in!");
 		await LocalStorage.SetItemAsync<string>("username", user.Username);
 		await AuthStateProvid.GetAuthenticationStateAsync();
