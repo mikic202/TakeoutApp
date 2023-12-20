@@ -26,20 +26,21 @@ namespace Signin {
           string.Concat(
             "ChVQcm90b3MvY29udHJhY3QucHJvdG8SBnNpZ25pbiI+ChdSZXN0YXVyYW50",
             "U2lnbmluUmVxdWVzdBIRCgl1c2VydG5hbWUYASABKAkSEAoIcGFzc3dvcmQY",
-            "AiABKAkiKAoVUmVzdGF1cmFudFNpZ25pblJlcGx5Eg8KB291dGNvbWUYASAB",
-            "KAgiNAoNU2lnbmluUmVxdWVzdBIRCgl1c2VydG5hbWUYASABKAkSEAoIcGFz",
-            "c3dvcmQYAiABKAkiHgoLU2lnbmluUmVwbHkSDwoHb3V0Y29tZRgBIAEoCDKd",
-            "AQoRTG9nZ2luZ0luUHJvdmlkZXISNAoGU2lnbmluEhUuc2lnbmluLlNpZ25p",
-            "blJlcXVlc3QaEy5zaWduaW4uU2lnbmluUmVwbHkSUgoQU2lnbmluUmVzdGF1",
-            "cmFudBIfLnNpZ25pbi5SZXN0YXVyYW50U2lnbmluUmVxdWVzdBodLnNpZ25p",
-            "bi5SZXN0YXVyYW50U2lnbmluUmVwbHliBnByb3RvMw=="));
+            "AiABKAkiPgoVUmVzdGF1cmFudFNpZ25pblJlcGx5Eg8KB291dGNvbWUYASAB",
+            "KAgSFAoMcmVzdGF1cmFudElkGAIgASgFIjQKDVNpZ25pblJlcXVlc3QSEQoJ",
+            "dXNlcnRuYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJIi4KC1NpZ25pblJl",
+            "cGx5Eg8KB291dGNvbWUYASABKAgSDgoGdXNlcklkGAIgASgFMp0BChFMb2dn",
+            "aW5nSW5Qcm92aWRlchI0CgZTaWduaW4SFS5zaWduaW4uU2lnbmluUmVxdWVz",
+            "dBoTLnNpZ25pbi5TaWduaW5SZXBseRJSChBTaWduaW5SZXN0YXVyYW50Eh8u",
+            "c2lnbmluLlJlc3RhdXJhbnRTaWduaW5SZXF1ZXN0Gh0uc2lnbmluLlJlc3Rh",
+            "dXJhbnRTaWduaW5SZXBseWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantSigninRequest), global::Signin.RestaurantSigninRequest.Parser, new[]{ "Usertname", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantSigninReply), global::Signin.RestaurantSigninReply.Parser, new[]{ "Outcome" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantSigninReply), global::Signin.RestaurantSigninReply.Parser, new[]{ "Outcome", "RestaurantId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Signin.SigninRequest), global::Signin.SigninRequest.Parser, new[]{ "Usertname", "Password" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.SigninReply), global::Signin.SigninReply.Parser, new[]{ "Outcome" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.SigninReply), global::Signin.SigninReply.Parser, new[]{ "Outcome", "UserId" }, null, null, null, null)
           }));
     }
     #endregion
@@ -309,6 +310,7 @@ namespace Signin {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public RestaurantSigninReply(RestaurantSigninReply other) : this() {
       outcome_ = other.outcome_;
+      restaurantId_ = other.restaurantId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -330,6 +332,18 @@ namespace Signin {
       }
     }
 
+    /// <summary>Field number for the "restaurantId" field.</summary>
+    public const int RestaurantIdFieldNumber = 2;
+    private int restaurantId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RestaurantId {
+      get { return restaurantId_; }
+      set {
+        restaurantId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -346,6 +360,7 @@ namespace Signin {
         return true;
       }
       if (Outcome != other.Outcome) return false;
+      if (RestaurantId != other.RestaurantId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -354,6 +369,7 @@ namespace Signin {
     public override int GetHashCode() {
       int hash = 1;
       if (Outcome != false) hash ^= Outcome.GetHashCode();
+      if (RestaurantId != 0) hash ^= RestaurantId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -376,6 +392,10 @@ namespace Signin {
         output.WriteRawTag(8);
         output.WriteBool(Outcome);
       }
+      if (RestaurantId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(RestaurantId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -390,6 +410,10 @@ namespace Signin {
         output.WriteRawTag(8);
         output.WriteBool(Outcome);
       }
+      if (RestaurantId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(RestaurantId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -402,6 +426,9 @@ namespace Signin {
       int size = 0;
       if (Outcome != false) {
         size += 1 + 1;
+      }
+      if (RestaurantId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RestaurantId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -417,6 +444,9 @@ namespace Signin {
       }
       if (other.Outcome != false) {
         Outcome = other.Outcome;
+      }
+      if (other.RestaurantId != 0) {
+        RestaurantId = other.RestaurantId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -437,6 +467,10 @@ namespace Signin {
             Outcome = input.ReadBool();
             break;
           }
+          case 16: {
+            RestaurantId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -454,6 +488,10 @@ namespace Signin {
             break;
           case 8: {
             Outcome = input.ReadBool();
+            break;
+          }
+          case 16: {
+            RestaurantId = input.ReadInt32();
             break;
           }
         }
@@ -726,6 +764,7 @@ namespace Signin {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SigninReply(SigninReply other) : this() {
       outcome_ = other.outcome_;
+      userId_ = other.userId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -747,6 +786,18 @@ namespace Signin {
       }
     }
 
+    /// <summary>Field number for the "userId" field.</summary>
+    public const int UserIdFieldNumber = 2;
+    private int userId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int UserId {
+      get { return userId_; }
+      set {
+        userId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -763,6 +814,7 @@ namespace Signin {
         return true;
       }
       if (Outcome != other.Outcome) return false;
+      if (UserId != other.UserId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -771,6 +823,7 @@ namespace Signin {
     public override int GetHashCode() {
       int hash = 1;
       if (Outcome != false) hash ^= Outcome.GetHashCode();
+      if (UserId != 0) hash ^= UserId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -793,6 +846,10 @@ namespace Signin {
         output.WriteRawTag(8);
         output.WriteBool(Outcome);
       }
+      if (UserId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UserId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -807,6 +864,10 @@ namespace Signin {
         output.WriteRawTag(8);
         output.WriteBool(Outcome);
       }
+      if (UserId != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(UserId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -819,6 +880,9 @@ namespace Signin {
       int size = 0;
       if (Outcome != false) {
         size += 1 + 1;
+      }
+      if (UserId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(UserId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -834,6 +898,9 @@ namespace Signin {
       }
       if (other.Outcome != false) {
         Outcome = other.Outcome;
+      }
+      if (other.UserId != 0) {
+        UserId = other.UserId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -854,6 +921,10 @@ namespace Signin {
             Outcome = input.ReadBool();
             break;
           }
+          case 16: {
+            UserId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -871,6 +942,10 @@ namespace Signin {
             break;
           case 8: {
             Outcome = input.ReadBool();
+            break;
+          }
+          case 16: {
+            UserId = input.ReadInt32();
             break;
           }
         }

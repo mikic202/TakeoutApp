@@ -14,6 +14,7 @@ message RestaurantSigninRequest {
 
 message RestaurantSigninReply {
   bool outcome = 1;
+  int32 restaurantId = 2;
 }
 
 message SigninRequest {
@@ -23,4 +24,5 @@ message SigninRequest {
 
 message SigninReply {
   bool outcome = 1;
+  int32 userId = 2;
 }

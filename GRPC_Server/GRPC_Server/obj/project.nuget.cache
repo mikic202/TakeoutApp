@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eUOhIruowbUzcOIG/WdJ3Ud6qY67Ou8bvvRTcCnCQDxdJgyHpRjCwgheUbIHurXunQxFFNOK+NrkEg/Ava2y+g==",
+  "dgSpecHash": "AXEdeMWHISh+Bn2n2C7kO0KXo5DxApIAQcqvjTDH4zyaaWiCzuXPx0VSsgVfADOQsvkPDQb+wVZVYArjlTROdw==",
   "success": true,
   "projectFilePath": "D:\\semestr 5\\NET\\TakeoutApp\\GRPC_Server\\GRPC_Server\\GRPC_Server.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,10 @@
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.core\\2.46.6\\grpc.core.2.46.6.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.core.api\\2.46.6\\grpc.core.api.2.46.6.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\grpc.tools\\2.60.0\\grpc.tools.2.60.0.nupkg.sha512",
+    "C:\\Users\\mikol\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\mikol\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\mikol\\.nuget\\packages\\mysqlconnector\\2.3.1\\mysqlconnector.2.3.1.nupkg.sha512",
+    "C:\\Users\\mikol\\.nuget\\packages\\mysqlconnector.dependencyinjection\\2.3.1\\mysqlconnector.dependencyinjection.2.3.1.nupkg.sha512",
     "C:\\Users\\mikol\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
