@@ -30,8 +30,12 @@ namespace GRPC_Server
 				{
 					return new SigninReply { Outcome = false };
 				}
-				var outcome = await UserDatabsaeInteractor.checkUserExistance(request.Usertname, conn);
-				var reply = new SigninReply { Outcome = outcome };
+				var user_info = await UserDatabsaeInteractor.getUserInformation(request.Usertname, conn);
+				if(user_info["Password"] != request.Password)
+				{
+					return new SigninReply { Outcome = false };
+				}
+				var reply = new SigninReply { Outcome = true, UserId = int.Parse(user_info["UserId"])};
 				return reply;
 			}
 		}
