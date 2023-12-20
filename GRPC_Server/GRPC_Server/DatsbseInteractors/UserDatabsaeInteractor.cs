@@ -28,5 +28,26 @@ namespace GRPC_Server.DatsbseInteractors
 			}
 			return true;
 		}
+
+		async public static Task<Dictionary<string, string>> getUserInformation(string username, MySqlConnection connection)
+		{
+			var userInfo = new Dictionary<string, string>();
+			if (! await UserDatabsaeInteractor.checkUserExistance(username, connection) ) {
+				return userInfo;
+			}
+			using (var command = connection.CreateCommand())
+			{
+				command.CommandText = $"SELECT * FROM users where username = \"{username}\";";
+
+				using (var reader = await command.ExecuteReaderAsync())
+				{
+					await reader.ReadAsync();
+					userInfo["Username"] = username;
+					userInfo["Password"] = reader.GetString(2);
+					userInfo["UserId"] = reader.GetInt32(0).ToString();
+				}
+			}
+			return userInfo;
+		}
 	}
 }

@@ -26,6 +26,10 @@ namespace GRPC_Server
 			using (var conn = new MySqlConnection(builder.ConnectionString))
 			{
 				conn.Open();
+				if(!await UserDatabsaeInteractor.checkUserExistance(request.Usertname, conn))
+				{
+					return new SigninReply { Outcome = false };
+				}
 				var outcome = await UserDatabsaeInteractor.checkUserExistance(request.Usertname, conn);
 				var reply = new SigninReply { Outcome = outcome };
 				return reply;
