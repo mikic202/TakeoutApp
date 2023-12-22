@@ -20,3 +20,4 @@ message SigninRequest {
 message SigninReply {
   bool outcome = 1;
   int32 userId = 2;
+}

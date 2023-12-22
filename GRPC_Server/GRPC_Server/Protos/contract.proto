@@ -2,7 +2,7 @@
 
 package signin;
 
-import "Protos/Signin.proto";
+import "Protos/SignIn.proto";
 
 service LoggingInProvider {
   rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
