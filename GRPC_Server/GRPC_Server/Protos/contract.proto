@@ -2,27 +2,9 @@
 
 package signin;
 
+import "Protos/Signin.proto";
+
 service LoggingInProvider {
-  rpc Signin (SigninRequest) returns (SigninReply);
-  rpc SigninRestaurant (RestaurantSigninRequest) returns (RestaurantSigninReply);
-}
-
-message RestaurantSigninRequest {
-  string usertname = 1;
-  string password = 2;
-}
-
-message RestaurantSigninReply {
-  bool outcome = 1;
-  int32 restaurantId = 2;
-}
-
-message SigninRequest {
-  string usertname = 1;
-  string password = 2;
-}
-
-message SigninReply {
-  bool outcome = 1;
-  int32 userId = 2;
+  rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
+  rpc SigninRestaurant (signin.RestaurantSigninRequest) returns (signin.RestaurantSigninReply);
 }
