@@ -1,3 +1,5 @@
 obj\Debug\net8.0\Protos/Contract.cs \
 obj\Debug\net8.0\Protos/ContractGrpc.cs: Protos/SignIn.proto\
+ Protos/Location.proto\
+ Protos/Register.proto\
  Protos/contract.proto

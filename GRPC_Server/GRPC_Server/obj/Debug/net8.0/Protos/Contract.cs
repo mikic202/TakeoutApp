@@ -25,12 +25,15 @@ namespace Takeout {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVQcm90b3MvY29udHJhY3QucHJvdG8SB3Rha2VvdXQaE1Byb3Rvcy9TaWdu",
-            "SW4ucHJvdG8ymgEKDlRha2VPdXRTZXJ2aWNlEjQKBlNpZ25pbhIVLnNpZ25p",
-            "bi5TaWduaW5SZXF1ZXN0GhMuc2lnbmluLlNpZ25pblJlcGx5ElIKEFNpZ25p",
-            "blJlc3RhdXJhbnQSHy5zaWduaW4uUmVzdGF1cmFudFNpZ25pblJlcXVlc3Qa",
-            "HS5zaWduaW4uUmVzdGF1cmFudFNpZ25pblJlcGx5YgZwcm90bzM="));
+            "SW4ucHJvdG8aFVByb3Rvcy9SZWdpc3Rlci5wcm90bzL4AQoOVGFrZU91dFNl",
+            "cnZpY2USNAoGU2lnbmluEhUuc2lnbmluLlNpZ25pblJlcXVlc3QaEy5zaWdu",
+            "aW4uU2lnbmluUmVwbHkSUgoQU2lnbmluUmVzdGF1cmFudBIfLnNpZ25pbi5S",
+            "ZXN0YXVyYW50U2lnbmluUmVxdWVzdBodLnNpZ25pbi5SZXN0YXVyYW50U2ln",
+            "bmluUmVwbHkSXAoSUmVnaXN0ZXJSZXN0YXVyYW50EiMucmVnaXN0ZXIuUmVn",
+            "aXN0ZXJSZXN0YXVyYW50UmVxdWVzdBohLnJlZ2lzdGVyLlJlZ2lzdGVyUmVz",
+            "dGF1cmFudFJlcGx5YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Signin.SignInReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Signin.SignInReflection.Descriptor, global::Register.RegisterReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));
     }
     #endregion
