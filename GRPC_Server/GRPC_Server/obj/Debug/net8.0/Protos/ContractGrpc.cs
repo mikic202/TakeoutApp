@@ -7,10 +7,10 @@
 
 using grpc = global::Grpc.Core;
 
-namespace Signin {
-  public static partial class LoggingInProvider
+namespace Takeout {
+  public static partial class TakeOutService
   {
-    static readonly string __ServiceName = "signin.LoggingInProvider";
+    static readonly string __ServiceName = "takeout.TakeOutService";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -73,12 +73,12 @@ namespace Signin {
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::Signin.ContractReflection.Descriptor.Services[0]; }
+      get { return global::Takeout.ContractReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of LoggingInProvider</summary>
-    [grpc::BindServiceMethod(typeof(LoggingInProvider), "BindService")]
-    public abstract partial class LoggingInProviderBase
+    /// <summary>Base class for server-side implementations of TakeOutService</summary>
+    [grpc::BindServiceMethod(typeof(TakeOutService), "BindService")]
+    public abstract partial class TakeOutServiceBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Signin.SigninReply> Signin(global::Signin.SigninRequest request, grpc::ServerCallContext context)
@@ -94,30 +94,30 @@ namespace Signin {
 
     }
 
-    /// <summary>Client for LoggingInProvider</summary>
-    public partial class LoggingInProviderClient : grpc::ClientBase<LoggingInProviderClient>
+    /// <summary>Client for TakeOutService</summary>
+    public partial class TakeOutServiceClient : grpc::ClientBase<TakeOutServiceClient>
     {
-      /// <summary>Creates a new client for LoggingInProvider</summary>
+      /// <summary>Creates a new client for TakeOutService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public LoggingInProviderClient(grpc::ChannelBase channel) : base(channel)
+      public TakeOutServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for LoggingInProvider that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for TakeOutService that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public LoggingInProviderClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public TakeOutServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected LoggingInProviderClient() : base()
+      protected TakeOutServiceClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected LoggingInProviderClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected TakeOutServiceClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
@@ -163,16 +163,16 @@ namespace Signin {
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected override LoggingInProviderClient NewInstance(ClientBaseConfiguration configuration)
+      protected override TakeOutServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new LoggingInProviderClient(configuration);
+        return new TakeOutServiceClient(configuration);
       }
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static grpc::ServerServiceDefinition BindService(LoggingInProviderBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(TakeOutServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Signin, serviceImpl.Signin)
@@ -184,7 +184,7 @@ namespace Signin {
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, LoggingInProviderBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, TakeOutServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Signin, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Signin.SigninRequest, global::Signin.SigninReply>(serviceImpl.Signin));
       serviceBinder.AddMethod(__Method_SigninRestaurant, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Signin.RestaurantSigninRequest, global::Signin.RestaurantSigninReply>(serviceImpl.SigninRestaurant));

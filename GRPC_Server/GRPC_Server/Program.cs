@@ -3,11 +3,12 @@ using GRPC_Server;
 using GRPC_Server.DatsbseInteractors;
 using MySqlConnector;
 using Signin;
+using Takeout;
 
 const int Port = 10001;
 Server server = new Server
 {
-	Services = { LoggingInProvider.BindService(new SignInServer()) },
+	Services = { TakeOutService.BindService(new SignInServer()) },
 	Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) },
 };
 server.Start();

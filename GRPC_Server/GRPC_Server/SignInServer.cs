@@ -7,10 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Takeout;
 
 namespace GRPC_Server
 {
-	public class SignInServer : LoggingInProvider.LoggingInProviderBase
+	public class SignInServer : TakeOutService.TakeOutServiceBase
 	{
 		async public override Task<SigninReply> Signin(SigninRequest request, ServerCallContext context)
 		{

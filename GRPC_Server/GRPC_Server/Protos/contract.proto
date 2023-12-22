@@ -1,10 +1,10 @@
 ﻿syntax = "proto3";
 
-package signin;
+package takeout;
 
 import "Protos/SignIn.proto";
 
-service LoggingInProvider {
+service TakeOutService {
   rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
   rpc SigninRestaurant (signin.RestaurantSigninRequest) returns (signin.RestaurantSigninReply);
 }

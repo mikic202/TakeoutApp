@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Signin {
+namespace Takeout {
 
   /// <summary>Holder for reflection information generated from Protos/contract.proto</summary>
   public static partial class ContractReflection {
@@ -24,11 +24,11 @@ namespace Signin {
     static ContractReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVQcm90b3MvY29udHJhY3QucHJvdG8SBnNpZ25pbhoTUHJvdG9zL1NpZ25J",
-            "bi5wcm90bzKdAQoRTG9nZ2luZ0luUHJvdmlkZXISNAoGU2lnbmluEhUuc2ln",
-            "bmluLlNpZ25pblJlcXVlc3QaEy5zaWduaW4uU2lnbmluUmVwbHkSUgoQU2ln",
-            "bmluUmVzdGF1cmFudBIfLnNpZ25pbi5SZXN0YXVyYW50U2lnbmluUmVxdWVz",
-            "dBodLnNpZ25pbi5SZXN0YXVyYW50U2lnbmluUmVwbHliBnByb3RvMw=="));
+            "ChVQcm90b3MvY29udHJhY3QucHJvdG8SB3Rha2VvdXQaE1Byb3Rvcy9TaWdu",
+            "SW4ucHJvdG8ymgEKDlRha2VPdXRTZXJ2aWNlEjQKBlNpZ25pbhIVLnNpZ25p",
+            "bi5TaWduaW5SZXF1ZXN0GhMuc2lnbmluLlNpZ25pblJlcGx5ElIKEFNpZ25p",
+            "blJlc3RhdXJhbnQSHy5zaWduaW4uUmVzdGF1cmFudFNpZ25pblJlcXVlc3Qa",
+            "HS5zaWduaW4uUmVzdGF1cmFudFNpZ25pblJlcGx5YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Signin.SignInReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));
