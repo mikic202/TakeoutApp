@@ -9,7 +9,7 @@ message addDishRequest{
 	int32 restaurantId = 4;
 }
 
-message addDishResponse{
+message addDishReply{
 	bool outcome = 1;
 	int32 dishId = 2;
 }
