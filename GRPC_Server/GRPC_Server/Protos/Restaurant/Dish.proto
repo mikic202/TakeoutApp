@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+
+package dish;
+
+message addDishRequest{
+	string dishName = 1;
+	int32 dishPrice = 2;
+	string dishDescription = 3;
+	int32 restaurantId = 4;
+}
+
+message addDishReply{
+	bool outcome = 1;
+	int32 dishId = 2;
+}

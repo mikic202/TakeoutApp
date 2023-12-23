@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+
+package signin;
+
+message RestaurantSigninRequest {
+  string usertname = 1;
+  string password = 2;
+}
+
+message RestaurantSigninReply {
+  bool outcome = 1;
+  int32 restaurantId = 2;
+}
+
+message SigninRequest {
+  string usertname = 1;
+  string password = 2;
+}
+
+message SigninReply {
+  bool outcome = 1;
+  int32 userId = 2;
+}

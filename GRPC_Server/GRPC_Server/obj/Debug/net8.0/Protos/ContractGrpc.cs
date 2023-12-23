@@ -7,10 +7,10 @@
 
 using grpc = global::Grpc.Core;
 
-namespace Signin {
-  public static partial class LoggingInProvider
+namespace Takeout {
+  public static partial class TakeOutService
   {
-    static readonly string __ServiceName = "signin.LoggingInProvider";
+    static readonly string __ServiceName = "takeout.TakeOutService";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -53,6 +53,14 @@ namespace Signin {
     static readonly grpc::Marshaller<global::Signin.RestaurantSigninRequest> __Marshaller_signin_RestaurantSigninRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Signin.RestaurantSigninRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Signin.RestaurantSigninReply> __Marshaller_signin_RestaurantSigninReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Signin.RestaurantSigninReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Register.RegisterRestaurantRequest> __Marshaller_register_RegisterRestaurantRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Register.RegisterRestaurantRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Register.RegisterRestaurantReply> __Marshaller_register_RegisterRestaurantReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Register.RegisterRestaurantReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.addDishRequest> __Marshaller_dish_addDishRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.addDishRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.addDishReply> __Marshaller_dish_addDishReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.addDishReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply> __Method_Signin = new grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply>(
@@ -70,15 +78,31 @@ namespace Signin {
         __Marshaller_signin_RestaurantSigninRequest,
         __Marshaller_signin_RestaurantSigninReply);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Register.RegisterRestaurantRequest, global::Register.RegisterRestaurantReply> __Method_RegisterRestaurant = new grpc::Method<global::Register.RegisterRestaurantRequest, global::Register.RegisterRestaurantReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RegisterRestaurant",
+        __Marshaller_register_RegisterRestaurantRequest,
+        __Marshaller_register_RegisterRestaurantReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Dish.addDishRequest, global::Dish.addDishReply> __Method_addDish = new grpc::Method<global::Dish.addDishRequest, global::Dish.addDishReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "addDish",
+        __Marshaller_dish_addDishRequest,
+        __Marshaller_dish_addDishReply);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::Signin.ContractReflection.Descriptor.Services[0]; }
+      get { return global::Takeout.ContractReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of LoggingInProvider</summary>
-    [grpc::BindServiceMethod(typeof(LoggingInProvider), "BindService")]
-    public abstract partial class LoggingInProviderBase
+    /// <summary>Base class for server-side implementations of TakeOutService</summary>
+    [grpc::BindServiceMethod(typeof(TakeOutService), "BindService")]
+    public abstract partial class TakeOutServiceBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Signin.SigninReply> Signin(global::Signin.SigninRequest request, grpc::ServerCallContext context)
@@ -92,32 +116,44 @@ namespace Signin {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Register.RegisterRestaurantReply> RegisterRestaurant(global::Register.RegisterRestaurantRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Dish.addDishReply> addDish(global::Dish.addDishRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
-    /// <summary>Client for LoggingInProvider</summary>
-    public partial class LoggingInProviderClient : grpc::ClientBase<LoggingInProviderClient>
+    /// <summary>Client for TakeOutService</summary>
+    public partial class TakeOutServiceClient : grpc::ClientBase<TakeOutServiceClient>
     {
-      /// <summary>Creates a new client for LoggingInProvider</summary>
+      /// <summary>Creates a new client for TakeOutService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public LoggingInProviderClient(grpc::ChannelBase channel) : base(channel)
+      public TakeOutServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for LoggingInProvider that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for TakeOutService that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public LoggingInProviderClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public TakeOutServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected LoggingInProviderClient() : base()
+      protected TakeOutServiceClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected LoggingInProviderClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected TakeOutServiceClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
@@ -161,22 +197,64 @@ namespace Signin {
       {
         return CallInvoker.AsyncUnaryCall(__Method_SigninRestaurant, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Register.RegisterRestaurantReply RegisterRestaurant(global::Register.RegisterRestaurantRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RegisterRestaurant(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Register.RegisterRestaurantReply RegisterRestaurant(global::Register.RegisterRestaurantRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RegisterRestaurant, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Register.RegisterRestaurantReply> RegisterRestaurantAsync(global::Register.RegisterRestaurantRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RegisterRestaurantAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Register.RegisterRestaurantReply> RegisterRestaurantAsync(global::Register.RegisterRestaurantRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RegisterRestaurant, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.addDishReply addDish(global::Dish.addDishRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return addDish(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.addDishReply addDish(global::Dish.addDishRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_addDish, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.addDishReply> addDishAsync(global::Dish.addDishRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return addDishAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.addDishReply> addDishAsync(global::Dish.addDishRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_addDish, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      protected override LoggingInProviderClient NewInstance(ClientBaseConfiguration configuration)
+      protected override TakeOutServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new LoggingInProviderClient(configuration);
+        return new TakeOutServiceClient(configuration);
       }
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static grpc::ServerServiceDefinition BindService(LoggingInProviderBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(TakeOutServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Signin, serviceImpl.Signin)
-          .AddMethod(__Method_SigninRestaurant, serviceImpl.SigninRestaurant).Build();
+          .AddMethod(__Method_SigninRestaurant, serviceImpl.SigninRestaurant)
+          .AddMethod(__Method_RegisterRestaurant, serviceImpl.RegisterRestaurant)
+          .AddMethod(__Method_addDish, serviceImpl.addDish).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -184,10 +262,12 @@ namespace Signin {
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, LoggingInProviderBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, TakeOutServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Signin, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Signin.SigninRequest, global::Signin.SigninReply>(serviceImpl.Signin));
       serviceBinder.AddMethod(__Method_SigninRestaurant, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Signin.RestaurantSigninRequest, global::Signin.RestaurantSigninReply>(serviceImpl.SigninRestaurant));
+      serviceBinder.AddMethod(__Method_RegisterRestaurant, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Register.RegisterRestaurantRequest, global::Register.RegisterRestaurantReply>(serviceImpl.RegisterRestaurant));
+      serviceBinder.AddMethod(__Method_addDish, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.addDishRequest, global::Dish.addDishReply>(serviceImpl.addDish));
     }
 
   }

@@ -21,6 +21,10 @@
 
 	<ItemGroup>
 		<Protobuf Include="Protos\contract.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\SignIn.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Register.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Location.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Restaurant\Dish.proto" GrpcService="Server"></Protobuf>
 	</ItemGroup>
 
 </Project>

@@ -1,28 +1,14 @@
 ﻿syntax = "proto3";
 
-package signin;
+package takeout;
 
-service LoggingInProvider {
-  rpc Signin (SigninRequest) returns (SigninReply);
-  rpc SigninRestaurant (RestaurantSigninRequest) returns (RestaurantSigninReply);
-}
+import "Protos/SignIn.proto";
+import "Protos/Register.proto";
+import "Protos/Restaurant/Dish.proto";
 
-message RestaurantSigninRequest {
-  string usertname = 1;
-  string password = 2;
-}
-
-message RestaurantSigninReply {
-  bool outcome = 1;
-  int32 restaurantId = 2;
-}
-
-message SigninRequest {
-  string usertname = 1;
-  string password = 2;
-}
-
-message SigninReply {
-  bool outcome = 1;
-  int32 userId = 2;
+service TakeOutService {
+  rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
+  rpc SigninRestaurant (signin.RestaurantSigninRequest) returns (signin.RestaurantSigninReply);
+  rpc RegisterRestaurant (register.RegisterRestaurantRequest) returns (register.RegisterRestaurantReply);
+  rpc addDish (dish.addDishRequest) returns (dish.addDishReply);
 }
