@@ -4,7 +4,7 @@ package dish;
 
 message addDishRequest{
 	string dishName = 1;
-	int16 dishPrice = 2
+	int32 dishPrice = 2;
 	string dishDescription = 3;
 	int32 restaurantId = 4;
 }

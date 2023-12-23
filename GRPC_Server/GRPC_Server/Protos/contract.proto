@@ -4,6 +4,7 @@ package takeout;
 
 import "Protos/SignIn.proto";
 import "Protos/Register.proto";
+import "Protos/Restaurant/Dish.proto";
 
 service TakeOutService {
   rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
