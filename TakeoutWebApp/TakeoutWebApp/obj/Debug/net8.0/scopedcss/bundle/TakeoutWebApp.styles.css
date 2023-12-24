@@ -81,6 +81,11 @@ main[b-iree84f00m] {
         padding-right: 1.5rem !important;
     }
 }
+
+.button-box[b-iree84f00m]{
+    display: inline-block;
+    margin-right: 10px;
+}
 /* /Layout/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-90m3bjyynx] {
     background-color: rgba(255, 255, 255, 0.1);

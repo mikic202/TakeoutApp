@@ -80,3 +80,8 @@ main[b-iree84f00m] {
         padding-right: 1.5rem !important;
     }
 }
+
+.button-box[b-iree84f00m]{
+    display: inline-block;
+    margin-right: 10px;
+}

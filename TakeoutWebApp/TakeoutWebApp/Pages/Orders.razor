@@ -11,7 +11,7 @@
         Sign in to see orders.
     </NotAuthorized>
     <Authorized>
-        <p>This component demonstrates fetching data from the server.</p>
+        @* <p>This component demonstrates fetching data from the server.</p> *@
         @if (forecasts == null)
         {
             <p><em>Loading...</em></p>
@@ -34,8 +34,15 @@
                             <td>@forecast.time.ToShortTimeString()</td>
                             <td>@forecast.TemperatureC</td>
                             <td>@forecast.TemperatureF</td>
-                            <td>@forecast.Summary</td>
-                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())">Edit</button></td>
+                            <td>
+                                <InputSelect id="department" @bind-Value="some_chosen">
+                                    @foreach (string stat in STATUS_VALUE)
+                                    {
+                                        <option value="@stat">@stat</option>
+                                    }
+                                </InputSelect>
+                            </td>
+                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())">SetStatus</button></td>
                         </tr>
                     }
                 </tbody>
@@ -46,7 +53,8 @@
 
 @code {
     private WeatherForecast[]? forecasts;
-
+    string some_chosen = "ddddd";
+    private readonly string[] STATUS_VALUE = { "Accepted", "Being Prepared", "On The Way", "Delivered" };
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
@@ -54,7 +62,7 @@
 
     private void ShowPosition(string time)
     {
-        Console.WriteLine(time);
+        Console.WriteLine(some_chosen);
     }
 
     public class WeatherForecast

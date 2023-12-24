@@ -4,7 +4,7 @@
 
 <PageTitle>Dishes</PageTitle>
 
-<h1>Dishes</h1>
+<h1>Your Dishes</h1>
 
 
 <AuthorizeView>
@@ -12,7 +12,7 @@
         Sign in to see your dishes.
     </NotAuthorized>
     <Authorized>
-        <p>This component demonstrates fetching data from the server.</p>
+        <Button Color="ButtonColor.Primary" @onclick="createDish" class="btn btn-primary" style='float:inline-start;'> Add Dish </Button>
         @if (forecasts == null)
         {
             <p><em>Loading...</em></p>
@@ -35,7 +35,7 @@
                             <td>@forecast.time.ToShortTimeString()</td>
                             <td>@forecast.TemperatureC</td>
                             <td>@forecast.TemperatureF</td>
-                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())">Edit</button></td>
+                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
                         </tr>
                     }
                 </tbody>
@@ -51,6 +51,10 @@
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+    }
+    private void createDish()
+    {
+        NavigationMenager.NavigateTo("/createDish");
     }
 
     private void ShowPosition(string time)

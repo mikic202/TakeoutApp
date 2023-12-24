@@ -1,6 +1,6 @@
-﻿@page "/editDish"
+﻿@page "/createDish";
 
-<h3>Dish editor</h3>
+<h3>CreateDish</h3>
 
 <EditForm Model="dish">
 	<div class="form-group">
@@ -21,15 +21,9 @@
 	<div id="outer">
 		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
 		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Delete</button></div>
 	</div>
 </EditForm>
 
 @code {
 	private Shared.Dish dish = new Shared.Dish();
-
-	protected override async Task OnInitializedAsync()
-	{
-		dish.Price = 1234;
-	}
 }
