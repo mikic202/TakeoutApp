@@ -1,5 +1,6 @@
 ﻿@page "/dishes"
 @inject HttpClient Http
+@inject NavigationManager NavigationMenager
 
 <PageTitle>Dishes</PageTitle>
 
@@ -54,7 +55,8 @@
 
     private void ShowPosition(string time)
     {
-        Console.WriteLine(time);
+        // Console.WriteLine(time);
+        NavigationMenager.NavigateTo("/editDish");
     }
 
     public class WeatherForecast
