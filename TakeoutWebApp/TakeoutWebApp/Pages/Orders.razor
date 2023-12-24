@@ -23,7 +23,7 @@
                     <tr>
                         <th>Order Date</th>
                         <th>Ordered Items</th>
-                        <th>Location</th>
+                        <th>Delivery Location</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -42,7 +42,7 @@
                                     }
                                 </InputSelect>
                             </td>
-                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())">SetStatus</button></td>
+                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
                         </tr>
                     }
                 </tbody>
