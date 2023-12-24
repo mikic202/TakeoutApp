@@ -1,14 +1,14 @@
-﻿@page "/orders"
+﻿@page "/dishes"
 @inject HttpClient Http
 
-<PageTitle>Orders</PageTitle>
+<PageTitle>Dishes</PageTitle>
 
-<h1>Orders</h1>
+<h1>Dishes</h1>
 
 
 <AuthorizeView>
     <NotAuthorized>
-        Sign in to see orders.
+        Sign in to see your dishes.
     </NotAuthorized>
     <Authorized>
         <p>This component demonstrates fetching data from the server.</p>
@@ -21,10 +21,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Order Date</th>
-                        <th>Ordered Items</th>
-                        <th>Location</th>
-                        <th>Status</th>
+                        <th>Dish name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,7 +34,6 @@
                             <td>@forecast.time.ToShortTimeString()</td>
                             <td>@forecast.TemperatureC</td>
                             <td>@forecast.TemperatureF</td>
-                            <td>@forecast.Summary</td>
                             <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())">Edit</button></td>
                         </tr>
                     }
@@ -46,6 +45,7 @@
 
 @code {
     private WeatherForecast[]? forecasts;
+    private Dishes[] dishes;
 
     protected override async Task OnInitializedAsync()
     {
