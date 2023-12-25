@@ -54,16 +54,16 @@ namespace GRPC_Server
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 conn.Open();
-                if (!await RestaurantDatabaseInteractor.checkRestaurantsExistance(request.Usertname, conn))
+                if (!await RestaurantDatabaseInteractor.checkRestaurantsExistance(request.Restaurantname, conn))
                 {
                     return new RestaurantSigninReply { Outcome = false };
                 }
-                var user_info = await RestaurantDatabaseInteractor.getRestaurantInformation(request.Usertname, conn);
-                if (user_info["Password"] != request.Password)
+                var restaurantInfo = await RestaurantDatabaseInteractor.getRestaurantInformation(request.Restaurantname, conn);
+                if (restaurantInfo["Password"] != request.Password)
                 {
                     return new RestaurantSigninReply { Outcome = false };
                 }
-                var reply = new RestaurantSigninReply { Outcome = true, RestaurantId = int.Parse(user_info["RestaurantId"]) };
+                var reply = new RestaurantSigninReply { Outcome = true, RestaurantId = int.Parse(restaurantInfo["RestaurantId"]) };
                 return reply;
             }
 		}
