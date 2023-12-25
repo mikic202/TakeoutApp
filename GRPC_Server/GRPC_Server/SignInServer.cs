@@ -88,7 +88,7 @@ namespace GRPC_Server
 			}
 		}
 
-        public override async Task<addDishReply> addDish(addDishRequest requrst, ServerCallContext context)
+        public override async Task<addDishReply> AddDish(addDishRequest requrst, ServerCallContext context)
         {
             Console.WriteLine("Got register request");
             var builder = new MySqlConnectionStringBuilder
@@ -103,7 +103,28 @@ namespace GRPC_Server
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 conn.Open();
-                return (new addDishReply { Outcome = await DishDatabseInteractor.addDish(requrst.DishName, requrst.DishDescription, requrst.DishPrice, requrst.RestaurantId, conn)});
+                return (new addDishReply { Outcome = await DishDatabseInteractor.addDish(requrst.DishName, requrst.DishDescription, requrst.DishPrice, requrst.RestaurantId, conn), 
+					DishId = await DishDatabseInteractor.getDishId(requrst.DishName, requrst.RestaurantId, conn) });
+            }
+        }
+
+		public override async Task<modifyDishReply> ModifyDish(modifyDishRequest request, ServerCallContext context)
+		{
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                conn.Open();
+                return (new modifyDishReply
+                {
+                    Outcome = await DishDatabseInteractor.modifyDish(request.DishId,  request.DishName, request.DishDescription, request.DishPrice, conn)
+                });
             }
         }
     }

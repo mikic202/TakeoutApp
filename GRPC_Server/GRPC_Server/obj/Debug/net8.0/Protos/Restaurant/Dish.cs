@@ -26,14 +26,19 @@ namespace Dish {
           string.Concat(
             "ChxQcm90b3MvUmVzdGF1cmFudC9EaXNoLnByb3RvEgRkaXNoImQKDmFkZERp",
             "c2hSZXF1ZXN0EhAKCGRpc2hOYW1lGAEgASgJEhEKCWRpc2hQcmljZRgCIAEo",
-            "BRIXCg9kaXNoRGVzY3JpcHRpb24YAyABKAkSFAoMcmVzdGF1cmFudElkGAQg",
+            "AhIXCg9kaXNoRGVzY3JpcHRpb24YAyABKAkSFAoMcmVzdGF1cmFudElkGAQg",
             "ASgFIi8KDGFkZERpc2hSZXBseRIPCgdvdXRjb21lGAEgASgIEg4KBmRpc2hJ",
-            "ZBgCIAEoBWIGcHJvdG8z"));
+            "ZBgCIAEoBSJhChFtb2RpZnlEaXNoUmVxdWVzdBIQCghkaXNoTmFtZRgBIAEo",
+            "CRIRCglkaXNoUHJpY2UYAiABKAISFwoPZGlzaERlc2NyaXB0aW9uGAMgASgJ",
+            "Eg4KBmRpc2hJZBgEIAEoBSIiCg9tb2RpZnlEaXNoUmVwbHkSDwoHb3V0Y29t",
+            "ZRgBIAEoCGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Dish.addDishRequest), global::Dish.addDishRequest.Parser, new[]{ "DishName", "DishPrice", "DishDescription", "RestaurantId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Dish.addDishReply), global::Dish.addDishReply.Parser, new[]{ "Outcome", "DishId" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dish.addDishReply), global::Dish.addDishReply.Parser, new[]{ "Outcome", "DishId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dish.modifyDishRequest), global::Dish.modifyDishRequest.Parser, new[]{ "DishName", "DishPrice", "DishDescription", "DishId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Dish.modifyDishReply), global::Dish.modifyDishReply.Parser, new[]{ "Outcome" }, null, null, null, null)
           }));
     }
     #endregion
@@ -102,10 +107,10 @@ namespace Dish {
 
     /// <summary>Field number for the "dishPrice" field.</summary>
     public const int DishPriceFieldNumber = 2;
-    private int dishPrice_;
+    private float dishPrice_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int DishPrice {
+    public float DishPrice {
       get { return dishPrice_; }
       set {
         dishPrice_ = value;
@@ -152,7 +157,7 @@ namespace Dish {
         return true;
       }
       if (DishName != other.DishName) return false;
-      if (DishPrice != other.DishPrice) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DishPrice, other.DishPrice)) return false;
       if (DishDescription != other.DishDescription) return false;
       if (RestaurantId != other.RestaurantId) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -163,7 +168,7 @@ namespace Dish {
     public override int GetHashCode() {
       int hash = 1;
       if (DishName.Length != 0) hash ^= DishName.GetHashCode();
-      if (DishPrice != 0) hash ^= DishPrice.GetHashCode();
+      if (DishPrice != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DishPrice);
       if (DishDescription.Length != 0) hash ^= DishDescription.GetHashCode();
       if (RestaurantId != 0) hash ^= RestaurantId.GetHashCode();
       if (_unknownFields != null) {
@@ -188,9 +193,9 @@ namespace Dish {
         output.WriteRawTag(10);
         output.WriteString(DishName);
       }
-      if (DishPrice != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(DishPrice);
+      if (DishPrice != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DishPrice);
       }
       if (DishDescription.Length != 0) {
         output.WriteRawTag(26);
@@ -214,9 +219,9 @@ namespace Dish {
         output.WriteRawTag(10);
         output.WriteString(DishName);
       }
-      if (DishPrice != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(DishPrice);
+      if (DishPrice != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DishPrice);
       }
       if (DishDescription.Length != 0) {
         output.WriteRawTag(26);
@@ -239,8 +244,8 @@ namespace Dish {
       if (DishName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DishName);
       }
-      if (DishPrice != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DishPrice);
+      if (DishPrice != 0F) {
+        size += 1 + 4;
       }
       if (DishDescription.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(DishDescription);
@@ -263,7 +268,7 @@ namespace Dish {
       if (other.DishName.Length != 0) {
         DishName = other.DishName;
       }
-      if (other.DishPrice != 0) {
+      if (other.DishPrice != 0F) {
         DishPrice = other.DishPrice;
       }
       if (other.DishDescription.Length != 0) {
@@ -291,8 +296,8 @@ namespace Dish {
             DishName = input.ReadString();
             break;
           }
-          case 16: {
-            DishPrice = input.ReadInt32();
+          case 21: {
+            DishPrice = input.ReadFloat();
             break;
           }
           case 26: {
@@ -322,8 +327,8 @@ namespace Dish {
             DishName = input.ReadString();
             break;
           }
-          case 16: {
-            DishPrice = input.ReadInt32();
+          case 21: {
+            DishPrice = input.ReadFloat();
             break;
           }
           case 26: {
@@ -559,6 +564,497 @@ namespace Dish {
           }
           case 16: {
             DishId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class modifyDishRequest : pb::IMessage<modifyDishRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<modifyDishRequest> _parser = new pb::MessageParser<modifyDishRequest>(() => new modifyDishRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<modifyDishRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Dish.DishReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishRequest(modifyDishRequest other) : this() {
+      dishName_ = other.dishName_;
+      dishPrice_ = other.dishPrice_;
+      dishDescription_ = other.dishDescription_;
+      dishId_ = other.dishId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishRequest Clone() {
+      return new modifyDishRequest(this);
+    }
+
+    /// <summary>Field number for the "dishName" field.</summary>
+    public const int DishNameFieldNumber = 1;
+    private string dishName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DishName {
+      get { return dishName_; }
+      set {
+        dishName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "dishPrice" field.</summary>
+    public const int DishPriceFieldNumber = 2;
+    private float dishPrice_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float DishPrice {
+      get { return dishPrice_; }
+      set {
+        dishPrice_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "dishDescription" field.</summary>
+    public const int DishDescriptionFieldNumber = 3;
+    private string dishDescription_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DishDescription {
+      get { return dishDescription_; }
+      set {
+        dishDescription_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "dishId" field.</summary>
+    public const int DishIdFieldNumber = 4;
+    private int dishId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int DishId {
+      get { return dishId_; }
+      set {
+        dishId_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as modifyDishRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(modifyDishRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (DishName != other.DishName) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DishPrice, other.DishPrice)) return false;
+      if (DishDescription != other.DishDescription) return false;
+      if (DishId != other.DishId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (DishName.Length != 0) hash ^= DishName.GetHashCode();
+      if (DishPrice != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DishPrice);
+      if (DishDescription.Length != 0) hash ^= DishDescription.GetHashCode();
+      if (DishId != 0) hash ^= DishId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (DishName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DishName);
+      }
+      if (DishPrice != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DishPrice);
+      }
+      if (DishDescription.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DishDescription);
+      }
+      if (DishId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(DishId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (DishName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(DishName);
+      }
+      if (DishPrice != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(DishPrice);
+      }
+      if (DishDescription.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(DishDescription);
+      }
+      if (DishId != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(DishId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (DishName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DishName);
+      }
+      if (DishPrice != 0F) {
+        size += 1 + 4;
+      }
+      if (DishDescription.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DishDescription);
+      }
+      if (DishId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(DishId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(modifyDishRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.DishName.Length != 0) {
+        DishName = other.DishName;
+      }
+      if (other.DishPrice != 0F) {
+        DishPrice = other.DishPrice;
+      }
+      if (other.DishDescription.Length != 0) {
+        DishDescription = other.DishDescription;
+      }
+      if (other.DishId != 0) {
+        DishId = other.DishId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            DishName = input.ReadString();
+            break;
+          }
+          case 21: {
+            DishPrice = input.ReadFloat();
+            break;
+          }
+          case 26: {
+            DishDescription = input.ReadString();
+            break;
+          }
+          case 32: {
+            DishId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            DishName = input.ReadString();
+            break;
+          }
+          case 21: {
+            DishPrice = input.ReadFloat();
+            break;
+          }
+          case 26: {
+            DishDescription = input.ReadString();
+            break;
+          }
+          case 32: {
+            DishId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class modifyDishReply : pb::IMessage<modifyDishReply>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<modifyDishReply> _parser = new pb::MessageParser<modifyDishReply>(() => new modifyDishReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<modifyDishReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Dish.DishReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishReply(modifyDishReply other) : this() {
+      outcome_ = other.outcome_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public modifyDishReply Clone() {
+      return new modifyDishReply(this);
+    }
+
+    /// <summary>Field number for the "outcome" field.</summary>
+    public const int OutcomeFieldNumber = 1;
+    private bool outcome_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Outcome {
+      get { return outcome_; }
+      set {
+        outcome_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as modifyDishReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(modifyDishReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Outcome != other.Outcome) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Outcome != false) hash ^= Outcome.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Outcome != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Outcome);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Outcome != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Outcome);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Outcome != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(modifyDishReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Outcome != false) {
+        Outcome = other.Outcome;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Outcome = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Outcome = input.ReadBool();
             break;
           }
         }
