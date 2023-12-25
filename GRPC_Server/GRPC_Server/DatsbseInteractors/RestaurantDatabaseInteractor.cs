@@ -42,5 +42,27 @@ namespace GRPC_Server.DatsbseInteractors
 			}
 			return true;
 		}
-	}
+
+        async public static Task<Dictionary<string, string>> getRestaurantInformation(string username, MySqlConnection connection)
+        {
+            var userInfo = new Dictionary<string, string>();
+            if (!await checkRestaurantsExistance(username, connection))
+            {
+                return userInfo;
+            }
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = $"SELECT * FROM restaurants where restaurnat_name = \"{username}\";";
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    await reader.ReadAsync();
+                    userInfo["restaurnatName"] = username;
+                    userInfo["Password"] = reader.GetString(2);
+                    userInfo["RestaurantId"] = reader.GetInt32(0).ToString();
+                }
+            }
+            return userInfo;
+        }
+    }
 }
