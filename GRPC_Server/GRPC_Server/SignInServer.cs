@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using Dish;
+using Grpc.Core;
 using GRPC_Server.DatsbseInteractors;
 using MySqlConnector;
 using Register;
@@ -86,5 +87,24 @@ namespace GRPC_Server
 				return (new RegisterRestaurantReply { Outcome = await RestaurantDatabaseInteractor.registerRestaurant(requrst.RestaurantName, requrst.Password, conn) });
 			}
 		}
-	}
+
+        public override async Task<addDishReply> addDish(addDishRequest requrst, ServerCallContext context)
+        {
+            Console.WriteLine("Got register request");
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            Console.WriteLine("Greeting ");
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                conn.Open();
+                return (new addDishReply { Outcome = await DishDatabseInteractor.addDish(requrst.DishName, requrst.DishDescription, requrst.DishPrice, requrst.RestaurantId, conn)});
+            }
+        }
+    }
 }
