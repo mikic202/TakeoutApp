@@ -170,3 +170,13 @@ main[b-iree84f00m] {
         overflow-y: auto;
     }
 }
+/* /Pages/EditUser.razor.rz.scp.css */
+.button-container[b-dawybis1nd] {
+    padding-right: 10px;
+}
+
+.divider[b-dawybis1nd] {
+    width: 10px;
+    height: 20px;
+    display: inline-block;
+}

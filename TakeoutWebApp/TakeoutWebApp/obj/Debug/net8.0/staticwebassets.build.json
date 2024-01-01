@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xfOkUb50ryfwYFsnFKVa6prfwYaKxEMiSCXk02+Ut4o=",
+  "Hash": "T5lrA7NqJqbL22+O7v3ozj52eM013LUqfBlsApCvp/w=",
   "Source": "TakeoutWebApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -8204,6 +8204,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icon-192.png"
+    },
+    {
+      "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-1922.png",
+      "SourceId": "TakeoutWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "icon-1922.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icon-1922.png"
     },
     {
       "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\index.html",

@@ -1,35 +1,46 @@
 ﻿@page "/editRestaurant"
+@inject NavigationManager NavigationMenager
 
 <h3>Dish editor</h3>
 
 <EditForm Model="dish">
 	<div class="form-group">
 		<lable for="username">Dish name</lable>
-		<InputText id="username" @bind-Value="dish.Name" class="form-control">some_name</InputText>
+		<InputText id="username" @bind-Value="user.Username" class="form-control">some_name</InputText>
 	</div>
 	<div class="form-group">
-		<lable for="password">Description</lable>
-		<InputTextArea id="password" @bind-Value="dish.Description" class="form-control"></InputTextArea>
+		<lable for="Longitude">Longitude</lable>
+		<InputNumber id="Longitude" @bind-Value="user.Longitude" class="form-control"></InputNumber>
 	</div>
 	<div class="form-group">
-		<lable for="Price">Price</lable>
-		<InputNumber id="username" @bind-Value="dish.Price" class="form-control"></InputNumber>
+		<lable for="Latitude">Latitude</lable>
+		<InputNumber id="Latitude" @bind-Value="user.Latitude" class="form-control"></InputNumber>
 	</div>
-	<div>
+	<div class="form-group">
 		<label></label>
 	</div>
-	<div id="outer">
+	<div>
 		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
+		@* <div class="divider"></div> *@
 		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
+		@* <div class="divider"></div> *@
 		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Delete</button></div>
 	</div>
+	<div class="form-group">
+		<button type="button" @onclick="navigate" class="btn btn-primary" style='float:inline-start;'>Edit password</button>
+	</div> 
 </EditForm>
 
 @code {
 	private Shared.Dish dish = new Shared.Dish();
+	private Shared.User user = new Shared.User();
 
 	protected override async Task OnInitializedAsync()
 	{
-		dish.Price = 1234;
+		// dish.Price = 1234;
+	}
+
+	private void navigate(){
+		NavigationMenager.NavigateTo("/editPassword");
 	}
 }

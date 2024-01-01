@@ -38,8 +38,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdERpc2gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/EditUser.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
+[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/EditPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFBhc3N3b3JkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/Home.razor]
@@ -69,3 +69,7 @@ build_metadata.AdditionalFiles.CssScope = b-iree84f00m
 [D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-90m3bjyynx
+
+[D:/semestr 5/NET/TakeoutApp/TakeoutWebApp/TakeoutWebApp/Pages/EditUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFVzZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-dawybis1nd

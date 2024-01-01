@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-1922.png",
+      "PackagePath": "staticwebassets\\icon-1922.png"
+    },
+    {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
