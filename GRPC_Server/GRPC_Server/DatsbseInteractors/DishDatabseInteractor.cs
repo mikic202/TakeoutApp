@@ -87,5 +87,24 @@ namespace GRPC_Server.DatsbseInteractors
             }
             return dishes;
         }
+
+        async public static Task<List<Dish>> getRestaurantsDishes(int restaurantId, MySqlConnection connection)
+        {
+            var dishes = new List<Dish>();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = $"SELECT * FROM dishes where restaurant_id=@rest_id;";
+                command.Parameters.AddWithValue("@rest_id", restaurantId);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        dishes.Add(new Dish { Id = reader.GetInt32(0), Name = reader.GetString(1), Description = reader.GetString(2), Price = reader.GetFloat(3), restaurant_id = restaurantId });
+                    }
+                }
+            }
+            return dishes;
+        }
     }
 }

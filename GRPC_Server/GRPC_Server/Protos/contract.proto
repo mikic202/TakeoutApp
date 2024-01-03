@@ -13,4 +13,5 @@ service TakeOutService {
   rpc AddDish (dish.addDishRequest) returns (dish.addDishReply);
   rpc ModifyDish(dish.modifyDishRequest) returns (dish.modifyDishReply);
   rpc GetAllOrders(dish.allOrdersRequest) returns (dish.allOrdersResponse);
+  rpc GetAllDishes(dish.AllDishesRequest) returns (dish.AllDishesResponse);
 }

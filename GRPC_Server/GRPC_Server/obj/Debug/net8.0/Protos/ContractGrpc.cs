@@ -69,6 +69,10 @@ namespace Takeout {
     static readonly grpc::Marshaller<global::Dish.allOrdersRequest> __Marshaller_dish_allOrdersRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.allOrdersRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Dish.allOrdersResponse> __Marshaller_dish_allOrdersResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.allOrdersResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.AllDishesRequest> __Marshaller_dish_AllDishesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.AllDishesRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.AllDishesResponse> __Marshaller_dish_AllDishesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.AllDishesResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply> __Method_Signin = new grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply>(
@@ -118,6 +122,14 @@ namespace Takeout {
         __Marshaller_dish_allOrdersRequest,
         __Marshaller_dish_allOrdersResponse);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Dish.AllDishesRequest, global::Dish.AllDishesResponse> __Method_GetAllDishes = new grpc::Method<global::Dish.AllDishesRequest, global::Dish.AllDishesResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAllDishes",
+        __Marshaller_dish_AllDishesRequest,
+        __Marshaller_dish_AllDishesResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -160,6 +172,12 @@ namespace Takeout {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Dish.allOrdersResponse> GetAllOrders(global::Dish.allOrdersRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Dish.AllDishesResponse> GetAllDishes(global::Dish.AllDishesRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -313,6 +331,26 @@ namespace Takeout {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetAllOrders, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.AllDishesResponse GetAllDishes(global::Dish.AllDishesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllDishes(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.AllDishesResponse GetAllDishes(global::Dish.AllDishesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAllDishes, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.AllDishesResponse> GetAllDishesAsync(global::Dish.AllDishesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAllDishesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.AllDishesResponse> GetAllDishesAsync(global::Dish.AllDishesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAllDishes, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override TakeOutServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -332,7 +370,8 @@ namespace Takeout {
           .AddMethod(__Method_RegisterRestaurant, serviceImpl.RegisterRestaurant)
           .AddMethod(__Method_AddDish, serviceImpl.AddDish)
           .AddMethod(__Method_ModifyDish, serviceImpl.ModifyDish)
-          .AddMethod(__Method_GetAllOrders, serviceImpl.GetAllOrders).Build();
+          .AddMethod(__Method_GetAllOrders, serviceImpl.GetAllOrders)
+          .AddMethod(__Method_GetAllDishes, serviceImpl.GetAllDishes).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -348,6 +387,7 @@ namespace Takeout {
       serviceBinder.AddMethod(__Method_AddDish, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.addDishRequest, global::Dish.addDishReply>(serviceImpl.AddDish));
       serviceBinder.AddMethod(__Method_ModifyDish, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.modifyDishRequest, global::Dish.modifyDishReply>(serviceImpl.ModifyDish));
       serviceBinder.AddMethod(__Method_GetAllOrders, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.allOrdersRequest, global::Dish.allOrdersResponse>(serviceImpl.GetAllOrders));
+      serviceBinder.AddMethod(__Method_GetAllDishes, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.AllDishesRequest, global::Dish.AllDishesResponse>(serviceImpl.GetAllDishes));
     }
 
   }
