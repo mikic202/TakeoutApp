@@ -48,6 +48,7 @@
                 </tbody>
             </table>
         }
+        <button id="btnGetOrdersData" @onclick="GetOrderss" class="btn btn-primary" style='float:inline-start;'> Refresh Employee List</button>
     </Authorized>
 </AuthorizeView>
 
@@ -58,6 +59,7 @@
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        // OnAfterRenderAsync(true);
     }
 
     private void ShowPosition(string time)
@@ -76,5 +78,19 @@
         public string? Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("OrdersInterop.refreshOrdersData");
+    }
+
+    // This method will be called on button click.
+    protected async Task GetOrderss()
+    {
+        Console.WriteLine("Epdated");
     }
 }

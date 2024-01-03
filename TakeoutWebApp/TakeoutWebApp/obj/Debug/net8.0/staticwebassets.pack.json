@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\TakeoutWebApp.styles.css"
     },
     {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\OrdersInterop.js",
+      "PackagePath": "staticwebassets\\OrdersInterop.js"
+    },
+    {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
