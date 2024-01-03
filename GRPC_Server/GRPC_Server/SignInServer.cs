@@ -127,5 +127,36 @@ namespace GRPC_Server
                 });
             }
         }
+    
+        public override async Task<allOrdersResponse> GetAllOrders(allOrdersRequest request, ServerCallContext context) 
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            var reply = new allOrdersResponse();
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                conn.Open();
+                foreach(Order order_to_add in await OrdersDatabaseInteractor.getOrders(request.RestaurantId, conn))
+                {
+                    var order = new ProtoOrder();
+                    foreach(var dish in await DishDatabseInteractor.fillDishInfo(await OrdersDatabaseInteractor.getDishesInOrder(order_to_add.Id, conn), conn))
+                    {
+                        order.Dishes.Add(new ProtoDish { DishId = dish.Id, DishName = dish.Name, DishDescription = dish.Description, DishPrice = dish.Price });
+                    }
+                    order.DeliveryLocation.Latitude = (int)order_to_add.latitude;
+                    order.DeliveryLocation.Longitude = (int)order_to_add.longitude;
+                    reply.Orders.Add(order);
+                }
+                
+            }
+            return reply;
+        }
     }
+
 }

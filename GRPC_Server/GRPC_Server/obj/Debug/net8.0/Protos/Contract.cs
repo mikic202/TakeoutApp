@@ -26,7 +26,7 @@ namespace Takeout {
           string.Concat(
             "ChVQcm90b3MvY29udHJhY3QucHJvdG8SB3Rha2VvdXQaE1Byb3Rvcy9TaWdu",
             "SW4ucHJvdG8aFVByb3Rvcy9SZWdpc3Rlci5wcm90bxocUHJvdG9zL1Jlc3Rh",
-            "dXJhbnQvRGlzaC5wcm90bzLrAgoOVGFrZU91dFNlcnZpY2USNAoGU2lnbmlu",
+            "dXJhbnQvRGlzaC5wcm90bzKsAwoOVGFrZU91dFNlcnZpY2USNAoGU2lnbmlu",
             "EhUuc2lnbmluLlNpZ25pblJlcXVlc3QaEy5zaWduaW4uU2lnbmluUmVwbHkS",
             "UgoQU2lnbmluUmVzdGF1cmFudBIfLnNpZ25pbi5SZXN0YXVyYW50U2lnbmlu",
             "UmVxdWVzdBodLnNpZ25pbi5SZXN0YXVyYW50U2lnbmluUmVwbHkSXAoSUmVn",
@@ -34,7 +34,9 @@ namespace Takeout {
             "UmVxdWVzdBohLnJlZ2lzdGVyLlJlZ2lzdGVyUmVzdGF1cmFudFJlcGx5EjMK",
             "B0FkZERpc2gSFC5kaXNoLmFkZERpc2hSZXF1ZXN0GhIuZGlzaC5hZGREaXNo",
             "UmVwbHkSPAoKTW9kaWZ5RGlzaBIXLmRpc2gubW9kaWZ5RGlzaFJlcXVlc3Qa",
-            "FS5kaXNoLm1vZGlmeURpc2hSZXBseWIGcHJvdG8z"));
+            "FS5kaXNoLm1vZGlmeURpc2hSZXBseRI/CgxHZXRBbGxPcmRlcnMSFi5kaXNo",
+            "LmFsbE9yZGVyc1JlcXVlc3QaFy5kaXNoLmFsbE9yZGVyc1Jlc3BvbnNlYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Signin.SignInReflection.Descriptor, global::Register.RegisterReflection.Descriptor, global::Dish.DishReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));

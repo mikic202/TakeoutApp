@@ -12,4 +12,5 @@ service TakeOutService {
   rpc RegisterRestaurant (register.RegisterRestaurantRequest) returns (register.RegisterRestaurantReply);
   rpc AddDish (dish.addDishRequest) returns (dish.addDishReply);
   rpc ModifyDish(dish.modifyDishRequest) returns (dish.modifyDishReply);
+  rpc GetAllOrders(dish.allOrdersRequest) returns (dish.allOrdersResponse);
 }

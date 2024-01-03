@@ -1,6 +1,8 @@
 ﻿syntax = "proto3";
 
 package dish;
+import "Protos/Location.proto";
+import "google/protobuf/timestamp.proto";
 
 message addDishRequest{
 	string dishName = 1;
@@ -23,4 +25,34 @@ message modifyDishRequest{
 
 message modifyDishReply{
 	bool outcome = 1;
+}
+
+message ProtoDish{
+	string dishName = 1;
+	float dishPrice = 2;
+	string dishDescription = 3;
+	int32 dishId = 4;
+}
+
+message AllDishesRequest{
+	int32 restaurantId = 1;
+}
+
+message AllDishesResponse{
+	repeated ProtoDish Dishes = 1;
+}
+
+message ProtoOrder{
+	int32 orderId = 1;
+	google.protobuf.Timestamp orderDate = 2;
+	location.Location deliveryLocation = 3;
+	repeated dish.ProtoDish dishes = 4;
+}
+
+message allOrdersRequest{
+	int32 restaurantId = 1;
+}
+
+message allOrdersResponse{
+	repeated ProtoOrder orders = 1;
 }
