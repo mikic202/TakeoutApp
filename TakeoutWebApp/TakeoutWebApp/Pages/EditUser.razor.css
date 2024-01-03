@@ -1,0 +1,9 @@
+﻿.button-container {
+    padding-right: 10px;
+}
+
+.divider {
+    width: 10px;
+    height: 20px;
+    display: inline-block;
+}

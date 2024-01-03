@@ -5,7 +5,7 @@ using MySqlConnector;
 using Signin;
 using Takeout;
 
-const int Port = 10001;
+/*const int Port = 10001;
 Server server = new Server
 {
 	Services = { TakeOutService.BindService(new SignInServer()) },
@@ -18,19 +18,20 @@ Console.WriteLine("Press any key to stop the server");
 Console.ReadKey();
 
 server.ShutdownAsync().Wait();
-
-//var builder = new MySqlConnectionStringBuilder
-//{
-//	Server = "127.0.0.1",
-//	Port = 3306,
-//	Database = "takout_db",
-//	UserID = "root",
-//	Password = "",
-//};
-//using (var conn = new MySqlConnection(builder.ConnectionString))
-//{
-//	conn.Open();
-//	var outcome = await UserDatabsaeInteractor.getUserInformation("some_user", conn);
-//	Console.WriteLine(outcome["UserId"]);
-//	conn.Close();
-//}
+*/
+var builder = new MySqlConnectionStringBuilder
+{
+	Server = "127.0.0.1",
+	Port = 3306,
+	Database = "takout_db",
+	UserID = "root",
+	Password = "",
+};
+using (var conn = new MySqlConnection(builder.ConnectionString))
+{
+	conn.Open();
+	var outcome = await DishDatabseInteractor.fillDishInfo(await OrdersDatabaseInteractor.getDishesInOrder(1, conn), conn);
+	Console.WriteLine(outcome[0].Price);
+    Console.WriteLine(outcome[0].Id);
+    conn.Close();
+}

@@ -34,7 +34,7 @@
 		Console.WriteLine("Log me in!");
 		var client = new Signin.LoggingInProvider.LoggingInProviderClient(Channel);
 		Console.WriteLine("Log me in!");
-		var reply = await client.SigninAsync(new Signin.SigninRequest { Name = "GreeterClient" });
+		// var reply = await client.SigninAsync(new Signin.SigninRequest { Name = "GreeterClient" });
 		Console.WriteLine("Log me in!");
 		await LocalStorage.SetItemAsync<string>("username", user.Username);
 		await AuthStateProvid.GetAuthenticationStateAsync();

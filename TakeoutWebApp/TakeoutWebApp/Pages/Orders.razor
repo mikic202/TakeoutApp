@@ -11,7 +11,7 @@
         Sign in to see orders.
     </NotAuthorized>
     <Authorized>
-        <p>This component demonstrates fetching data from the server.</p>
+        @* <p>This component demonstrates fetching data from the server.</p> *@
         @if (forecasts == null)
         {
             <p><em>Loading...</em></p>
@@ -23,7 +23,7 @@
                     <tr>
                         <th>Order Date</th>
                         <th>Ordered Items</th>
-                        <th>Location</th>
+                        <th>Delivery Location</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -34,21 +34,37 @@
                             <td>@forecast.time.ToShortTimeString()</td>
                             <td>@forecast.TemperatureC</td>
                             <td>@forecast.TemperatureF</td>
-                            <td>@forecast.Summary</td>
+                            <td>
+                                <InputSelect id="department" @bind-Value="some_chosen">
+                                    @foreach (string stat in STATUS_VALUE)
+                                    {
+                                        <option value="@stat">@stat</option>
+                                    }
+                                </InputSelect>
+                            </td>
+                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
+        <button id="btnGetOrdersData" @onclick="GetOrderss" class="btn btn-primary" style='float:inline-start;'> Refresh Employee List</button>
     </Authorized>
 </AuthorizeView>
 
 @code {
     private WeatherForecast[]? forecasts;
-
+    string some_chosen = "ddddd";
+    private readonly string[] STATUS_VALUE = { "Accepted", "Being Prepared", "On The Way", "Delivered" };
     protected override async Task OnInitializedAsync()
     {
         forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        // OnAfterRenderAsync(true);
+    }
+
+    private void ShowPosition(string time)
+    {
+        Console.WriteLine(some_chosen);
     }
 
     public class WeatherForecast
@@ -62,5 +78,19 @@
         public string? Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSRuntime.InvokeVoidAsync("OrdersInterop.refreshOrdersData");
+    }
+
+    // This method will be called on button click.
+    protected async Task GetOrderss()
+    {
+        Console.WriteLine("Epdated");
     }
 }

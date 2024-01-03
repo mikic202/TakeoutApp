@@ -3,7 +3,7 @@
 package signin;
 
 message RestaurantSigninRequest {
-  string usertname = 1;
+  string Restaurantname = 1;
   string password = 2;
 }
 

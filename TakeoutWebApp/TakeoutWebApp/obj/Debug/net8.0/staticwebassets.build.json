@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xfOkUb50ryfwYFsnFKVa6prfwYaKxEMiSCXk02+Ut4o=",
+  "Hash": "qSOyhIYpTDU6e2ZkV21knUL+yGq4I20hz7Y3LjVddwE=",
   "Source": "TakeoutWebApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -8206,6 +8206,25 @@
       "OriginalItemSpec": "wwwroot\\icon-192.png"
     },
     {
+      "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-1922.png",
+      "SourceId": "TakeoutWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "icon-1922.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\icon-1922.png"
+    },
+    {
       "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\index.html",
       "SourceId": "TakeoutWebApp",
       "SourceType": "Discovered",
@@ -8223,6 +8242,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\OrdersInterop.js",
+      "SourceId": "TakeoutWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "OrdersInterop.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\OrdersInterop.js"
     },
     {
       "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\sample-data\\weather.json",

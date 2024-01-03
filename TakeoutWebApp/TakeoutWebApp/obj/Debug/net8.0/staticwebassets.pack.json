@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\TakeoutWebApp.styles.css"
     },
     {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\OrdersInterop.js",
+      "PackagePath": "staticwebassets\\OrdersInterop.js"
+    },
+    {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
@@ -31,6 +35,10 @@
     {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-1922.png",
+      "PackagePath": "staticwebassets\\icon-1922.png"
     },
     {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\index.html",

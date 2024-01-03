@@ -1,0 +1,78 @@
+﻿@page "/dishes"
+@inject HttpClient Http
+@inject NavigationManager NavigationMenager
+
+<PageTitle>Dishes</PageTitle>
+
+<h1>Your Dishes</h1>
+
+
+<AuthorizeView>
+    <NotAuthorized>
+        Sign in to see your dishes.
+    </NotAuthorized>
+    <Authorized>
+        <Button Color="ButtonColor.Primary" @onclick="createDish" class="btn btn-primary" style='float:inline-start;'> Add Dish </Button>
+        @if (forecasts == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Dish name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr>
+                            <td>@forecast.time.ToShortTimeString()</td>
+                            <td>@forecast.TemperatureC</td>
+                            <td>@forecast.TemperatureF</td>
+                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    private WeatherForecast[]? forecasts;
+    private Dishes[] dishes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+    }
+    private void createDish()
+    {
+        NavigationMenager.NavigateTo("/createDish");
+    }
+
+    private void ShowPosition(string time)
+    {
+        // Console.WriteLine(time);
+        NavigationMenager.NavigateTo("/editDish");
+    }
+
+    public class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+
+        public TimeOnly time { get; set; }
+
+        public int TemperatureC { get; set; }
+
+        public string? Summary { get; set; }
+
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

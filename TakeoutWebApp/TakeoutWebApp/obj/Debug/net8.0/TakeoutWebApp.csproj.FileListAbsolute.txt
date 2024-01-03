@@ -1070,3 +1070,4 @@ D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\wwwroot
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\bin\Debug\net8.0\Grpc.Net.Client.Web.dll
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\webcil\Grpc.Net.Client.Web.wasm
 D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\compressed\wy56pfjjag.gz
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Debug\net8.0\scopedcss\Pages\EditUser.razor.rz.scp.css
