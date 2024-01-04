@@ -46,7 +46,10 @@ message ProtoOrder{
 	int32 orderId = 1;
 	google.protobuf.Timestamp orderDate = 2;
 	location.Location deliveryLocation = 3;
-	repeated dish.ProtoDish dishes = 4;
+	int32 userId = 4;
+	int32 restaurantId = 5;
+	int32 orderStatus = 6;
+	repeated dish.ProtoDish dishes = 7;
 }
 
 message allOrdersRequest{
@@ -55,4 +58,21 @@ message allOrdersRequest{
 
 message allOrdersResponse{
 	repeated ProtoOrder orders = 1;
+}
+
+message addOrderRequest{
+	ProtoOrder order;
+}
+
+message addOrderResponse{
+	bool outcome = 0;
+	int32 orderId = 1;
+}
+
+message orderStatusRequest{
+	int32 orderId = 0;
+}
+
+message orderStatusResponse{
+	int32 status = 0;
 }
