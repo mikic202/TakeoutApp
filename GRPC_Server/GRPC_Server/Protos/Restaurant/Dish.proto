@@ -61,18 +61,18 @@ message allOrdersResponse{
 }
 
 message addOrderRequest{
-	ProtoOrder order;
+	ProtoOrder order = 1;
 }
 
 message addOrderResponse{
-	bool outcome = 0;
-	int32 orderId = 1;
+	bool outcome = 1;
+	int32 orderId = 2;
 }
 
 message orderStatusRequest{
-	int32 orderId = 0;
+	int32 orderId = 1;
 }
 
 message orderStatusResponse{
-	int32 status = 0;
+	int32 status = 1;
 }

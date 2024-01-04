@@ -157,6 +157,32 @@ namespace GRPC_Server
             }
             return reply;
         }
+
+        public override async Task<addOrderResponse> AddOrder(addOrderRequest request, ServerCallContext context)
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            var order = new Order();
+            order.fillWithProtoOrder(request.Order);
+            List<int> dishes = new List<int> { };
+            foreach(var dish in request.Order.Dishes)
+            {
+                dishes.Add(dish.DishId);
+            }
+            var reply = new addOrderResponse();
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                conn.Open();
+                reply = new addOrderResponse { Outcome = await OrdersDatabaseInteractor.addOrder(order, dishes, conn) };
+            }
+            return reply;
+        }
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dish;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,12 @@ namespace GRPC_Server
 
         public float latitude {  get; set; }
         public float longitude { get; set; }
+
+        public void fillWithProtoOrder(ProtoOrder order)
+        {
+            restaurantId = order.RestaurantId; userId = order.UserId;
+            latitude = order.DeliveryLocation.Latitude; longitude = order.DeliveryLocation.Longitude;
+            //date = order.orderDate;
+        }
     }
 }
