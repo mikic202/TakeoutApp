@@ -30,8 +30,11 @@ var builder = new MySqlConnectionStringBuilder
 using (var conn = new MySqlConnection(builder.ConnectionString))
 {
 	conn.Open();
-	var outcome = await DishDatabseInteractor.fillDishInfo(await OrdersDatabaseInteractor.getDishesInOrder(1, conn), conn);
-	Console.WriteLine(outcome[0].Price);
-    Console.WriteLine(outcome[0].Id);
+	var dish = new Order { restaurantId = 1, userId = 1, latitude = 12.5f, longitude = 13.7f};
+	var list = new List<int> { 1, 2 };
+
+    var outcome = await OrdersDatabaseInteractor.addOrder(dish, list, conn);
+	Console.WriteLine(outcome);
+    //Console.WriteLine(outcome[0].Id);
     conn.Close();
 }
