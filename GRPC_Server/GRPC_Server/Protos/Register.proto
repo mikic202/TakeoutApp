@@ -24,3 +24,13 @@ message ModifyRestaurantInformationRequest{
 message ModifyRestaurantInformationResponse{
 	bool outcome = 1;
 }
+
+message ModifyRestaurantPasswordRequest{
+	int32 restaurantId = 1;
+	string password = 2;
+	string newPassword = 3;
+}
+
+message ModifyRestaurantPasswordResponse{
+	bool outcome = 1;
+}

@@ -249,6 +249,28 @@ namespace GRPC_Server
                 };
             }
         }
+        public override async Task<ModifyRestaurantPasswordResponse> ModifyRestaurantPassword(ModifyRestaurantPasswordRequest request, ServerCallContext context)
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                if ((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"] != request.Password)
+                {
+                    return new ModifyRestaurantPasswordResponse { Outcome = false };
+                }
+                return new ModifyRestaurantPasswordResponse
+                {
+                    Outcome = await RestaurantDatabaseInteractor.setRestaurantPassword(request.RestaurantId, request.Password, conn)
+                };
+            }
+        }
     }
 
 }

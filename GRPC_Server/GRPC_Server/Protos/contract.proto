@@ -18,4 +18,5 @@ service TakeOutService {
   rpc GetOrderInfo(dish.orderInfoRequest) returns (dish.orderInfoResponse);
   rpc SetOrderStatus(dish.setOrderStatusRequest) returns (dish.setOrderStatusResponse);
   rpc ModifyRestaurantInfo(register.ModifyRestaurantInformationRequest) returns (register.ModifyRestaurantInformationResponse);
+  rpc ModifyRestaurantPassword(register.ModifyRestaurantPasswordRequest) returns (register.ModifyRestaurantPasswordResponse);
 }

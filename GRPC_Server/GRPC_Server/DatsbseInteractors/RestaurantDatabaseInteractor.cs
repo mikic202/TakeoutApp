@@ -106,5 +106,22 @@ namespace GRPC_Server.DatsbseInteractors
             }
             return true;
         }
+
+        async public static Task<bool> setRestaurantPassword(int restaurantId, string password, MySqlConnection connection)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "update restaurants set password = @pass where restaurant_id=@dish_id";
+                command.Parameters.AddWithValue("@pass", password);
+                command.Parameters.AddWithValue("@dish_id", restaurantId);
+                try
+                {
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch { return false; }
+
+            }
+            return true;
+        }
     }
 }
