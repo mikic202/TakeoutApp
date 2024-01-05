@@ -225,6 +225,30 @@ namespace GRPC_Server
                 return new setOrderStatusResponse { Outcome = await OrdersDatabaseInteractor.changeOrderStatus(request.OrderId, request.OrderStatus, conn) };
             }
         }
+
+        public override async Task<ModifyRestaurantInformationResponse> ModifyRestaurantInfo(ModifyRestaurantInformationRequest request, ServerCallContext context)
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                if((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"] != request.Password)
+                {
+                    return new ModifyRestaurantInformationResponse { Outcome = false };
+                }
+                return new ModifyRestaurantInformationResponse
+                {
+                    Outcome = await RestaurantDatabaseInteractor.setRestaurantInformation(request.RestaurantId, request.RestaurantName,
+                    request.RestaurantLocation.Latitude, request.RestaurantLocation.Longitude, conn)
+                };
+            }
+        }
     }
 
 }

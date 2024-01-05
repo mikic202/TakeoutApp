@@ -28,13 +28,19 @@ namespace Register {
             "YXRpb24ucHJvdG8idQoZUmVnaXN0ZXJSZXN0YXVyYW50UmVxdWVzdBIWCg5y",
             "ZXN0YXVyYW50TmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCRIuChJyZXN0",
             "YXVyYW50TG9jYXRpb24YAyABKAsyEi5sb2NhdGlvbi5Mb2NhdGlvbiIqChdS",
-            "ZWdpc3RlclJlc3RhdXJhbnRSZXBseRIPCgdvdXRjb21lGAEgASgIYgZwcm90",
-            "bzM="));
+            "ZWdpc3RlclJlc3RhdXJhbnRSZXBseRIPCgdvdXRjb21lGAEgASgIIpQBCiJN",
+            "b2RpZnlSZXN0YXVyYW50SW5mb3JtYXRpb25SZXF1ZXN0EhQKDHJlc3RhdXJh",
+            "bnRJZBgBIAEoBRIQCghwYXNzd29yZBgCIAEoCRIWCg5yZXN0YXVyYW50TmFt",
+            "ZRgDIAEoCRIuChJyZXN0YXVyYW50TG9jYXRpb24YBCABKAsyEi5sb2NhdGlv",
+            "bi5Mb2NhdGlvbiI2CiNNb2RpZnlSZXN0YXVyYW50SW5mb3JtYXRpb25SZXNw",
+            "b25zZRIPCgdvdXRjb21lGAEgASgIYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Location.LocationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Register.RegisterRestaurantRequest), global::Register.RegisterRestaurantRequest.Parser, new[]{ "RestaurantName", "Password", "RestaurantLocation" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.RegisterRestaurantReply), global::Register.RegisterRestaurantReply.Parser, new[]{ "Outcome" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Register.RegisterRestaurantReply), global::Register.RegisterRestaurantReply.Parser, new[]{ "Outcome" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantInformationRequest), global::Register.ModifyRestaurantInformationRequest.Parser, new[]{ "RestaurantId", "Password", "RestaurantName", "RestaurantLocation" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantInformationResponse), global::Register.ModifyRestaurantInformationResponse.Parser, new[]{ "Outcome" }, null, null, null, null)
           }));
     }
     #endregion
@@ -453,6 +459,506 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(RegisterRestaurantReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Outcome != false) {
+        Outcome = other.Outcome;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Outcome = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Outcome = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ModifyRestaurantInformationRequest : pb::IMessage<ModifyRestaurantInformationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ModifyRestaurantInformationRequest> _parser = new pb::MessageParser<ModifyRestaurantInformationRequest>(() => new ModifyRestaurantInformationRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ModifyRestaurantInformationRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationRequest(ModifyRestaurantInformationRequest other) : this() {
+      restaurantId_ = other.restaurantId_;
+      password_ = other.password_;
+      restaurantName_ = other.restaurantName_;
+      restaurantLocation_ = other.restaurantLocation_ != null ? other.restaurantLocation_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationRequest Clone() {
+      return new ModifyRestaurantInformationRequest(this);
+    }
+
+    /// <summary>Field number for the "restaurantId" field.</summary>
+    public const int RestaurantIdFieldNumber = 1;
+    private int restaurantId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RestaurantId {
+      get { return restaurantId_; }
+      set {
+        restaurantId_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "password" field.</summary>
+    public const int PasswordFieldNumber = 2;
+    private string password_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Password {
+      get { return password_; }
+      set {
+        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "restaurantName" field.</summary>
+    public const int RestaurantNameFieldNumber = 3;
+    private string restaurantName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RestaurantName {
+      get { return restaurantName_; }
+      set {
+        restaurantName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "restaurantLocation" field.</summary>
+    public const int RestaurantLocationFieldNumber = 4;
+    private global::Location.Location restaurantLocation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Location.Location RestaurantLocation {
+      get { return restaurantLocation_; }
+      set {
+        restaurantLocation_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ModifyRestaurantInformationRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ModifyRestaurantInformationRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (RestaurantId != other.RestaurantId) return false;
+      if (Password != other.Password) return false;
+      if (RestaurantName != other.RestaurantName) return false;
+      if (!object.Equals(RestaurantLocation, other.RestaurantLocation)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (RestaurantId != 0) hash ^= RestaurantId.GetHashCode();
+      if (Password.Length != 0) hash ^= Password.GetHashCode();
+      if (RestaurantName.Length != 0) hash ^= RestaurantName.GetHashCode();
+      if (restaurantLocation_ != null) hash ^= RestaurantLocation.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (RestaurantId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RestaurantId);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Password);
+      }
+      if (RestaurantName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RestaurantName);
+      }
+      if (restaurantLocation_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(RestaurantLocation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (RestaurantId != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(RestaurantId);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Password);
+      }
+      if (RestaurantName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(RestaurantName);
+      }
+      if (restaurantLocation_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(RestaurantLocation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (RestaurantId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RestaurantId);
+      }
+      if (Password.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
+      }
+      if (RestaurantName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RestaurantName);
+      }
+      if (restaurantLocation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RestaurantLocation);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ModifyRestaurantInformationRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RestaurantId != 0) {
+        RestaurantId = other.RestaurantId;
+      }
+      if (other.Password.Length != 0) {
+        Password = other.Password;
+      }
+      if (other.RestaurantName.Length != 0) {
+        RestaurantName = other.RestaurantName;
+      }
+      if (other.restaurantLocation_ != null) {
+        if (restaurantLocation_ == null) {
+          RestaurantLocation = new global::Location.Location();
+        }
+        RestaurantLocation.MergeFrom(other.RestaurantLocation);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            RestaurantId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Password = input.ReadString();
+            break;
+          }
+          case 26: {
+            RestaurantName = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (restaurantLocation_ == null) {
+              RestaurantLocation = new global::Location.Location();
+            }
+            input.ReadMessage(RestaurantLocation);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            RestaurantId = input.ReadInt32();
+            break;
+          }
+          case 18: {
+            Password = input.ReadString();
+            break;
+          }
+          case 26: {
+            RestaurantName = input.ReadString();
+            break;
+          }
+          case 34: {
+            if (restaurantLocation_ == null) {
+              RestaurantLocation = new global::Location.Location();
+            }
+            input.ReadMessage(RestaurantLocation);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ModifyRestaurantInformationResponse : pb::IMessage<ModifyRestaurantInformationResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ModifyRestaurantInformationResponse> _parser = new pb::MessageParser<ModifyRestaurantInformationResponse>(() => new ModifyRestaurantInformationResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ModifyRestaurantInformationResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationResponse(ModifyRestaurantInformationResponse other) : this() {
+      outcome_ = other.outcome_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ModifyRestaurantInformationResponse Clone() {
+      return new ModifyRestaurantInformationResponse(this);
+    }
+
+    /// <summary>Field number for the "outcome" field.</summary>
+    public const int OutcomeFieldNumber = 1;
+    private bool outcome_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Outcome {
+      get { return outcome_; }
+      set {
+        outcome_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ModifyRestaurantInformationResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ModifyRestaurantInformationResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Outcome != other.Outcome) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Outcome != false) hash ^= Outcome.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Outcome != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Outcome);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Outcome != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(Outcome);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Outcome != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ModifyRestaurantInformationResponse other) {
       if (other == null) {
         return;
       }

@@ -1,6 +1,7 @@
 ﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,47 @@ namespace GRPC_Server.DatsbseInteractors
                 }
             }
             return userInfo;
+        }
+
+        async public static Task<Dictionary<string, string>> getRestaurantInformation(int restaurantId, MySqlConnection connection)
+        {
+            var userInfo = new Dictionary<string, string>();
+            try
+            {
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = $"SELECT * FROM restaurants where restaurantId = \"{restaurantId}\";";
+
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        await reader.ReadAsync();
+                        userInfo["restaurnatName"] = reader.GetString(1);
+                        userInfo["Password"] = reader.GetString(2);
+                        userInfo["RestaurantId"] = reader.GetInt32(0).ToString();
+                    }
+                }
+            }
+            finally { }
+            return userInfo;
+        }
+
+        async public static Task<bool> setRestaurantInformation(int restaurantId, string restaurantName, float latitude, float Longitude, MySqlConnection connection)
+		{
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "update restaurants set name=@price, latitude=@description, longitude=@name where restaurant_id=@dish_id";
+                command.Parameters.AddWithValue("@price", restaurantName);
+                command.Parameters.AddWithValue("@description", latitude);
+                command.Parameters.AddWithValue("@name", Longitude);
+                command.Parameters.AddWithValue("@dish_id", restaurantId);
+                try
+                {
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch { return false; }
+
+            }
+            return true;
         }
     }
 }

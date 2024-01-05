@@ -85,6 +85,10 @@ namespace Takeout {
     static readonly grpc::Marshaller<global::Dish.setOrderStatusRequest> __Marshaller_dish_setOrderStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.setOrderStatusRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Dish.setOrderStatusResponse> __Marshaller_dish_setOrderStatusResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.setOrderStatusResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Register.ModifyRestaurantInformationRequest> __Marshaller_register_ModifyRestaurantInformationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Register.ModifyRestaurantInformationRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Register.ModifyRestaurantInformationResponse> __Marshaller_register_ModifyRestaurantInformationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Register.ModifyRestaurantInformationResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply> __Method_Signin = new grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply>(
@@ -166,6 +170,14 @@ namespace Takeout {
         __Marshaller_dish_setOrderStatusRequest,
         __Marshaller_dish_setOrderStatusResponse);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Register.ModifyRestaurantInformationRequest, global::Register.ModifyRestaurantInformationResponse> __Method_ModifyRestaurantInfo = new grpc::Method<global::Register.ModifyRestaurantInformationRequest, global::Register.ModifyRestaurantInformationResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ModifyRestaurantInfo",
+        __Marshaller_register_ModifyRestaurantInformationRequest,
+        __Marshaller_register_ModifyRestaurantInformationResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -232,6 +244,12 @@ namespace Takeout {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Dish.setOrderStatusResponse> SetOrderStatus(global::Dish.setOrderStatusRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Register.ModifyRestaurantInformationResponse> ModifyRestaurantInfo(global::Register.ModifyRestaurantInformationRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -465,6 +483,26 @@ namespace Takeout {
       {
         return CallInvoker.AsyncUnaryCall(__Method_SetOrderStatus, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Register.ModifyRestaurantInformationResponse ModifyRestaurantInfo(global::Register.ModifyRestaurantInformationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ModifyRestaurantInfo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Register.ModifyRestaurantInformationResponse ModifyRestaurantInfo(global::Register.ModifyRestaurantInformationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ModifyRestaurantInfo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Register.ModifyRestaurantInformationResponse> ModifyRestaurantInfoAsync(global::Register.ModifyRestaurantInformationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ModifyRestaurantInfoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Register.ModifyRestaurantInformationResponse> ModifyRestaurantInfoAsync(global::Register.ModifyRestaurantInformationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ModifyRestaurantInfo, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override TakeOutServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -488,7 +526,8 @@ namespace Takeout {
           .AddMethod(__Method_GetAllDishes, serviceImpl.GetAllDishes)
           .AddMethod(__Method_AddOrder, serviceImpl.AddOrder)
           .AddMethod(__Method_GetOrderInfo, serviceImpl.GetOrderInfo)
-          .AddMethod(__Method_SetOrderStatus, serviceImpl.SetOrderStatus).Build();
+          .AddMethod(__Method_SetOrderStatus, serviceImpl.SetOrderStatus)
+          .AddMethod(__Method_ModifyRestaurantInfo, serviceImpl.ModifyRestaurantInfo).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -508,6 +547,7 @@ namespace Takeout {
       serviceBinder.AddMethod(__Method_AddOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.addOrderRequest, global::Dish.addOrderResponse>(serviceImpl.AddOrder));
       serviceBinder.AddMethod(__Method_GetOrderInfo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.orderInfoRequest, global::Dish.orderInfoResponse>(serviceImpl.GetOrderInfo));
       serviceBinder.AddMethod(__Method_SetOrderStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.setOrderStatusRequest, global::Dish.setOrderStatusResponse>(serviceImpl.SetOrderStatus));
+      serviceBinder.AddMethod(__Method_ModifyRestaurantInfo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Register.ModifyRestaurantInformationRequest, global::Register.ModifyRestaurantInformationResponse>(serviceImpl.ModifyRestaurantInfo));
     }
 
   }
