@@ -69,10 +69,19 @@ message addOrderResponse{
 	int32 orderId = 2;
 }
 
-message orderStatusRequest{
+message orderInfoRequest{
 	int32 orderId = 1;
 }
 
-message orderStatusResponse{
-	int32 status = 1;
+message orderInfoResponse{
+	ProtoOrder order = 1;
+}
+
+message setOrderStatusRequest{
+	int32 orderId = 1;
+	int32 orderStatus = 2;
+}
+
+message setOrderStatusResponse{
+	bool outcome = 1;
 }

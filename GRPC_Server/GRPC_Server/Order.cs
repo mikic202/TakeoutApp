@@ -14,10 +14,12 @@ namespace GRPC_Server
 
         public int userId { get; set; }
 
-        public DateTime date { get; set; }  
+        public DateTime date { get; set; }
 
         public float latitude {  get; set; }
         public float longitude { get; set; }
+
+        public int status { get; set; }
 
         public void fillWithProtoOrder(ProtoOrder order)
         {

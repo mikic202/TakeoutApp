@@ -78,9 +78,13 @@ namespace Takeout {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Dish.addOrderResponse> __Marshaller_dish_addOrderResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.addOrderResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Dish.orderStatusRequest> __Marshaller_dish_orderStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.orderStatusRequest.Parser));
+    static readonly grpc::Marshaller<global::Dish.orderInfoRequest> __Marshaller_dish_orderInfoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.orderInfoRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Dish.orderStatusResponse> __Marshaller_dish_orderStatusResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.orderStatusResponse.Parser));
+    static readonly grpc::Marshaller<global::Dish.orderInfoResponse> __Marshaller_dish_orderInfoResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.orderInfoResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.setOrderStatusRequest> __Marshaller_dish_setOrderStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.setOrderStatusRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Dish.setOrderStatusResponse> __Marshaller_dish_setOrderStatusResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Dish.setOrderStatusResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply> __Method_Signin = new grpc::Method<global::Signin.SigninRequest, global::Signin.SigninReply>(
@@ -147,12 +151,20 @@ namespace Takeout {
         __Marshaller_dish_addOrderResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Dish.orderStatusRequest, global::Dish.orderStatusResponse> __Method_getOrderStaus = new grpc::Method<global::Dish.orderStatusRequest, global::Dish.orderStatusResponse>(
+    static readonly grpc::Method<global::Dish.orderInfoRequest, global::Dish.orderInfoResponse> __Method_GetOrderInfo = new grpc::Method<global::Dish.orderInfoRequest, global::Dish.orderInfoResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "getOrderStaus",
-        __Marshaller_dish_orderStatusRequest,
-        __Marshaller_dish_orderStatusResponse);
+        "GetOrderInfo",
+        __Marshaller_dish_orderInfoRequest,
+        __Marshaller_dish_orderInfoResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Dish.setOrderStatusRequest, global::Dish.setOrderStatusResponse> __Method_SetOrderStatus = new grpc::Method<global::Dish.setOrderStatusRequest, global::Dish.setOrderStatusResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetOrderStatus",
+        __Marshaller_dish_setOrderStatusRequest,
+        __Marshaller_dish_setOrderStatusResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -213,7 +225,13 @@ namespace Takeout {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Dish.orderStatusResponse> getOrderStaus(global::Dish.orderStatusRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Dish.orderInfoResponse> GetOrderInfo(global::Dish.orderInfoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Dish.setOrderStatusResponse> SetOrderStatus(global::Dish.setOrderStatusRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -408,24 +426,44 @@ namespace Takeout {
         return CallInvoker.AsyncUnaryCall(__Method_AddOrder, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Dish.orderStatusResponse getOrderStaus(global::Dish.orderStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Dish.orderInfoResponse GetOrderInfo(global::Dish.orderInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return getOrderStaus(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetOrderInfo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Dish.orderStatusResponse getOrderStaus(global::Dish.orderStatusRequest request, grpc::CallOptions options)
+      public virtual global::Dish.orderInfoResponse GetOrderInfo(global::Dish.orderInfoRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_getOrderStaus, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetOrderInfo, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Dish.orderStatusResponse> getOrderStausAsync(global::Dish.orderStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Dish.orderInfoResponse> GetOrderInfoAsync(global::Dish.orderInfoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return getOrderStausAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetOrderInfoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Dish.orderStatusResponse> getOrderStausAsync(global::Dish.orderStatusRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Dish.orderInfoResponse> GetOrderInfoAsync(global::Dish.orderInfoRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_getOrderStaus, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetOrderInfo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.setOrderStatusResponse SetOrderStatus(global::Dish.setOrderStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetOrderStatus(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Dish.setOrderStatusResponse SetOrderStatus(global::Dish.setOrderStatusRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetOrderStatus, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.setOrderStatusResponse> SetOrderStatusAsync(global::Dish.setOrderStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetOrderStatusAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Dish.setOrderStatusResponse> SetOrderStatusAsync(global::Dish.setOrderStatusRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetOrderStatus, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -449,7 +487,8 @@ namespace Takeout {
           .AddMethod(__Method_GetAllOrders, serviceImpl.GetAllOrders)
           .AddMethod(__Method_GetAllDishes, serviceImpl.GetAllDishes)
           .AddMethod(__Method_AddOrder, serviceImpl.AddOrder)
-          .AddMethod(__Method_getOrderStaus, serviceImpl.getOrderStaus).Build();
+          .AddMethod(__Method_GetOrderInfo, serviceImpl.GetOrderInfo)
+          .AddMethod(__Method_SetOrderStatus, serviceImpl.SetOrderStatus).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -467,7 +506,8 @@ namespace Takeout {
       serviceBinder.AddMethod(__Method_GetAllOrders, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.allOrdersRequest, global::Dish.allOrdersResponse>(serviceImpl.GetAllOrders));
       serviceBinder.AddMethod(__Method_GetAllDishes, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.AllDishesRequest, global::Dish.AllDishesResponse>(serviceImpl.GetAllDishes));
       serviceBinder.AddMethod(__Method_AddOrder, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.addOrderRequest, global::Dish.addOrderResponse>(serviceImpl.AddOrder));
-      serviceBinder.AddMethod(__Method_getOrderStaus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.orderStatusRequest, global::Dish.orderStatusResponse>(serviceImpl.getOrderStaus));
+      serviceBinder.AddMethod(__Method_GetOrderInfo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.orderInfoRequest, global::Dish.orderInfoResponse>(serviceImpl.GetOrderInfo));
+      serviceBinder.AddMethod(__Method_SetOrderStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Dish.setOrderStatusRequest, global::Dish.setOrderStatusResponse>(serviceImpl.SetOrderStatus));
     }
 
   }

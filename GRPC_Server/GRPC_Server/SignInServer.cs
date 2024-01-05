@@ -1,4 +1,5 @@
 ﻿using Dish;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using GRPC_Server.DatsbseInteractors;
 using MySqlConnector;
@@ -182,6 +183,47 @@ namespace GRPC_Server
                 reply = new addOrderResponse { Outcome = await OrdersDatabaseInteractor.addOrder(order, dishes, conn) };
             }
             return reply;
+        }
+
+        public override async Task<orderInfoResponse> GetOrderInfo(orderInfoRequest request, ServerCallContext context)
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString)) 
+            {
+                var order = await OrdersDatabaseInteractor.getOrderInfo(request.OrderId, conn);
+                return new orderInfoResponse { Order = new ProtoOrder
+                {
+                    OrderId = order.Id,
+                    UserId = order.userId,
+                    RestaurantId = order.restaurantId,
+                    OrderStatus = order.status,
+                    OrderDate = new Timestamp { Seconds= order.date.Second},
+                    DeliveryLocation = new Location.Location { Latitude = (int)order.latitude, Longitude = (int)order.longitude}
+                } };
+            }
+        }
+
+        public override async Task<setOrderStatusResponse> SetOrderStatus(setOrderStatusRequest request, ServerCallContext context)
+        {
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                return new setOrderStatusResponse { Outcome = await OrdersDatabaseInteractor.changeOrderStatus(request.OrderId, request.OrderStatus, conn) };
+            }
         }
     }
 

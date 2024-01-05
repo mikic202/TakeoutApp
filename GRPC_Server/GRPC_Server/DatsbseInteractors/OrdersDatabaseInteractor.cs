@@ -106,5 +106,40 @@ namespace GRPC_Server.DatsbseInteractors
             }
             return true;
         }
+
+        async public static Task<Order> getOrderInfo(int orderId, MySqlConnection connection)
+        {
+            var order = new Order();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = $"SELECT * FROM orders where order_id=@order_id;";
+                command.Parameters.AddWithValue("@order_id", orderId);
+
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    await reader.ReadAsync();
+                    order = new Order() { Id = orderId, restaurantId = reader.GetInt32(1), userId = reader.GetInt32(2), 
+                        date = reader.GetDateTime(3), longitude = reader.GetFloat(4), latitude = reader.GetFloat(5), status = reader.GetInt32(6)};
+                }
+            }
+            return order;
+        }
+
+        async public static Task<bool> changeOrderStatus(int orderId, int status, MySqlConnection connection)
+        {
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "update orders set order_status=@status where order_id=@order_id";
+                command.Parameters.AddWithValue("@status", status);
+                command.Parameters.AddWithValue("@order_id", orderId);
+                try
+                {
+                    await command.ExecuteNonQueryAsync();
+                }
+                catch { return false; }
+
+            }
+            return true;
+        }
     }
 }

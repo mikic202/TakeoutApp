@@ -17,8 +17,8 @@ Console.WriteLine("Greeter Server on " + Port);
 Console.WriteLine("Press any key to stop the server");
 Console.ReadKey();
 
-server.ShutdownAsync().Wait();
-*/
+server.ShutdownAsync().Wait();*/
+
 var builder = new MySqlConnectionStringBuilder
 {
 	Server = "127.0.0.1",
@@ -30,11 +30,11 @@ var builder = new MySqlConnectionStringBuilder
 using (var conn = new MySqlConnection(builder.ConnectionString))
 {
 	conn.Open();
-	var dish = new Order { restaurantId = 1, userId = 1, latitude = 12.5f, longitude = 13.7f};
+	var dish = new Order { restaurantId = 1, userId = 1, latitude = 12.5f, longitude = 13.7f };
 	var list = new List<int> { 1, 2 };
 
-    var outcome = await OrdersDatabaseInteractor.addOrder(dish, list, conn);
+	var outcome = await OrdersDatabaseInteractor.changeOrderStatus(1, 1, conn);
 	Console.WriteLine(outcome);
-    //Console.WriteLine(outcome[0].Id);
-    conn.Close();
+	//Console.WriteLine(outcome[0].Id);
+	conn.Close();
 }
