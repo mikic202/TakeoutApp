@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,7 +22,11 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\login.proto" GrpcService="Client"></Protobuf>
+		<Protobuf Include="Protos\contract.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\SignIn.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Register.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Location.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Restaurant\Dish.proto" GrpcService="Server"></Protobuf>
 	</ItemGroup>
 
 </Project>
