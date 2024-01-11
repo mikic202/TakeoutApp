@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.49.0, )"
             },
+            "Grpc.AspNetCore.Web": {
+              "target": "Package",
+              "version": "[2.60.0, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.3.3, )"

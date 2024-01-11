@@ -33,15 +33,15 @@
 
 	private async void HandleLogin()
 	{
-		var a = await client.SigninRestaurantAsync(new Signin.RestaurantSigninRequest{Restaurantname = "111111", Password = "jfdics"});
+		var a = await client.SigninRestaurantAsync(new Signin.RestaurantSigninRequest { Restaurantname = "some_name", Password = "some_pass" });
 		Console.WriteLine(a.Outcome);
 		// Console.WriteLine("Log me in!");
 		// var client = new Signin.LoggingInProvider.LoggingInProviderClient(Channel);
 		// Console.WriteLine("Log me in!");
 		// // var reply = await client.SigninAsync(new Signin.SigninRequest { Name = "GreeterClient" });
 		// Console.WriteLine("Log me in!");
-		// await LocalStorage.SetItemAsync<string>("username", user.Username);
-		// await AuthStateProvid.GetAuthenticationStateAsync();
-		// NavigationMenager.NavigateTo("");
+		await LocalStorage.SetItemAsync<string>("username", "some_name");
+		await AuthStateProvid.GetAuthenticationStateAsync();
+		NavigationMenager.NavigateTo("");
 	}
 }

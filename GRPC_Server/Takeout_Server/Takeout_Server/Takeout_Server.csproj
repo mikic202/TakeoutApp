@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+    <PackageReference Include="Grpc.AspNetCore.Web" Version="2.60.0" />
     <PackageReference Include="MySqlConnector" Version="2.3.3" />
     <PackageReference Include="MySqlConnector.DependencyInjection" Version="2.3.1" />
   </ItemGroup>
