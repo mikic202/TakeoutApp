@@ -1,0 +1,36 @@
+﻿syntax = "proto3";
+
+package register;
+
+import "Protos/Location.proto";
+
+message RegisterRestaurantRequest{
+	string restaurantName = 1;
+	string password = 2;
+	location.Location restaurantLocation = 3;
+}
+
+message RegisterRestaurantReply{
+	bool outcome = 1;
+}
+
+message ModifyRestaurantInformationRequest{
+	int32 restaurantId = 1;
+	string password = 2;
+	string restaurantName = 3;
+	location.Location restaurantLocation = 4;
+}
+
+message ModifyRestaurantInformationResponse{
+	bool outcome = 1;
+}
+
+message ModifyRestaurantPasswordRequest{
+	int32 restaurantId = 1;
+	string password = 2;
+	string newPassword = 3;
+}
+
+message ModifyRestaurantPasswordResponse{
+	bool outcome = 1;
+}

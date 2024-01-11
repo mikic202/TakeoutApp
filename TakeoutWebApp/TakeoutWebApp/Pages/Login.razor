@@ -2,7 +2,9 @@
 @inject NavigationManager NavigationMenager
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvid
-@inject Grpc.Net.Client.GrpcChannel Channel
+@* @inject Grpc.Net.Client.GrpcChannel Channel *@
+
+@inject Takeout.TakeOutService.TakeOutServiceClient client
 
 <h3>Login</h3>
 
@@ -31,6 +33,8 @@
 
 	private async void HandleLogin()
 	{
+		var a = await client.SigninRestaurantAsync(new Signin.RestaurantSigninRequest{Restaurantname = "111111", Password = "jfdics"});
+		Console.WriteLine(a.Outcome);
 		// Console.WriteLine("Log me in!");
 		// var client = new Signin.LoggingInProvider.LoggingInProviderClient(Channel);
 		// Console.WriteLine("Log me in!");

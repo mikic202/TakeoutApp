@@ -45,6 +45,7 @@ namespace GRPC_Server
 		}
 		public override async Task<RestaurantSigninReply> SigninRestaurant(RestaurantSigninRequest request, ServerCallContext context)
 		{
+            Console.WriteLine("Got messageggggggggggggg");
             var builder = new MySqlConnectionStringBuilder
             {
                 Server = "127.0.0.1",

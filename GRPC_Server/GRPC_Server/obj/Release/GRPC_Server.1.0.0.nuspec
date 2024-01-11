@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GRPC_Server</id>
+    <version>1.0.0</version>
+    <authors>GRPC_Server</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="1fcd644a31b40b7538fb7ff07f34c684789d8774" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Google.Protobuf" version="3.25.1" exclude="Build,Analyzers" />
+        <dependency id="Grpc" version="2.46.6" exclude="Build,Analyzers" />
+        <dependency id="MySqlConnector" version="2.3.1" exclude="Build,Analyzers" />
+        <dependency id="MySqlConnector.DependencyInjection" version="2.3.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\semestr 5\NET\TakeoutApp\GRPC_Server\GRPC_Server\bin\Release\net8.0\GRPC_Server.runtimeconfig.json" target="lib\net8.0\GRPC_Server.runtimeconfig.json" />
+    <file src="D:\semestr 5\NET\TakeoutApp\GRPC_Server\GRPC_Server\bin\Release\net8.0\GRPC_Server.dll" target="lib\net8.0\GRPC_Server.dll" />
+  </files>
+</package>

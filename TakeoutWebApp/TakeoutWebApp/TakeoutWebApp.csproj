@@ -12,21 +12,24 @@
     <PackageReference Include="Grpc" Version="2.46.6" />
     <PackageReference Include="Grpc.Net.Client" Version="2.59.0" />
     <PackageReference Include="Grpc.Net.Client.Web" Version="2.59.0" />
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.59.0" />
     <PackageReference Include="Grpc.Tools" Version="2.60.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Antiforgery" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.1" />
   </ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\contract.proto" GrpcService="Server"></Protobuf>
-		<Protobuf Include="Protos\SignIn.proto" GrpcService="Server"></Protobuf>
-		<Protobuf Include="Protos\Register.proto" GrpcService="Server"></Protobuf>
-		<Protobuf Include="Protos\Location.proto" GrpcService="Server"></Protobuf>
-		<Protobuf Include="Protos\Restaurant\Dish.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\contract.proto" GrpcService="Client"></Protobuf>
+		<Protobuf Include="Protos\SignIn.proto" GrpcService="Client"></Protobuf>
+		<Protobuf Include="Protos\Register.proto" GrpcService="Client"></Protobuf>
+		<Protobuf Include="Protos\Location.proto" GrpcService="Client"></Protobuf>
+		<Protobuf Include="Protos\Restaurant\Dish.proto" GrpcService="Client"></Protobuf>
 	</ItemGroup>
 
 </Project>
