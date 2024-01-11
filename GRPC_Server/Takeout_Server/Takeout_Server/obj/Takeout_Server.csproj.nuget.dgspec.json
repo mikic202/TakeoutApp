@@ -47,6 +47,14 @@
             "Grpc.AspNetCore": {
               "target": "Package",
               "version": "[2.49.0, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.3, )"
+            },
+            "MySqlConnector.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.3.1, )"
             }
           },
           "imports": [

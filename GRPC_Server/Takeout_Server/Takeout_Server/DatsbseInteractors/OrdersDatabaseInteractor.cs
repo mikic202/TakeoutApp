@@ -7,6 +7,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Takeout_Server.Services;
 
 namespace GRPC_Server.DatsbseInteractors
 {
@@ -32,9 +33,9 @@ namespace GRPC_Server.DatsbseInteractors
             return orders;
         }
 
-        async public static Task<List<Dish>> getDishesInOrder(int orderId, MySqlConnection connection)
+        async public static Task<List<Takeout_Server.Services.Dish>> getDishesInOrder(int orderId, MySqlConnection connection)
         {
-            var orders = new List<Dish>();
+            var orders = new List<Takeout_Server.Services.Dish>();
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = $"SELECT * FROM dishes_in_orders where order_id=@order_id;";
@@ -44,7 +45,7 @@ namespace GRPC_Server.DatsbseInteractors
                 {
                     while (await reader.ReadAsync())
                     {
-                        orders.Add(new Dish { Id = reader.GetInt32(1)});
+                        orders.Add(new Takeout_Server.Services.Dish { Id = reader.GetInt32(1)});
                     }
                 }
             }

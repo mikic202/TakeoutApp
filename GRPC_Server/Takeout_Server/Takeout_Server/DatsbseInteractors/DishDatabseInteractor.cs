@@ -66,7 +66,7 @@ namespace GRPC_Server.DatsbseInteractors
             }
         }
 
-        async public static Task<List<Dish>> fillDishInfo(List<Dish> dishes, MySqlConnection connection)
+        async public static Task<List<Takeout_Server.Services.Dish>> fillDishInfo(List<Takeout_Server.Services.Dish> dishes, MySqlConnection connection)
         {
             using (var command = connection.CreateCommand())
             {
@@ -88,9 +88,9 @@ namespace GRPC_Server.DatsbseInteractors
             return dishes;
         }
 
-        async public static Task<List<Dish>> getRestaurantsDishes(int restaurantId, MySqlConnection connection)
+        async public static Task<List<Takeout_Server.Services.Dish>> getRestaurantsDishes(int restaurantId, MySqlConnection connection)
         {
-            var dishes = new List<Dish>();
+            var dishes = new List<Takeout_Server.Services.Dish>();
             using (var command = connection.CreateCommand())
             {
                 command.CommandText = $"SELECT * FROM dishes where restaurant_id=@rest_id;";
@@ -100,7 +100,7 @@ namespace GRPC_Server.DatsbseInteractors
                 {
                     while (await reader.ReadAsync())
                     {
-                        dishes.Add(new Dish { Id = reader.GetInt32(0), Name = reader.GetString(1), Description = reader.GetString(2), Price = reader.GetFloat(3), restaurant_id = restaurantId });
+                        dishes.Add(new Takeout_Server.Services.Dish { Id = reader.GetInt32(0), Name = reader.GetString(1), Description = reader.GetString(2), Price = reader.GetFloat(3), restaurant_id = restaurantId });
                     }
                 }
             }

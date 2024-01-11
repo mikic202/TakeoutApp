@@ -5,13 +5,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
-  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\contract.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\SignIn.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Register.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Location.proto" GrpcService="Server"></Protobuf>
+		<Protobuf Include="Protos\Restaurant\Dish.proto" GrpcService="Server"></Protobuf>
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+    <PackageReference Include="MySqlConnector" Version="2.3.3" />
+    <PackageReference Include="MySqlConnector.DependencyInjection" Version="2.3.1" />
   </ItemGroup>
 
 </Project>
