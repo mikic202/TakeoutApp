@@ -1,3 +1,13 @@
 ﻿.vs/
 *.wasm
 Debug/
+*.dll
+*.gz
+*.br
+*.dz
+*.exe
+*.cache
+*.wasm.gz
+*.protodep
+*.pdb
+*/bin/*
