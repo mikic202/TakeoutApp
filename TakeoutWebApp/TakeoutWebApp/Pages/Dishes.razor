@@ -37,7 +37,7 @@
                             <td>@dish.Name</td>
                             <td>@dish.Description</td>
                             <td>@dish.Price</td>
-                            <td><button type="button" @onclick="() => editDish(dish.Id)" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
+                            <td><button type="button" @onclick="() => editDish(dish)" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
                         </tr>
                     }
                 </tbody>
@@ -65,23 +65,10 @@
         NavigationMenager.NavigateTo("/createDish");
     }
 
-    private void editDish(int dishId)
+    private void editDish(Shared.Dish dish)
     {
         // Console.WriteLine(time);
-        LocalStorage.SetItemAsync<int>("dishToEditId", dishId);
+        LocalStorage.SetItemAsync<Shared.Dish>("dishToEdit", dish);
         NavigationMenager.NavigateTo("/editDish");
-    }
-
-    public class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-
-        public TimeOnly time { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
 }

@@ -85,3 +85,11 @@ message setOrderStatusRequest{
 message setOrderStatusResponse{
 	bool outcome = 1;
 }
+
+message deleteDishRequest{
+	int32 dishId = 1;
+}
+
+message deleteDishResponse{
+	bool outcome = 1;
+}

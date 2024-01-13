@@ -106,5 +106,21 @@ namespace GRPC_Server.DatsbseInteractors
             }
             return dishes;
         }
-    }
+
+		async public static Task<bool> deleteDish(int dish_id, MySqlConnection connection)
+		{
+			using (var command = connection.CreateCommand())
+			{
+				command.CommandText = "Delete from dishes where dish_id=@dish_id;";
+				command.Parameters.AddWithValue("@dish_id", dish_id);
+				try
+				{
+					await command.ExecuteNonQueryAsync();
+				}
+				catch { return false; }
+
+			}
+			return true;
+		}
+	}
 }

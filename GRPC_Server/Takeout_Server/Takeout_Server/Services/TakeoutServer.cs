@@ -323,6 +323,26 @@ namespace Takeout_Server.Services
             }
             return reply;
         }
-    }
+
+		public override async Task<deleteDishResponse> DeleteDish(deleteDishRequest request, ServerCallContext context)
+		{
+			var builder = new MySqlConnectionStringBuilder
+			{
+				Server = "127.0.0.1",
+				Port = 3306,
+				Database = "takout_db",
+				UserID = "root",
+				Password = "",
+			};
+			using (var conn = new MySqlConnection(builder.ConnectionString))
+			{
+				conn.Open();
+				return new deleteDishResponse
+				{
+                    Outcome = await DishDatabseInteractor.deleteDish(request.DishId, conn)
+				};
+			}
+		}
+	}
 
 }

@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TakeoutWebApp",
   "resources": {
-    "hash": "sha256-g91A+iUyMHzOEbdC3QqYQzcF1eIPRwuIorwMS86SxEA=",
+    "hash": "sha256-SpIZ/aMq5SUWh9ENf9tlHDcDcwgU9zbY+q+Dkqts8uI=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.ebk7chz1c6.js": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI="
     },
@@ -235,10 +235,10 @@
       "mscorlib.wasm": "sha256-cDuLeL3OCtVtiid/dyex1MVgbuzDSRwZxKzuP2Dp4mg=",
       "netstandard.wasm": "sha256-A0h86SDieTMoU/wU2JTszWCsUmMuguDcbap0b0BzsmI=",
       "System.Private.CoreLib.wasm": "sha256-/0DNIm/T0C07X7Tuz5uR8JvVCoAfEE2MnfPUSjyS9xc=",
-      "TakeoutWebApp.wasm": "sha256-36MYESmZkaIFgMvx/176OSgAigfB/5MUlswzMzWCwLE="
+      "TakeoutWebApp.wasm": "sha256-g0HBzsEcPkx2cVgSOOwsghD8soJ6+D2xqeOH2ekynoY="
     },
     "pdb": {
-      "TakeoutWebApp.pdb": "sha256-d2GQuXaRB52ThOv/ulDtoM/imnvzAms0isENRunlu78="
+      "TakeoutWebApp.pdb": "sha256-S+wxnebVkyTgekB0VtuBM6rLb8UPd8y39X5IGg5EhTQ="
     }
   },
   "cacheBootResources": true,

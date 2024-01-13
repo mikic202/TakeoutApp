@@ -20,4 +20,5 @@ service TakeOutService {
   rpc ModifyRestaurantInfo(ProtoRegister.ModifyRestaurantInformationRequest) returns (ProtoRegister.ModifyRestaurantInformationResponse);
   rpc ModifyRestaurantPassword(ProtoRegister.ModifyRestaurantPasswordRequest) returns (ProtoRegister.ModifyRestaurantPasswordResponse);
   rpc GetRestaurantInfo(signin.RestaurantInfoRequest) returns (signin.RestaurantInfoReply);
+  rpc DeleteDish(dish.deleteDishRequest) returns (dish.deleteDishResponse);
 }
