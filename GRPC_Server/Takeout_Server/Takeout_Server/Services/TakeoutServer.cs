@@ -36,7 +36,7 @@ namespace Takeout_Server.Services
                     return new SigninReply { Outcome = false };
                 }
                 var user_info = await UserDatabsaeInteractor.getUserInformation(request.Usertname, conn);
-                if (user_info["Password"] != request.Password)
+                if (!user_info["Password"].Equals(request.Password))
                 {
                     return new SigninReply { Outcome = false };
                 }
@@ -62,7 +62,7 @@ namespace Takeout_Server.Services
                     return new RestaurantSigninReply { Outcome = false };
                 }
                 var restaurantInfo = await RestaurantDatabaseInteractor.getRestaurantInformation(request.Restaurantname, conn);
-                if (restaurantInfo["Password"] != request.Password)
+                if (!restaurantInfo["Password"].Equals(request.Password))
                 {
                     return new RestaurantSigninReply { Outcome = false };
                 }
@@ -245,7 +245,7 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
-                if ((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"] != request.Password)
+                if (!(await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"].Equals(request.Password))
                 {
                     return new ModifyRestaurantInformationResponse { Outcome = false };
                 }
@@ -268,8 +268,8 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
-                if ((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"] != request.Password)
-                {
+				if (!(await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"].Equals(request.Password))
+				{
                     return new ModifyRestaurantPasswordResponse { Outcome = false };
                 }
                 return new ModifyRestaurantPasswordResponse

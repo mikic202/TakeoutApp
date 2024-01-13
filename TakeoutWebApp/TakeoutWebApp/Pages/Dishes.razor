@@ -37,7 +37,7 @@
                             <td>@dish.Name</td>
                             <td>@dish.Description</td>
                             <td>@dish.Price</td>
-                            <td><button type="button" @onclick="() => editDish()" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
+                            <td><button type="button" @onclick="() => editDish(dish.Id)" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
                         </tr>
                     }
                 </tbody>
@@ -65,9 +65,10 @@
         NavigationMenager.NavigateTo("/createDish");
     }
 
-    private void editDish()
+    private void editDish(int dishId)
     {
         // Console.WriteLine(time);
+        LocalStorage.SetItemAsync<int>("dishToEditId", dishId);
         NavigationMenager.NavigateTo("/editDish");
     }
 

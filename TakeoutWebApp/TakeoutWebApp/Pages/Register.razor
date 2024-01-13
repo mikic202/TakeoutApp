@@ -44,7 +44,7 @@
     private async void HandleRegister()
     {
         Console.WriteLine(user.Password);
-        if(user.Password == repeated_password)
+        if(user.Password.Equals(repeated_password))
         {
             HashAlgorithm hashAlgorithm = SHA512.Create();
             var hashedData = hashAlgorithm.ComputeHash(Encoding.ASCII.GetBytes(user.Password));
