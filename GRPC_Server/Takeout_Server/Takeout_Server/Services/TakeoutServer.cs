@@ -300,6 +300,29 @@ namespace Takeout_Server.Services
 			}
 			return reply;
 		}
-	}
+
+        public override async Task<AllDishesResponse> GetAllDishes(AllDishesRequest request, ServerCallContext context)
+        {
+            var reply = new AllDishesResponse();
+            var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+            {
+                conn.Open();
+                var dishes = await DishDatabseInteractor.getRestaurantsDishes(request.RestaurantId, conn);
+                foreach(var dish in dishes)
+                {
+                    reply.Dishes.Add(new ProtoDish { DishDescription = dish.Description, DishId = dish.Id, DishPrice = dish.Price, DishName = dish.Name });
+                }
+            }
+            return reply;
+        }
+    }
 
 }
