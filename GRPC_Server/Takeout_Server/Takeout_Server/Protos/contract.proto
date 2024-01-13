@@ -9,7 +9,7 @@ import "Protos/Restaurant/Dish.proto";
 service TakeOutService {
   rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
   rpc SigninRestaurant (signin.RestaurantSigninRequest) returns (signin.RestaurantSigninReply);
-  rpc RegisterRestaurant (register.RegisterRestaurantRequest) returns (register.RegisterRestaurantReply);
+  rpc RegisterRestaurant (ProtoRegister.RegisterRestaurantRequest) returns (ProtoRegister.RegisterRestaurantReply);
   rpc AddDish (dish.addDishRequest) returns (dish.addDishReply);
   rpc ModifyDish(dish.modifyDishRequest) returns (dish.modifyDishReply);
   rpc GetAllOrders(dish.allOrdersRequest) returns (dish.allOrdersResponse);
@@ -17,6 +17,7 @@ service TakeOutService {
   rpc AddOrder(dish.addOrderRequest) returns (dish.addOrderResponse);
   rpc GetOrderInfo(dish.orderInfoRequest) returns (dish.orderInfoResponse);
   rpc SetOrderStatus(dish.setOrderStatusRequest) returns (dish.setOrderStatusResponse);
-  rpc ModifyRestaurantInfo(register.ModifyRestaurantInformationRequest) returns (register.ModifyRestaurantInformationResponse);
-  rpc ModifyRestaurantPassword(register.ModifyRestaurantPasswordRequest) returns (register.ModifyRestaurantPasswordResponse);
+  rpc ModifyRestaurantInfo(ProtoRegister.ModifyRestaurantInformationRequest) returns (ProtoRegister.ModifyRestaurantInformationResponse);
+  rpc ModifyRestaurantPassword(ProtoRegister.ModifyRestaurantPasswordRequest) returns (ProtoRegister.ModifyRestaurantPasswordResponse);
+  rpc GetRestaurantInfo(signin.RestaurantInfoRequest) returns (signin.RestaurantInfoReply);
 }

@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Register {
+namespace ProtoRegister {
 
   /// <summary>Holder for reflection information generated from Protos/Register.proto</summary>
   public static partial class RegisterReflection {
@@ -24,28 +24,29 @@ namespace Register {
     static RegisterReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVQcm90b3MvUmVnaXN0ZXIucHJvdG8SCHJlZ2lzdGVyGhVQcm90b3MvTG9j",
-            "YXRpb24ucHJvdG8idQoZUmVnaXN0ZXJSZXN0YXVyYW50UmVxdWVzdBIWCg5y",
-            "ZXN0YXVyYW50TmFtZRgBIAEoCRIQCghwYXNzd29yZBgCIAEoCRIuChJyZXN0",
-            "YXVyYW50TG9jYXRpb24YAyABKAsyEi5sb2NhdGlvbi5Mb2NhdGlvbiIqChdS",
-            "ZWdpc3RlclJlc3RhdXJhbnRSZXBseRIPCgdvdXRjb21lGAEgASgIIpQBCiJN",
-            "b2RpZnlSZXN0YXVyYW50SW5mb3JtYXRpb25SZXF1ZXN0EhQKDHJlc3RhdXJh",
-            "bnRJZBgBIAEoBRIQCghwYXNzd29yZBgCIAEoCRIWCg5yZXN0YXVyYW50TmFt",
-            "ZRgDIAEoCRIuChJyZXN0YXVyYW50TG9jYXRpb24YBCABKAsyEi5sb2NhdGlv",
-            "bi5Mb2NhdGlvbiI2CiNNb2RpZnlSZXN0YXVyYW50SW5mb3JtYXRpb25SZXNw",
-            "b25zZRIPCgdvdXRjb21lGAEgASgIIl4KH01vZGlmeVJlc3RhdXJhbnRQYXNz",
-            "d29yZFJlcXVlc3QSFAoMcmVzdGF1cmFudElkGAEgASgFEhAKCHBhc3N3b3Jk",
-            "GAIgASgJEhMKC25ld1Bhc3N3b3JkGAMgASgJIjMKIE1vZGlmeVJlc3RhdXJh",
-            "bnRQYXNzd29yZFJlc3BvbnNlEg8KB291dGNvbWUYASABKAhiBnByb3RvMw=="));
+            "ChVQcm90b3MvUmVnaXN0ZXIucHJvdG8SDVByb3RvUmVnaXN0ZXIaFVByb3Rv",
+            "cy9Mb2NhdGlvbi5wcm90byJ1ChlSZWdpc3RlclJlc3RhdXJhbnRSZXF1ZXN0",
+            "EhYKDnJlc3RhdXJhbnROYW1lGAEgASgJEhAKCHBhc3N3b3JkGAIgASgJEi4K",
+            "EnJlc3RhdXJhbnRMb2NhdGlvbhgDIAEoCzISLmxvY2F0aW9uLkxvY2F0aW9u",
+            "IioKF1JlZ2lzdGVyUmVzdGF1cmFudFJlcGx5Eg8KB291dGNvbWUYASABKAgi",
+            "lAEKIk1vZGlmeVJlc3RhdXJhbnRJbmZvcm1hdGlvblJlcXVlc3QSFAoMcmVz",
+            "dGF1cmFudElkGAEgASgFEhAKCHBhc3N3b3JkGAIgASgJEhYKDnJlc3RhdXJh",
+            "bnROYW1lGAMgASgJEi4KEnJlc3RhdXJhbnRMb2NhdGlvbhgEIAEoCzISLmxv",
+            "Y2F0aW9uLkxvY2F0aW9uIjYKI01vZGlmeVJlc3RhdXJhbnRJbmZvcm1hdGlv",
+            "blJlc3BvbnNlEg8KB291dGNvbWUYASABKAgiXgofTW9kaWZ5UmVzdGF1cmFu",
+            "dFBhc3N3b3JkUmVxdWVzdBIUCgxyZXN0YXVyYW50SWQYASABKAUSEAoIcGFz",
+            "c3dvcmQYAiABKAkSEwoLbmV3UGFzc3dvcmQYAyABKAkiMwogTW9kaWZ5UmVz",
+            "dGF1cmFudFBhc3N3b3JkUmVzcG9uc2USDwoHb3V0Y29tZRgBIAEoCGIGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Location.LocationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.RegisterRestaurantRequest), global::Register.RegisterRestaurantRequest.Parser, new[]{ "RestaurantName", "Password", "RestaurantLocation" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.RegisterRestaurantReply), global::Register.RegisterRestaurantReply.Parser, new[]{ "Outcome" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantInformationRequest), global::Register.ModifyRestaurantInformationRequest.Parser, new[]{ "RestaurantId", "Password", "RestaurantName", "RestaurantLocation" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantInformationResponse), global::Register.ModifyRestaurantInformationResponse.Parser, new[]{ "Outcome" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantPasswordRequest), global::Register.ModifyRestaurantPasswordRequest.Parser, new[]{ "RestaurantId", "Password", "NewPassword" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Register.ModifyRestaurantPasswordResponse), global::Register.ModifyRestaurantPasswordResponse.Parser, new[]{ "Outcome" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.RegisterRestaurantRequest), global::ProtoRegister.RegisterRestaurantRequest.Parser, new[]{ "RestaurantName", "Password", "RestaurantLocation" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.RegisterRestaurantReply), global::ProtoRegister.RegisterRestaurantReply.Parser, new[]{ "Outcome" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.ModifyRestaurantInformationRequest), global::ProtoRegister.ModifyRestaurantInformationRequest.Parser, new[]{ "RestaurantId", "Password", "RestaurantName", "RestaurantLocation" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.ModifyRestaurantInformationResponse), global::ProtoRegister.ModifyRestaurantInformationResponse.Parser, new[]{ "Outcome" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.ModifyRestaurantPasswordRequest), global::ProtoRegister.ModifyRestaurantPasswordRequest.Parser, new[]{ "RestaurantId", "Password", "NewPassword" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProtoRegister.ModifyRestaurantPasswordResponse), global::ProtoRegister.ModifyRestaurantPasswordResponse.Parser, new[]{ "Outcome" }, null, null, null, null)
           }));
     }
     #endregion
@@ -67,7 +68,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -340,7 +341,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -530,7 +531,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -840,7 +841,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1030,7 +1031,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[4]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1294,7 +1295,7 @@ namespace Register {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Register.RegisterReflection.Descriptor.MessageTypes[5]; }
+      get { return global::ProtoRegister.RegisterReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

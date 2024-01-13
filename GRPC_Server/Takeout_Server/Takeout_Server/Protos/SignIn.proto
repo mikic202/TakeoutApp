@@ -1,5 +1,7 @@
 ﻿syntax = "proto3";
 
+import "Protos/Location.proto";
+
 package signin;
 
 message RestaurantSigninRequest {
@@ -20,4 +22,13 @@ message SigninRequest {
 message SigninReply {
   bool outcome = 1;
   int32 userId = 2;
+}
+
+message RestaurantInfoRequest {
+	int32 restaurantId = 1;
+}
+
+message RestaurantInfoReply {
+	string restaurantName = 1;
+	location.Location restaurantLocation = 2;
 }

@@ -2,8 +2,9 @@
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using GRPC_Server.DatsbseInteractors;
+using Microsoft.AspNetCore.Identity;
 using MySqlConnector;
-using Register;
+using ProtoRegister;
 using Signin;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,6 @@ namespace Takeout_Server.Services
         }
         public override async Task<RestaurantSigninReply> SigninRestaurant(RestaurantSigninRequest request, ServerCallContext context)
         {
-            Console.WriteLine("Got messageggggggggggggg");
             var builder = new MySqlConnectionStringBuilder
             {
                 Server = "127.0.0.1",
@@ -278,6 +278,28 @@ namespace Takeout_Server.Services
                 };
             }
         }
-    }
+
+		public override async Task<RestaurantInfoReply> GetRestaurantInfo(RestaurantInfoRequest request, ServerCallContext context)
+		{
+            var reply = new RestaurantInfoReply();
+			var builder = new MySqlConnectionStringBuilder
+            {
+                Server = "127.0.0.1",
+                Port = 3306,
+                Database = "takout_db",
+                UserID = "root",
+                Password = "",
+            };
+            using (var conn = new MySqlConnection(builder.ConnectionString))
+			{
+                conn.Open();
+                var restaurnt = await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn);
+                reply.RestaurantName = restaurnt["restaurnatName"];
+                Console.WriteLine(restaurnt["Longitude"]);
+				reply.RestaurantLocation = new Location.Location { Longitude = (int)decimal.Parse(restaurnt["Longitude"]), Latitude = (int)decimal.Parse(restaurnt["Latitude"]) };
+			}
+			return reply;
+		}
+	}
 
 }

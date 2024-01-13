@@ -61,7 +61,7 @@ namespace GRPC_Server.DatsbseInteractors
                     userInfo["restaurnatName"] = username;
                     userInfo["Password"] = reader.GetString(2);
                     userInfo["RestaurantId"] = reader.GetInt32(0).ToString();
-                }
+				}
             }
             return userInfo;
         }
@@ -81,7 +81,9 @@ namespace GRPC_Server.DatsbseInteractors
                         userInfo["restaurnatName"] = reader.GetString(1);
                         userInfo["Password"] = reader.GetString(2);
                         userInfo["RestaurantId"] = reader.GetInt32(0).ToString();
-                    }
+						userInfo["Longitude"] = reader.GetDecimal(3).ToString();
+						userInfo["Latitude"] = reader.GetDecimal(4).ToString();
+					}
                 }
             }
             finally { }

@@ -1,6 +1,8 @@
 ﻿@page "/register"
 @inject HttpClient Http
 @inject NavigationManager NavigationMenager
+@inject Takeout.TakeOutService.TakeOutServiceClient client
+
 
 <PageTitle>Register</PageTitle>
 
@@ -44,7 +46,16 @@
         Console.WriteLine(user.Password);
         if(user.Password == repeated_password)
         {
-            NavigationMenager.NavigateTo("/login");
+            HashAlgorithm hashAlgorithm = SHA512.Create();
+            var hashedData = hashAlgorithm.ComputeHash(Encoding.ASCII.GetBytes(user.Password));
+            var reply = await client.RegisterRestaurantAsync(new ProtoRegister.RegisterRestaurantRequest
+            {
+                Password = BitConverter.ToString(hashedData),
+                RestaurantName = user.Username,
+                RestaurantLocation = new Location.Location { Longitude = (int)user.Longitude, Latitude = (int)user.Latitude }
+            });
+            if(reply.Outcome)
+                NavigationMenager.NavigateTo("/login");
         }
     }
 }

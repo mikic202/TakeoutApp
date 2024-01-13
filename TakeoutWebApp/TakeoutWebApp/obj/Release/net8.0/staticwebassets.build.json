@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y4iOSpg/XfppeXdxV46gsc1BRH/J6DdboX0x9+U12ms=",
+  "Hash": "LsTRjjAssBme7PP0u4R9zJ84JLrdB+YPb91cvJuwNTY=",
   "Source": "TakeoutWebApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -8907,6 +8907,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\food-svgrepo-com.svg",
+      "SourceId": "TakeoutWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "food-svgrepo-com.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\food-svgrepo-com.svg"
     },
     {
       "Identity": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\icon-192.png",

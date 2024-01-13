@@ -22,4 +22,26 @@ app.MapGet("/", () => "Communication with gRPC endpoints must be made through a 
 
 app.Run();
 
+/*using GRPC_Server.DatsbseInteractors;
+using MySqlConnector;
+using Signin;
+
+var builder = new MySqlConnectionStringBuilder
+{
+	Server = "127.0.0.1",
+	Port = 3306,
+	Database = "takout_db",
+	UserID = "root",
+	Password = "",
+};
+using (var conn = new MySqlConnection(builder.ConnectionString))
+{
+	var reply = new RestaurantInfoReply();
+	conn.Open();
+	var restaurnt = await RestaurantDatabaseInteractor.getRestaurantInformation(4, conn);
+	reply.RestaurantName = restaurnt["restaurnatName"];
+	Console.WriteLine(restaurnt["Longitude"]);
+	reply.RestaurantLocation = new Location.Location { Longitude = (int)decimal.Parse(restaurnt["Longitude"]), Latitude = (int)decimal.Parse(restaurnt["Latitude"])};
+}*/
+
 

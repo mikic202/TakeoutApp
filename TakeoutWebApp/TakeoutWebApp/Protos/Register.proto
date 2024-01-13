@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-package register;
+package ProtoRegister;
 
 import "Protos/Location.proto";
 
