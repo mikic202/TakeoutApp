@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Takeout_Server.Services;
 
 namespace GRPC_Server.DatsbseInteractors
 {
@@ -70,9 +71,10 @@ namespace GRPC_Server.DatsbseInteractors
         {
             using (var command = connection.CreateCommand())
             {
+                command.Parameters.AddWithValue("@dish_id", 0);
                 foreach (var dish in dishes) {
                     command.CommandText = $"SELECT * FROM dishes where dish_id = @dish_id";
-                    command.Parameters.AddWithValue("@dish_id", dish.Id);
+                    command.Parameters["@dish_id"].Value = dish.Id;
 
                     using (var reader = await command.ExecuteReaderAsync())
                     {

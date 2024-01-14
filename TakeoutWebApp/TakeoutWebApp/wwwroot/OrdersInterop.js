@@ -4,7 +4,7 @@
             setInterval(() => {
                 document.getElementById("btnGetOrdersData").click();
                 //console.log("HHHHHHHHH");
-            }, 10000);
+            }, 40000);
         }
     };
 })();

@@ -1,4 +1,7 @@
-﻿@page "/orders"
+﻿@inject Takeout.TakeOutService.TakeOutServiceClient client
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+
+@page "/orders"
 @inject HttpClient Http
 
 <PageTitle>Orders</PageTitle>
@@ -12,13 +15,13 @@
     </NotAuthorized>
     <Authorized>
         @* <p>This component demonstrates fetching data from the server.</p> *@
-        @if (forecasts == null)
+        @if (orders.Count == 0)
         {
             <p><em>Loading...</em></p>
         }
         else
         {
-            <table class="table">
+            <table class="table" id="ordersTabel">
                 <thead>
                     <tr>
                         <th>Order Date</th>
@@ -28,41 +31,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var forecast in forecasts)
+                    @foreach (var order in orders)
                     {
                         <tr>
-                            <td>@forecast.time.ToShortTimeString()</td>
-                            <td>@forecast.TemperatureC</td>
-                            <td>@forecast.TemperatureF</td>
+                            <td>@order.OrderDate.ToDateTime().ToShortDateString()</td>
+                            <td>@order.Dishes.Count</td>
+                            <td>@order.DeliveryLocation.ToString()</td>
                             <td>
-                                <InputSelect id="department" @bind-Value="some_chosen">
-                                    @foreach (string stat in STATUS_VALUE)
+                                <InputSelect id="department" @bind-Value=@order.OrderStatus>
+                                    @foreach (int stat in STATUS_VALUE)
                                     {
                                         <option value="@stat">@stat</option>
                                     }
                                 </InputSelect>
                             </td>
-                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
+                            <td><button type="button" @onclick="() => ShowPosition(order.OrderId)" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
                         </tr>
                     }
                 </tbody>
             </table>
         }
-        <button id="btnGetOrdersData" @onclick="GetOrderss" class="btn btn-primary" style='float:inline-start;'> Refresh Employee List</button>
+        <button id="btnGetOrdersData" @onclick="GetOrderss" class="btn btn-primary" style='float:inline-start;'> Refresh Orders List</button>
     </Authorized>
 </AuthorizeView>
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private List<Dish.ProtoOrder> orders = new List<Dish.ProtoOrder>();
     string some_chosen = "ddddd";
-    private readonly string[] STATUS_VALUE = { "Accepted", "Being Prepared", "On The Way", "Delivered" };
+    private readonly int[] STATUS_VALUE = { 0, 1, 2, 3 };
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-        // OnAfterRenderAsync(true);
+        await GetOrderss();
     }
 
-    private void ShowPosition(string time)
+    private void ShowPosition(int time)
     {
         Console.WriteLine(some_chosen);
     }
@@ -91,6 +93,15 @@
     // This method will be called on button click.
     protected async Task GetOrderss()
     {
-        Console.WriteLine("Epdated");
+        var reply = await client.GetAllOrdersAsync(new Dish.allOrdersRequest { RestaurantId = await LocalStorage.GetItemAsync<int>("RestaurantId") });
+        orders =  new List<Dish.ProtoOrder>();
+        foreach(var order in reply.Orders)
+        {
+            Console.WriteLine("Updated Orders");
+            orders.Add(order);
+        }
+        StateHasChanged();
+        Console.WriteLine(orders.Count);
+        Console.WriteLine("Updated Orders");
     }
 }

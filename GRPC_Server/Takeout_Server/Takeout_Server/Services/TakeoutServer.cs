@@ -154,8 +154,12 @@ namespace Takeout_Server.Services
                     {
                         order.Dishes.Add(new ProtoDish { DishId = dish.Id, DishName = dish.Name, DishDescription = dish.Description, DishPrice = dish.Price });
                     }
+                    order.DeliveryLocation = new Location.Location();
                     order.DeliveryLocation.Latitude = (int)order_to_add.latitude;
                     order.DeliveryLocation.Longitude = (int)order_to_add.longitude;
+                    order.OrderDate = Timestamp.FromDateTime(DateTime.SpecifyKind(order_to_add.date, DateTimeKind.Utc));
+                    order.OrderId = order_to_add.Id;
+                    order.UserId = order_to_add.userId;
                     reply.Orders.Add(order);
                 }
 
