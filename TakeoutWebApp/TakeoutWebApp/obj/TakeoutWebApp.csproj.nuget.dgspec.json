@@ -64,11 +64,19 @@
               "target": "Package",
               "version": "[2.59.0, )"
             },
+            "Grpc.Net.ClientFactory": {
+              "target": "Package",
+              "version": "[2.59.0, )"
+            },
             "Grpc.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.60.0, )"
+            },
+            "Microsoft.AspNetCore.Antiforgery": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.AspNetCore.Components.Authorization": {
               "target": "Package",
@@ -82,6 +90,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",

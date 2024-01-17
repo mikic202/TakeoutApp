@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+
+package takeout;
+
+import "Protos/SignIn.proto";
+import "Protos/Register.proto";
+import "Protos/Restaurant/Dish.proto";
+
+service TakeOutService {
+  rpc Signin (signin.SigninRequest) returns (signin.SigninReply);
+  rpc SigninRestaurant (signin.RestaurantSigninRequest) returns (signin.RestaurantSigninReply);
+  rpc RegisterRestaurant (ProtoRegister.RegisterRestaurantRequest) returns (ProtoRegister.RegisterRestaurantReply);
+  rpc AddDish (dish.addDishRequest) returns (dish.addDishReply);
+  rpc ModifyDish(dish.modifyDishRequest) returns (dish.modifyDishReply);
+  rpc GetAllOrders(dish.allOrdersRequest) returns (dish.allOrdersResponse);
+  rpc GetAllDishes(dish.AllDishesRequest) returns (dish.AllDishesResponse);
+  rpc AddOrder(dish.addOrderRequest) returns (dish.addOrderResponse);
+  rpc GetOrderInfo(dish.orderInfoRequest) returns (dish.orderInfoResponse);
+  rpc SetOrderStatus(dish.setOrderStatusRequest) returns (dish.setOrderStatusResponse);
+  rpc ModifyRestaurantInfo(ProtoRegister.ModifyRestaurantInformationRequest) returns (ProtoRegister.ModifyRestaurantInformationResponse);
+  rpc ModifyRestaurantPassword(ProtoRegister.ModifyRestaurantPasswordRequest) returns (ProtoRegister.ModifyRestaurantPasswordResponse);
+  rpc GetRestaurantInfo(signin.RestaurantInfoRequest) returns (signin.RestaurantInfoReply);
+  rpc DeleteDish(dish.deleteDishRequest) returns (dish.deleteDishResponse);
+}

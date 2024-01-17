@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TakeoutWebApp",
   "resources": {
-    "hash": "sha256-ZzhPNbfiGg7IPuPhjOmsii428jyvgvstoh81RNBDO0c=",
+    "hash": "sha256-AkPJ2lfYjjH4B3LXI2jFoXmyny84R8se3MSKpG0wUpo=",
     "jsModuleNative": {
       "dotnet.native.8.0.0.ebk7chz1c6.js": "sha256-LjLDIz9+J7uuiwMlQ4HbNx2BnSpphOtO2MwkoI28vdI="
     },
@@ -23,6 +23,7 @@
       "Grpc.Core.Api.wasm": "sha256-5vYjOG1LyQmydQ8gTvktSXxRCkYby1M471YvK3XwkgM=",
       "Grpc.Net.Client.wasm": "sha256-aFwOeuSKj48C4C7rK7TW2thvxVaZf1xDsqqUJXvKIu0=",
       "Grpc.Net.Client.Web.wasm": "sha256-XlmFF1Z1OmzzXv/N4VH1G/V3NpMOSAGHpF7sBZ9mlYc=",
+      "Grpc.Net.ClientFactory.wasm": "sha256-N9JiSU34tEsoxH+rEyvRttaZGlJXt9ihDuOUapIf8Ko=",
       "Grpc.Net.Common.wasm": "sha256-itkpUvknLbqm9E9EUYGcGxeLbSAc5js971PGMt/4xoM=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-j29bzsbGr0GXbz3saSOBqDtWxNOK08Or3b1HgnZ+pvA=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-0SRqG4hZOVUUFxERmD93PJWBJR6d4gCf5UB9vF6jB9A=",
@@ -30,6 +31,10 @@
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-v5x7jiwdpMdHj54wA/JoDsrCrnr89XklOokSoWNJzF0=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-H1qHk5Kqn+R+8t/eTsZzQ5/5ZvgjmC8+ZPyuEp5nals=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-GDJfIU7XS7MlmrwWZh/CD4wNkm+PPO7FFLZ4Qo0jCPU=",
+      "Microsoft.AspNetCore.Cors.wasm": "sha256-lHBssv1/8h/Ix9wGXOmnmT8oP+miN9jrnEyHzWs0z0k=",
+      "Microsoft.AspNetCore.Http.Abstractions.wasm": "sha256-n0jM30XYPDDlywnVH3kArY5DgtWn77UPaIDBhOlrgB4=",
+      "Microsoft.AspNetCore.Http.Extensions.wasm": "sha256-yzlGIVr+M+Lp3GMG0r1yHQSCz1Sy2HuGN05fRUANfDg=",
+      "Microsoft.AspNetCore.Http.Features.wasm": "sha256-kmbLfLRYyDH7oLYNsLLcqhNu+oC/WsRNA4CikdGmpfg=",
       "Microsoft.AspNetCore.Metadata.wasm": "sha256-95QlbMRtZIDBAVihWRdLt5//Rwcm+0Utb0u4Brzx+L4=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-UDGEQR7J3WTfzYMgOzxVIBwFQtKEeJvO8UgrWagypdE=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-yNdqbqDWGiJo943D7LPak5xryCBEsNH0wtdiuU1R9VE=",
@@ -41,12 +46,14 @@
       "Microsoft.Extensions.FileProviders.Abstractions.wasm": "sha256-IUopixuV8E09mP+TIgRp/lXEbeacXbUTW7cu0v5B9Tc=",
       "Microsoft.Extensions.FileProviders.Physical.wasm": "sha256-MS+zB0xkKhKk/QdE32ZwKtdlrLMLI/y2NAKPUWhcBVg=",
       "Microsoft.Extensions.FileSystemGlobbing.wasm": "sha256-AnWUKd0qJ8ZNKkRC0AFK2cjjszB7reXiP+bXdIi8bic=",
+      "Microsoft.Extensions.Http.wasm": "sha256-WZDaGkaj9Dm3pM+f0wKlw7oWs/Jrsj57mUt/ePjoKK4=",
       "Microsoft.Extensions.Logging.wasm": "sha256-Rx+UwnmyfTtMmlYd3HWJOvYVnSSwShUKrbPvqkfxmZk=",
       "Microsoft.Extensions.Logging.Abstractions.wasm": "sha256-R+hweMNg9P7RU++DPEpfqsjng2tWserGZEtjsL3gl84=",
       "Microsoft.Extensions.Options.wasm": "sha256-HPL9mH3zbRHz2Dv2qcWF0dUEk69pohDoiXzfTp2UMyE=",
       "Microsoft.Extensions.Primitives.wasm": "sha256-pVrYOTfjb2ITls3LKIByW1t8jwOAWFhmkIVDewtJ1GE=",
       "Microsoft.JSInterop.wasm": "sha256-sm2HpM+aEsdu8kPTluhkGijieh9Fr/JLihBU0ZZvtVI=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-3wQR1/VN+SB8r7Gkqf93l8O4F1aSbaghQWV2PoaJByI=",
+      "Microsoft.Net.Http.Headers.wasm": "sha256-frX5wFfUn8A5v6EMtOZdr3nwDsA3selu7FFE8a5CTWc=",
       "System.IO.Pipelines.wasm": "sha256-JqVBy6SV+3qk+IK3VJiyIDt9CsVk6b1/ytTXmrI4mTM=",
       "Microsoft.CSharp.wasm": "sha256-ZpkICZtm/DHNuGrRDRfVyuTokNnwnPl7dxJGrPk6z5g=",
       "Microsoft.VisualBasic.Core.wasm": "sha256-coGIpdzImgRuQzGOx9iJkE/euOSMnY1mLy59OHmdq7k=",
@@ -216,10 +223,10 @@
       "mscorlib.wasm": "sha256-cDuLeL3OCtVtiid/dyex1MVgbuzDSRwZxKzuP2Dp4mg=",
       "netstandard.wasm": "sha256-A0h86SDieTMoU/wU2JTszWCsUmMuguDcbap0b0BzsmI=",
       "System.Private.CoreLib.wasm": "sha256-/0DNIm/T0C07X7Tuz5uR8JvVCoAfEE2MnfPUSjyS9xc=",
-      "TakeoutWebApp.wasm": "sha256-wRs2QoMChjXaKaxKk2PmnZnhtP/qDBgKo/QjRletyhs="
+      "TakeoutWebApp.wasm": "sha256-F4CYae0nUNHdsvkFOT1CfP6103Qo5s9eG5XgQPX5M2o="
     },
     "pdb": {
-      "TakeoutWebApp.pdb": "sha256-qnjUP2uQ+TgUHqrgqYnRvIgBvNEEcy4sgEmN/6FXlsU="
+      "TakeoutWebApp.pdb": "sha256-rWlArMhDhzsIjLglxqxgiVvQ2y2qYFB7mf5fGn1gJ7A="
     }
   },
   "cacheBootResources": true,

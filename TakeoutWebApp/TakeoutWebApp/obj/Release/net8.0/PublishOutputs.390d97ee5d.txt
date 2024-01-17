@@ -1,0 +1,1 @@
+D:\semestr 5\NET\TakeoutApp\TakeoutWebApp\TakeoutWebApp\obj\Release\net8.0\browser-wasm\PubTmp\Out\web.config

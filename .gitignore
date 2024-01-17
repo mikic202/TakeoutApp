@@ -1,5 +1,13 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-.vs/
+﻿.vs/
+*.wasm
+Debug/
+*.dll
+*.gz
+*.br
+*.dz
+*.exe
+*.cache
+*.wasm.gz
+*.protodep
+*.pdb
+*/bin/*

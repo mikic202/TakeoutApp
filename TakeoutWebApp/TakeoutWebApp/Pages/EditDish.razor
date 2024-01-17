@@ -1,4 +1,8 @@
-﻿@page "/editDish"
+﻿@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
+@inject NavigationManager NavigationMenager
+@inject Takeout.TakeOutService.TakeOutServiceClient client
+
+@page "/editDish"
 
 <h3>Dish editor</h3>
 
@@ -19,9 +23,9 @@
 		<label></label>
 	</div>
 	<div id="outer">
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Delete</button></div>
+		<div class="inner"><button type="submit" @onclick="saveDish" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
+		<div class="inner"><button type="submit" @onclick="abbortEdit" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
+		<div class="inner"><button type="submit" @onclick="deleteDish" class="btn btn-primary" style='float:inline-start;'>Delete</button></div>
 	</div>
 </EditForm>
 
@@ -30,6 +34,38 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		dish.Price = 1234;
+		dish = await LocalStorage.GetItemAsync<Shared.Dish>("dishToEdit");
+		StateHasChanged();
+	}
+
+	private async void saveDish()
+	{
+		if (dish.Price != 0 && !dish.Description.Equals("") && !dish.Name.Equals(""))
+		{
+			var reply = await client.ModifyDishAsync(new Dish.modifyDishRequest
+				{
+					DishName = dish.Name,
+					DishDescription = dish.Description,
+					DishPrice = dish.Price,
+					DishId = dish.Id
+				});
+			if (reply.Outcome)
+			{
+				NavigationMenager.NavigateTo("/dishes");
+			}
+		}
+	}
+
+	private async void deleteDish()
+	{
+		if((await client.DeleteDishAsync(new Dish.deleteDishRequest{DishId = dish.Id})).Outcome){
+			NavigationMenager.NavigateTo("/dishes");
+		}
+
+	}
+
+	private void abbortEdit()
+	{
+		NavigationMenager.NavigateTo("/dishes");
 	}
 }

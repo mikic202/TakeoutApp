@@ -2,7 +2,9 @@
 @inject NavigationManager NavigationMenager
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthStateProvid
-@inject Grpc.Net.Client.GrpcChannel Channel
+@* @inject Grpc.Net.Client.GrpcChannel Channel *@
+
+@inject Takeout.TakeOutService.TakeOutServiceClient client
 
 <h3>Login</h3>
 
@@ -31,13 +33,22 @@
 
 	private async void HandleLogin()
 	{
-		Console.WriteLine("Log me in!");
-		var client = new Signin.LoggingInProvider.LoggingInProviderClient(Channel);
-		Console.WriteLine("Log me in!");
-		// var reply = await client.SigninAsync(new Signin.SigninRequest { Name = "GreeterClient" });
-		Console.WriteLine("Log me in!");
-		await LocalStorage.SetItemAsync<string>("username", user.Username);
-		await AuthStateProvid.GetAuthenticationStateAsync();
-		NavigationMenager.NavigateTo("");
+
+		HashAlgorithm hashAlgorithm = SHA512.Create();
+		var hashedData = hashAlgorithm.ComputeHash(Encoding.ASCII.GetBytes(user.Password));
+
+		var reply = await client.SigninRestaurantAsync(new Signin.RestaurantSigninRequest { Restaurantname = user.Username, Password = BitConverter.ToString(hashedData) });
+		if (reply.Outcome)
+		{
+			var userInfo = await client.GetRestaurantInfoAsync(new Signin.RestaurantInfoRequest { RestaurantId = reply.RestaurantId });
+			await LocalStorage.SetItemAsync<string>("username", userInfo.RestaurantName);
+			await LocalStorage.SetItemAsync<int>("RestaurantId", reply.RestaurantId);
+			await LocalStorage.SetItemAsync<float>("Longitude", userInfo.RestaurantLocation.Longitude);
+			await LocalStorage.SetItemAsync<float>("Latitude", userInfo.RestaurantLocation.Latitude);
+			await AuthStateProvid.GetAuthenticationStateAsync();
+			NavigationMenager.NavigateTo("");
+			return;
+		}
+		Console.WriteLine("Login unnsuccesfull");
 	}
 }

@@ -1,0 +1,95 @@
+﻿syntax = "proto3";
+
+package dish;
+import "Protos/Location.proto";
+import "google/protobuf/timestamp.proto";
+
+message addDishRequest{
+	string dishName = 1;
+	float dishPrice = 2;
+	string dishDescription = 3;
+	int32 restaurantId = 4;
+}
+
+message addDishReply{
+	bool outcome = 1;
+	int32 dishId = 2;
+}
+
+message modifyDishRequest{
+	string dishName = 1;
+	float dishPrice = 2;
+	string dishDescription = 3;
+	int32 dishId = 4;
+}
+
+message modifyDishReply{
+	bool outcome = 1;
+}
+
+message ProtoDish{
+	string dishName = 1;
+	float dishPrice = 2;
+	string dishDescription = 3;
+	int32 dishId = 4;
+}
+
+message AllDishesRequest{
+	int32 restaurantId = 1;
+}
+
+message AllDishesResponse{
+	repeated ProtoDish Dishes = 1;
+}
+
+message ProtoOrder{
+	int32 orderId = 1;
+	google.protobuf.Timestamp orderDate = 2;
+	location.Location deliveryLocation = 3;
+	int32 userId = 4;
+	int32 restaurantId = 5;
+	int32 orderStatus = 6;
+	repeated dish.ProtoDish dishes = 7;
+}
+
+message allOrdersRequest{
+	int32 restaurantId = 1;
+}
+
+message allOrdersResponse{
+	repeated ProtoOrder orders = 1;
+}
+
+message addOrderRequest{
+	ProtoOrder order = 1;
+}
+
+message addOrderResponse{
+	bool outcome = 1;
+	int32 orderId = 2;
+}
+
+message orderInfoRequest{
+	int32 orderId = 1;
+}
+
+message orderInfoResponse{
+	ProtoOrder order = 1;
+}
+
+message setOrderStatusRequest{
+	int32 orderId = 1;
+	int32 orderStatus = 2;
+}
+
+message setOrderStatusResponse{
+	bool outcome = 1;
+}
+
+message deleteDishRequest{
+	int32 dishId = 1;
+}
+
+message deleteDishResponse{
+	bool outcome = 1;
+}

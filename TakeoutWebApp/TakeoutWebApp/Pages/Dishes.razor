@@ -1,6 +1,8 @@
 ﻿@page "/dishes"
 @inject HttpClient Http
 @inject NavigationManager NavigationMenager
+@inject Takeout.TakeOutService.TakeOutServiceClient client
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorage
 
 <PageTitle>Dishes</PageTitle>
 
@@ -13,7 +15,7 @@
     </NotAuthorized>
     <Authorized>
         <Button Color="ButtonColor.Primary" @onclick="createDish" class="btn btn-primary" style='float:inline-start;'> Add Dish </Button>
-        @if (forecasts == null)
+        @if (dishes == null)
         {
             <p><em>Loading...</em></p>
         }
@@ -29,13 +31,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var forecast in forecasts)
+                    @foreach (var dish in dishes)
                     {
                         <tr>
-                            <td>@forecast.time.ToShortTimeString()</td>
-                            <td>@forecast.TemperatureC</td>
-                            <td>@forecast.TemperatureF</td>
-                            <td><button type="button" @onclick="() => ShowPosition(forecast.time.ToShortTimeString())" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
+                            <td>@dish.Name</td>
+                            <td>@dish.Description</td>
+                            <td>@dish.Price</td>
+                            <td><button type="button" @onclick="() => editDish(dish)" class="btn btn-primary" style='float:inline-start;'>Edit</button></td>
                         </tr>
                     }
                 </tbody>
@@ -45,34 +47,28 @@
 </AuthorizeView>
 
 @code {
-    private WeatherForecast[]? forecasts;
-    private Dishes[] dishes;
+    private TakeoutWebApp.Shared.Dish[]? dishes;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        var restaurnatId = await LocalStorage.GetItemAsync<int>("RestaurantId");
+        var reply = await client.GetAllDishesAsync(new Dish.AllDishesRequest { RestaurantId = restaurnatId });
+        dishes = new Shared.Dish[reply.Dishes.Count];
+        for (int i = 0; i < reply.Dishes.Count; i++)
+        {
+            var dish = reply.Dishes[i];
+            dishes[i] = new Shared.Dish { restaurant_id = restaurnatId , Name = dish.DishName, Price = dish.DishPrice, Description = dish.DishDescription, Id = dish.DishId};
+        }
     }
     private void createDish()
     {
         NavigationMenager.NavigateTo("/createDish");
     }
 
-    private void ShowPosition(string time)
+    private void editDish(Shared.Dish dish)
     {
         // Console.WriteLine(time);
+        LocalStorage.SetItemAsync<Shared.Dish>("dishToEdit", dish);
         NavigationMenager.NavigateTo("/editDish");
-    }
-
-    public class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-
-        public TimeOnly time { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
 }
