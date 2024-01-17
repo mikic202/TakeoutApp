@@ -49,6 +49,14 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\logo.png",
+      "PackagePath": "staticwebassets\\logo.png"
+    },
+    {
+      "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\logo.png~",
+      "PackagePath": "staticwebassets\\logo.png~"
+    },
+    {
       "Id": "D:\\semestr 5\\NET\\TakeoutApp\\TakeoutWebApp\\TakeoutWebApp\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },

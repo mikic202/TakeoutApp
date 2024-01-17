@@ -45,7 +45,7 @@
                                     }
                                 </InputSelect>
                             </td>
-                            <td><button type="button" @onclick="() => ShowPosition(order.OrderId)" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
+                            <td><button type="button" @onclick="() => SetStatus(order)" class="btn btn-primary" style='float:inline-start;'>SetStatus</button></td>
                         </tr>
                     }
                 </tbody>
@@ -64,9 +64,14 @@
         await GetOrderss();
     }
 
-    private void ShowPosition(int time)
+    private async void SetStatus(Dish.ProtoOrder order)
     {
-        Console.WriteLine(some_chosen);
+        Console.WriteLine("aaaaaaaa");
+        Console.WriteLine(order.OrderStatus);
+        if ((await client.SetOrderStatusAsync(new Dish.setOrderStatusRequest {OrderId = order.OrderId, OrderStatus = order.OrderStatus })).Outcome)
+        {
+            await GetOrderss();
+        }
     }
 
     public class WeatherForecast
@@ -98,6 +103,7 @@
         foreach(var order in reply.Orders)
         {
             Console.WriteLine("Updated Orders");
+            order.OrderStatus = (int)order.OrderStatus;
             orders.Add(order);
         }
         StateHasChanged();

@@ -26,7 +26,7 @@ namespace GRPC_Server.DatsbseInteractors
                     while (await reader.ReadAsync())
                     {
                         orders.Add(new Order { Id = reader.GetInt32(0), restaurantId = reader.GetInt32(1), longitude = reader.GetFloat(4), latitude = reader.GetFloat(5), userId = reader.GetInt32(2)
-                        , date = reader.GetDateTime(3)});
+                        , date = reader.GetDateTime(3), status = reader.GetInt32(6)});
                     }
                 }
             }

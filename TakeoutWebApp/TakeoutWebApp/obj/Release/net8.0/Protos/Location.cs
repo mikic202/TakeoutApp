@@ -25,7 +25,7 @@ namespace Location {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVQcm90b3MvTG9jYXRpb24ucHJvdG8SCGxvY2F0aW9uIi8KCExvY2F0aW9u",
-            "EhAKCGxhdGl0dWRlGAEgASgFEhEKCWxvbmdpdHVkZRgCIAEoBWIGcHJvdG8z"));
+            "EhAKCGxhdGl0dWRlGAEgASgCEhEKCWxvbmdpdHVkZRgCIAEoAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -84,10 +84,10 @@ namespace Location {
 
     /// <summary>Field number for the "latitude" field.</summary>
     public const int LatitudeFieldNumber = 1;
-    private int latitude_;
+    private float latitude_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Latitude {
+    public float Latitude {
       get { return latitude_; }
       set {
         latitude_ = value;
@@ -96,10 +96,10 @@ namespace Location {
 
     /// <summary>Field number for the "longitude" field.</summary>
     public const int LongitudeFieldNumber = 2;
-    private int longitude_;
+    private float longitude_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Longitude {
+    public float Longitude {
       get { return longitude_; }
       set {
         longitude_ = value;
@@ -121,8 +121,8 @@ namespace Location {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Latitude != other.Latitude) return false;
-      if (Longitude != other.Longitude) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Latitude, other.Latitude)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Longitude, other.Longitude)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -130,8 +130,8 @@ namespace Location {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Latitude != 0) hash ^= Latitude.GetHashCode();
-      if (Longitude != 0) hash ^= Longitude.GetHashCode();
+      if (Latitude != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Latitude);
+      if (Longitude != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Longitude);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -150,13 +150,13 @@ namespace Location {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Latitude != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Latitude);
+      if (Latitude != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(Latitude);
       }
-      if (Longitude != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Longitude);
+      if (Longitude != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Longitude);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -168,13 +168,13 @@ namespace Location {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Latitude != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Latitude);
+      if (Latitude != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(Latitude);
       }
-      if (Longitude != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Longitude);
+      if (Longitude != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Longitude);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -186,11 +186,11 @@ namespace Location {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Latitude != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Latitude);
+      if (Latitude != 0F) {
+        size += 1 + 4;
       }
-      if (Longitude != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Longitude);
+      if (Longitude != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -204,10 +204,10 @@ namespace Location {
       if (other == null) {
         return;
       }
-      if (other.Latitude != 0) {
+      if (other.Latitude != 0F) {
         Latitude = other.Latitude;
       }
-      if (other.Longitude != 0) {
+      if (other.Longitude != 0F) {
         Longitude = other.Longitude;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -225,12 +225,12 @@ namespace Location {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
-            Latitude = input.ReadInt32();
+          case 13: {
+            Latitude = input.ReadFloat();
             break;
           }
-          case 16: {
-            Longitude = input.ReadInt32();
+          case 21: {
+            Longitude = input.ReadFloat();
             break;
           }
         }
@@ -248,12 +248,12 @@ namespace Location {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
-            Latitude = input.ReadInt32();
+          case 13: {
+            Latitude = input.ReadFloat();
             break;
           }
-          case 16: {
-            Longitude = input.ReadInt32();
+          case 21: {
+            Longitude = input.ReadFloat();
             break;
           }
         }

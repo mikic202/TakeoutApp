@@ -52,7 +52,7 @@
             {
                 Password = BitConverter.ToString(hashedData),
                 RestaurantName = user.Username,
-                RestaurantLocation = new Location.Location { Longitude = (int)user.Longitude, Latitude = (int)user.Latitude }
+                RestaurantLocation = new Location.Location { Longitude = user.Longitude, Latitude = user.Latitude }
             });
             if(reply.Outcome)
                 NavigationMenager.NavigateTo("/login");

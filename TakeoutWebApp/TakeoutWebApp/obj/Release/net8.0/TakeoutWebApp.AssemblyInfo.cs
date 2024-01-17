@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TakeoutWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9dd7cbf7b66ba97097153c7369d7e44c317c6e28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c9125250ebcebf2565ee455d7c43836b3a096d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("TakeoutWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TakeoutWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

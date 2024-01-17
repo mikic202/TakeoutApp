@@ -155,12 +155,14 @@ namespace Takeout_Server.Services
                         order.Dishes.Add(new ProtoDish { DishId = dish.Id, DishName = dish.Name, DishDescription = dish.Description, DishPrice = dish.Price });
                     }
                     order.DeliveryLocation = new Location.Location();
-                    order.DeliveryLocation.Latitude = (int)order_to_add.latitude;
-                    order.DeliveryLocation.Longitude = (int)order_to_add.longitude;
+                    order.DeliveryLocation.Latitude = order_to_add.latitude;
+                    order.DeliveryLocation.Longitude = order_to_add.longitude;
                     order.OrderDate = Timestamp.FromDateTime(DateTime.SpecifyKind(order_to_add.date, DateTimeKind.Utc));
                     order.OrderId = order_to_add.Id;
                     order.UserId = order_to_add.userId;
+                    order.OrderStatus = order_to_add.status;
                     reply.Orders.Add(order);
+                   
                 }
 
             }
@@ -215,7 +217,7 @@ namespace Takeout_Server.Services
                         RestaurantId = order.restaurantId,
                         OrderStatus = order.status,
                         OrderDate = new Timestamp { Seconds = order.date.Second },
-                        DeliveryLocation = new Location.Location { Latitude = (int)order.latitude, Longitude = (int)order.longitude }
+                        DeliveryLocation = new Location.Location { Latitude = order.latitude, Longitude = order.longitude }
                     }
                 };
             }
@@ -233,6 +235,8 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
+                Console.WriteLine(request.OrderId);
+                conn.Open();
                 return new setOrderStatusResponse { Outcome = await OrdersDatabaseInteractor.changeOrderStatus(request.OrderId, request.OrderStatus, conn) };
             }
         }
@@ -300,7 +304,7 @@ namespace Takeout_Server.Services
                 var restaurnt = await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn);
                 reply.RestaurantName = restaurnt["restaurnatName"];
                 Console.WriteLine(restaurnt["Longitude"]);
-				reply.RestaurantLocation = new Location.Location { Longitude = (int)decimal.Parse(restaurnt["Longitude"]), Latitude = (int)decimal.Parse(restaurnt["Latitude"]) };
+				reply.RestaurantLocation = new Location.Location { Longitude = (float)decimal.Parse(restaurnt["Longitude"]), Latitude = (float)decimal.Parse(restaurnt["Latitude"]) };
 			}
 			return reply;
 		}
