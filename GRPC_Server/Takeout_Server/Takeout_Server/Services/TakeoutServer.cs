@@ -86,7 +86,7 @@ namespace Takeout_Server.Services
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 conn.Open();
-                return new RegisterRestaurantReply { Outcome = await RestaurantDatabaseInteractor.registerRestaurant(requrst.RestaurantName, requrst.Password, conn) };
+                return new RegisterRestaurantReply { Outcome = await RestaurantDatabaseInteractor.registerRestaurant(requrst.RestaurantName, requrst.Password, requrst.RestaurantLocation.Longitude, requrst.RestaurantLocation.Latitude, conn) };
             }
         }
 

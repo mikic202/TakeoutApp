@@ -28,7 +28,7 @@ namespace GRPC_Server.DatsbseInteractors
 			return true;
 		}
 
-		async public static Task<bool> registerRestaurant(string restaurantName, string password, MySqlConnection connection)
+		async public static Task<bool> registerRestaurant(string restaurantName, string password, float longitude, float latitude, MySqlConnection connection)
 		{
 			// password should be hashed on the users end
 			if( await checkRestaurantsExistance(restaurantName, connection))
@@ -37,7 +37,7 @@ namespace GRPC_Server.DatsbseInteractors
 			}
 			using (var command = connection.CreateCommand())
 			{
-				command.CommandText = $"INSERT INTO restaurants (restaurnat_name, password) values (\"{restaurantName}\", \"{password}\");";
+				command.CommandText = $"INSERT INTO restaurants (restaurnat_name, password, longitude, latitude) values (\"{restaurantName}\", \"{password}\", {longitude}, {latitude});";
 				await command.ExecuteNonQueryAsync();
 
 			}
