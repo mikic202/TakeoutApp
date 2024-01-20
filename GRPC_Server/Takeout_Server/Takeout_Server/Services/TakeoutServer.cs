@@ -20,15 +20,7 @@ namespace Takeout_Server.Services
         async public override Task<SigninReply> Signin(SigninRequest request, ServerCallContext context)
         {
             Console.WriteLine("Got message");
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 if (!await UserDatabsaeInteractor.checkUserExistance(request.Usertname, conn))
@@ -41,20 +33,13 @@ namespace Takeout_Server.Services
                     return new SigninReply { Outcome = false };
                 }
                 var reply = new SigninReply { Outcome = true, UserId = int.Parse(user_info["UserId"]) };
+                conn.Close();
                 return reply;
             }
         }
         public override async Task<RestaurantSigninReply> SigninRestaurant(RestaurantSigninRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 if (!await RestaurantDatabaseInteractor.checkRestaurantsExistance(request.Restaurantname, conn))
@@ -67,6 +52,7 @@ namespace Takeout_Server.Services
                     return new RestaurantSigninReply { Outcome = false };
                 }
                 var reply = new RestaurantSigninReply { Outcome = true, RestaurantId = int.Parse(restaurantInfo["RestaurantId"]) };
+                conn.Close();
                 return reply;
             }
         }
@@ -74,16 +60,8 @@ namespace Takeout_Server.Services
         public override async Task<RegisterRestaurantReply> RegisterRestaurant(RegisterRestaurantRequest requrst, ServerCallContext context)
         {
             Console.WriteLine("Got register request");
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
             Console.WriteLine("Greeting ");
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 return new RegisterRestaurantReply { Outcome = await RestaurantDatabaseInteractor.registerRestaurant(requrst.RestaurantName, requrst.Password, requrst.RestaurantLocation.Longitude, requrst.RestaurantLocation.Latitude, conn) };
@@ -93,16 +71,8 @@ namespace Takeout_Server.Services
         public override async Task<addDishReply> AddDish(addDishRequest requrst, ServerCallContext context)
         {
             Console.WriteLine("Got register request");
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
             Console.WriteLine("Greeting ");
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 return new addDishReply
@@ -115,15 +85,7 @@ namespace Takeout_Server.Services
 
         public override async Task<modifyDishReply> ModifyDish(modifyDishRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 return new modifyDishReply
@@ -135,16 +97,8 @@ namespace Takeout_Server.Services
 
         public override async Task<allOrdersResponse> GetAllOrders(allOrdersRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
             var reply = new allOrdersResponse();
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 foreach (Order order_to_add in await OrdersDatabaseInteractor.getOrders(request.RestaurantId, conn))
@@ -164,6 +118,7 @@ namespace Takeout_Server.Services
                     reply.Orders.Add(order);
                    
                 }
+                conn.Close();
 
             }
             return reply;
@@ -171,14 +126,6 @@ namespace Takeout_Server.Services
 
         public override async Task<addOrderResponse> AddOrder(addOrderRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
             var order = new Order();
             order.fillWithProtoOrder(request.Order);
             List<int> dishes = new List<int> { };
@@ -187,25 +134,18 @@ namespace Takeout_Server.Services
                 dishes.Add(dish.DishId);
             }
             var reply = new addOrderResponse();
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 reply = new addOrderResponse { Outcome = await OrdersDatabaseInteractor.addOrder(order, dishes, conn) };
+                conn.Close();
             }
             return reply;
         }
 
         public override async Task<orderInfoResponse> GetOrderInfo(orderInfoRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
 				conn.Open();
 				var order = await OrdersDatabaseInteractor.getOrderInfo(request.OrderId, conn);
@@ -226,15 +166,7 @@ namespace Takeout_Server.Services
 
         public override async Task<setOrderStatusResponse> SetOrderStatus(setOrderStatusRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 return new setOrderStatusResponse { Outcome = await OrdersDatabaseInteractor.changeOrderStatus(request.OrderId, request.OrderStatus, conn) };
@@ -243,15 +175,7 @@ namespace Takeout_Server.Services
 
         public override async Task<ModifyRestaurantInformationResponse> ModifyRestaurantInfo(ModifyRestaurantInformationRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
 				conn.Open();
 				Console.WriteLine("aaaaa");
@@ -269,20 +193,13 @@ namespace Takeout_Server.Services
         }
         public override async Task<ModifyRestaurantPasswordResponse> ModifyRestaurantPassword(ModifyRestaurantPasswordRequest request, ServerCallContext context)
         {
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
 				conn.Open();
                 
 				if (!(await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"].Equals(request.Password))
 				{
+                    conn.Close();
                     return new ModifyRestaurantPasswordResponse { Outcome = false };
                 }
                 return new ModifyRestaurantPasswordResponse
@@ -295,37 +212,22 @@ namespace Takeout_Server.Services
 		public override async Task<RestaurantInfoReply> GetRestaurantInfo(RestaurantInfoRequest request, ServerCallContext context)
 		{
             var reply = new RestaurantInfoReply();
-			var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
 			{
                 conn.Open();
                 var restaurnt = await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn);
                 reply.RestaurantName = restaurnt["restaurnatName"];
                 Console.WriteLine(restaurnt["Longitude"]);
 				reply.RestaurantLocation = new Location.Location { Longitude = (float)decimal.Parse(restaurnt["Longitude"]), Latitude = (float)decimal.Parse(restaurnt["Latitude"]) };
-			}
+                conn.Close();
+            }
 			return reply;
 		}
 
         public override async Task<AllDishesResponse> GetAllDishes(AllDishesRequest request, ServerCallContext context)
         {
             var reply = new AllDishesResponse();
-            var builder = new MySqlConnectionStringBuilder
-            {
-                Server = "127.0.0.1",
-                Port = 3306,
-                Database = "takout_db",
-                UserID = "root",
-                Password = "",
-            };
-            using (var conn = new MySqlConnection(builder.ConnectionString))
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
                 conn.Open();
                 var dishes = await DishDatabseInteractor.getRestaurantsDishes(request.RestaurantId, conn);
@@ -333,21 +235,14 @@ namespace Takeout_Server.Services
                 {
                     reply.Dishes.Add(new ProtoDish { DishDescription = dish.Description, DishId = dish.Id, DishPrice = dish.Price, DishName = dish.Name });
                 }
+                conn.Close();
             }
             return reply;
         }
 
 		public override async Task<deleteDishResponse> DeleteDish(deleteDishRequest request, ServerCallContext context)
 		{
-			var builder = new MySqlConnectionStringBuilder
-			{
-				Server = "127.0.0.1",
-				Port = 3306,
-				Database = "takout_db",
-				UserID = "root",
-				Password = "",
-			};
-			using (var conn = new MySqlConnection(builder.ConnectionString))
+			using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
 			{
 				conn.Open();
 				return new deleteDishResponse
