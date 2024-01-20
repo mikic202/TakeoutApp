@@ -1,10 +1,12 @@
 ﻿using MySqlConnector;
+using Signin;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Takeout_Server.Services;
 
 namespace GRPC_Server.DatsbseInteractors
 {
@@ -125,6 +127,31 @@ namespace GRPC_Server.DatsbseInteractors
 
             }
             return true;
+        }
+
+        async public static Task<List<RestaurantInfoReply>> getRestaurantsInProximity(float latitude, float longitude, float proximity, MySqlConnection connection)
+        {
+            var restaurants = new List<RestaurantInfoReply>();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "Select * from restaurants where ABS(longitude -  @long) <  @prox and ABS(latitude -  @lat) < @prox;";
+                command.Parameters.AddWithValue("@lat", latitude);
+                command.Parameters.AddWithValue("@long", longitude);
+                command.Parameters.AddWithValue("@prox", proximity);
+                using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        restaurants.Add(new RestaurantInfoReply
+                        {
+                            RestaurantId = reader.GetInt32(0),
+                            RestaurantName = reader.GetString(1),
+                            RestaurantLocation = new Location.Location { Latitude = (float)reader.GetDecimal(4), Longitude = (float)reader.GetDecimal(3) }
+                        });
+                    }
+                }
+            }
+            return restaurants;
         }
     }
 }

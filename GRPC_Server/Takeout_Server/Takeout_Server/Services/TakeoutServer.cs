@@ -178,8 +178,6 @@ namespace Takeout_Server.Services
             using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
             {
 				conn.Open();
-				Console.WriteLine("aaaaa");
-                Console.WriteLine((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn)).Keys.Count);
 				if ((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn)).Keys.Count == 0)
                 {
                     return new ModifyRestaurantInformationResponse { Outcome = false };
@@ -218,6 +216,7 @@ namespace Takeout_Server.Services
                 var restaurnt = await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn);
                 reply.RestaurantName = restaurnt["restaurnatName"];
                 Console.WriteLine(restaurnt["Longitude"]);
+                reply.RestaurantId = request.RestaurantId;
 				reply.RestaurantLocation = new Location.Location { Longitude = (float)decimal.Parse(restaurnt["Longitude"]), Latitude = (float)decimal.Parse(restaurnt["Latitude"]) };
                 conn.Close();
             }
@@ -251,6 +250,22 @@ namespace Takeout_Server.Services
 				};
 			}
 		}
-	}
+
+        public override async Task<getRestaurantsInProximityResponse> GetRestaurantsInProximity(getRestaurantsInProximityRequest request, ServerCallContext context)
+        {
+            var reply = new getRestaurantsInProximityResponse();
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
+            {
+                conn.Open();
+                foreach (var restaurant in await RestaurantDatabaseInteractor.getRestaurantsInProximity(request.UserLocation.Latitude, request.UserLocation.Longitude, request.Proximity, conn))
+                {
+                    reply.Restaurants.Add(restaurant);
+                }
+                conn.Close();
+            }
+            return reply;
+        }
+
+    }
 
 }
