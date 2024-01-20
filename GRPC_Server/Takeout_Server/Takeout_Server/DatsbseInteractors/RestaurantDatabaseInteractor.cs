@@ -94,12 +94,13 @@ namespace GRPC_Server.DatsbseInteractors
 		{
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "update restaurants set name=@price, latitude=@description, longitude=@name where restaurant_id=@dish_id";
+                command.CommandText = "update restaurants set restaurnat_name=@price, latitude=@description, longitude=@name where restaurantId=@rest_id";
                 command.Parameters.AddWithValue("@price", restaurantName);
                 command.Parameters.AddWithValue("@description", latitude);
                 command.Parameters.AddWithValue("@name", Longitude);
-                command.Parameters.AddWithValue("@dish_id", restaurantId);
-                try
+                command.Parameters.AddWithValue("@rest_id", restaurantId);
+				//await command.ExecuteNonQueryAsync();
+				try
                 {
                     await command.ExecuteNonQueryAsync();
                 }
@@ -113,7 +114,7 @@ namespace GRPC_Server.DatsbseInteractors
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "update restaurants set password = @pass where restaurant_id=@dish_id";
+                command.CommandText = "update restaurants set password = @pass where restaurantId=@dish_id";
                 command.Parameters.AddWithValue("@pass", password);
                 command.Parameters.AddWithValue("@dish_id", restaurantId);
                 try

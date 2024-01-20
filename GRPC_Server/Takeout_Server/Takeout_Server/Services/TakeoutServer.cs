@@ -207,7 +207,8 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
-                var order = await OrdersDatabaseInteractor.getOrderInfo(request.OrderId, conn);
+				conn.Open();
+				var order = await OrdersDatabaseInteractor.getOrderInfo(request.OrderId, conn);
                 return new orderInfoResponse
                 {
                     Order = new ProtoOrder
@@ -235,7 +236,6 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
-                Console.WriteLine(request.OrderId);
                 conn.Open();
                 return new setOrderStatusResponse { Outcome = await OrdersDatabaseInteractor.changeOrderStatus(request.OrderId, request.OrderStatus, conn) };
             }
@@ -253,7 +253,10 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
-                if (!(await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"].Equals(request.Password))
+				conn.Open();
+				Console.WriteLine("aaaaa");
+                Console.WriteLine((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn)).Keys.Count);
+				if ((await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn)).Keys.Count == 0)
                 {
                     return new ModifyRestaurantInformationResponse { Outcome = false };
                 }
@@ -276,13 +279,15 @@ namespace Takeout_Server.Services
             };
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
+				conn.Open();
+                
 				if (!(await RestaurantDatabaseInteractor.getRestaurantInformation(request.RestaurantId, conn))["Password"].Equals(request.Password))
 				{
                     return new ModifyRestaurantPasswordResponse { Outcome = false };
                 }
                 return new ModifyRestaurantPasswordResponse
                 {
-                    Outcome = await RestaurantDatabaseInteractor.setRestaurantPassword(request.RestaurantId, request.Password, conn)
+                    Outcome = await RestaurantDatabaseInteractor.setRestaurantPassword(request.RestaurantId, request.NewPassword, conn)
                 };
             }
         }

@@ -1,30 +1,31 @@
 ﻿@page "/editRestaurant"
 @inject NavigationManager NavigationMenager
+@inject Blazored.LocalStorage.ISyncLocalStorageService LocalStorage
+@inject Takeout.TakeOutService.TakeOutServiceClient client
 
 <h3>Dish editor</h3>
 
-<EditForm Model="dish">
+<EditForm Model="user">
 	<div class="form-group">
-		<lable for="username">Dish name</lable>
-		<InputText id="username" @bind-Value="user.Username" class="form-control">some_name</InputText>
+		<lable for="username">Restaurant Name</lable>
+		<InputText id="username" @bind-Value="user.Username" class="form-control"></InputText>
 	</div>
 	<div class="form-group">
 		<lable for="Longitude">Longitude</lable>
-		<InputNumber id="Longitude" @bind-Value="user.Longitude" class="form-control"></InputNumber>
+		<InputNumber id="Longitude" @bind-Value="user.Longitude" class="form-control" @bind-Value:format="F2"></InputNumber>
 	</div>
 	<div class="form-group">
 		<lable for="Latitude">Latitude</lable>
-		<InputNumber id="Latitude" @bind-Value="user.Latitude" class="form-control"></InputNumber>
+		<InputNumber id="Latitude" @bind-Value="user.Latitude" class="form-control" @bind-Value:format="F2"></InputNumber>
 	</div>
 	<div class="form-group">
 		<label></label>
 	</div>
 	<div>
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
+		<div class="inner"><button type="submit" @onclick="saveCahnges" class="btn btn-primary" style='float:inline-start;'>Save</button></div>
 		@* <div class="divider"></div> *@
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
+		<div class="inner"><button type="submit" @onclick="abortNavigate" class="btn btn-primary" style='float:inline-start;'>Abort</button></div>
 		@* <div class="divider"></div> *@
-		<div class="inner"><button type="submit" class="btn btn-primary" style='float:inline-start;'>Delete</button></div>
 	</div>
 	<div class="form-group">
 		<button type="button" @onclick="navigate" class="btn btn-primary" style='float:inline-start;'>Edit password</button>
@@ -32,15 +33,39 @@
 </EditForm>
 
 @code {
-	private Shared.Dish dish = new Shared.Dish();
 	private Shared.User user = new Shared.User();
 
-	protected override async Task OnInitializedAsync()
+	protected override void OnInitialized()
 	{
-		// dish.Price = 1234;
+		user.Username = LocalStorage.GetItemAsString("username").Trim(new Char[] { ' ', '"' });
+		user.Latitude = float.Parse(LocalStorage.GetItemAsString("Latitude").Replace(".", ","));
+		user.Longitude = float.Parse(LocalStorage.GetItemAsString("Longitude").Replace(".", ","));
 	}
 
 	private void navigate(){
 		NavigationMenager.NavigateTo("/editPassword");
+	}
+
+	private void abortNavigate()
+	{
+		NavigationMenager.NavigateTo("");
+	}
+
+	private async void saveCahnges()
+	{
+		var reply = await client.ModifyRestaurantInfoAsync(new ProtoRegister.ModifyRestaurantInformationRequest
+			{
+				RestaurantId = int.Parse(LocalStorage.GetItemAsString("RestaurantId")),
+				RestaurantLocation = new Location.Location { Latitude = user.Latitude, Longitude = user.Longitude },
+				RestaurantName = user.Username
+		});
+		if (reply.Outcome)
+		{
+			var userInfo = await client.GetRestaurantInfoAsync(new Signin.RestaurantInfoRequest { RestaurantId = int.Parse(LocalStorage.GetItemAsString("RestaurantId")) });
+			LocalStorage.SetItem<string>("username", userInfo.RestaurantName);
+			LocalStorage.SetItem<float>("Longitude", userInfo.RestaurantLocation.Longitude);
+			LocalStorage.SetItem<float>("Latitude", userInfo.RestaurantLocation.Latitude);
+			NavigationMenager.NavigateTo("");
+		}
 	}
 }
