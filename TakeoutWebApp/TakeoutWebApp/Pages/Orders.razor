@@ -35,7 +35,7 @@
                     {
                         <tr>
                             <td>@order.OrderDate.ToDateTime().ToShortDateString()</td>
-                            <td>@order.Dishes.Count</td>
+                            <td>@getDishesNames(order)</td>
                             <td>@order.DeliveryLocation.ToString()</td>
                             <td>
                                 <InputSelect id="department" @bind-Value=@order.OrderStatus>
@@ -57,7 +57,6 @@
 
 @code {
     private List<Dish.ProtoOrder> orders = new List<Dish.ProtoOrder>();
-    string some_chosen = "ddddd";
     private readonly int[] STATUS_VALUE = { 0, 1, 2, 3 };
     protected override async Task OnInitializedAsync()
     {
@@ -66,8 +65,6 @@
 
     private async void SetStatus(Dish.ProtoOrder order)
     {
-        Console.WriteLine("aaaaaaaa");
-        Console.WriteLine(order.OrderStatus);
         if ((await client.SetOrderStatusAsync(new Dish.setOrderStatusRequest {OrderId = order.OrderId, OrderStatus = order.OrderStatus })).Outcome)
         {
             await GetOrderss();
@@ -93,6 +90,16 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await JSRuntime.InvokeVoidAsync("OrdersInterop.refreshOrdersData");
+    }
+
+    private string getDishesNames(Dish.ProtoOrder order)
+    {
+        string dishesNames = "";
+        foreach(var dish in order.Dishes)
+        {
+            dishesNames += $"{dish.DishName}, ";
+        }
+        return dishesNames.Substring(0, dishesNames.Length - 2);
     }
 
     // This method will be called on button click.

@@ -31,9 +31,14 @@ namespace Signin {
             "AiABKAUiNAoNU2lnbmluUmVxdWVzdBIRCgl1c2VydG5hbWUYASABKAkSEAoI",
             "cGFzc3dvcmQYAiABKAkiLgoLU2lnbmluUmVwbHkSDwoHb3V0Y29tZRgBIAEo",
             "CBIOCgZ1c2VySWQYAiABKAUiLQoVUmVzdGF1cmFudEluZm9SZXF1ZXN0EhQK",
-            "DHJlc3RhdXJhbnRJZBgBIAEoBSJdChNSZXN0YXVyYW50SW5mb1JlcGx5EhYK",
+            "DHJlc3RhdXJhbnRJZBgBIAEoBSJzChNSZXN0YXVyYW50SW5mb1JlcGx5EhYK",
             "DnJlc3RhdXJhbnROYW1lGAEgASgJEi4KEnJlc3RhdXJhbnRMb2NhdGlvbhgC",
-            "IAEoCzISLmxvY2F0aW9uLkxvY2F0aW9uYgZwcm90bzM="));
+            "IAEoCzISLmxvY2F0aW9uLkxvY2F0aW9uEhQKDHJlc3RhdXJhbnRJZBgDIAEo",
+            "BSJfCiBnZXRSZXN0YXVyYW50c0luUHJveGltaXR5UmVxdWVzdBIoCgx1c2Vy",
+            "TG9jYXRpb24YASABKAsyEi5sb2NhdGlvbi5Mb2NhdGlvbhIRCglwcm94aW1p",
+            "dHkYAiABKAIiVQohZ2V0UmVzdGF1cmFudHNJblByb3hpbWl0eVJlc3BvbnNl",
+            "EjAKC3Jlc3RhdXJhbnRzGAEgAygLMhsuc2lnbmluLlJlc3RhdXJhbnRJbmZv",
+            "UmVwbHliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Location.LocationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -42,7 +47,9 @@ namespace Signin {
             new pbr::GeneratedClrTypeInfo(typeof(global::Signin.SigninRequest), global::Signin.SigninRequest.Parser, new[]{ "Usertname", "Password" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Signin.SigninReply), global::Signin.SigninReply.Parser, new[]{ "Outcome", "UserId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantInfoRequest), global::Signin.RestaurantInfoRequest.Parser, new[]{ "RestaurantId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantInfoReply), global::Signin.RestaurantInfoReply.Parser, new[]{ "RestaurantName", "RestaurantLocation" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.RestaurantInfoReply), global::Signin.RestaurantInfoReply.Parser, new[]{ "RestaurantName", "RestaurantLocation", "RestaurantId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.getRestaurantsInProximityRequest), global::Signin.getRestaurantsInProximityRequest.Parser, new[]{ "UserLocation", "Proximity" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Signin.getRestaurantsInProximityResponse), global::Signin.getRestaurantsInProximityResponse.Parser, new[]{ "Restaurants" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1184,6 +1191,7 @@ namespace Signin {
     public RestaurantInfoReply(RestaurantInfoReply other) : this() {
       restaurantName_ = other.restaurantName_;
       restaurantLocation_ = other.restaurantLocation_ != null ? other.restaurantLocation_.Clone() : null;
+      restaurantId_ = other.restaurantId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1217,6 +1225,18 @@ namespace Signin {
       }
     }
 
+    /// <summary>Field number for the "restaurantId" field.</summary>
+    public const int RestaurantIdFieldNumber = 3;
+    private int restaurantId_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int RestaurantId {
+      get { return restaurantId_; }
+      set {
+        restaurantId_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1234,6 +1254,7 @@ namespace Signin {
       }
       if (RestaurantName != other.RestaurantName) return false;
       if (!object.Equals(RestaurantLocation, other.RestaurantLocation)) return false;
+      if (RestaurantId != other.RestaurantId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1243,6 +1264,7 @@ namespace Signin {
       int hash = 1;
       if (RestaurantName.Length != 0) hash ^= RestaurantName.GetHashCode();
       if (restaurantLocation_ != null) hash ^= RestaurantLocation.GetHashCode();
+      if (RestaurantId != 0) hash ^= RestaurantId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1269,6 +1291,10 @@ namespace Signin {
         output.WriteRawTag(18);
         output.WriteMessage(RestaurantLocation);
       }
+      if (RestaurantId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(RestaurantId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1287,6 +1313,10 @@ namespace Signin {
         output.WriteRawTag(18);
         output.WriteMessage(RestaurantLocation);
       }
+      if (RestaurantId != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(RestaurantId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1302,6 +1332,9 @@ namespace Signin {
       }
       if (restaurantLocation_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(RestaurantLocation);
+      }
+      if (RestaurantId != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(RestaurantId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1323,6 +1356,9 @@ namespace Signin {
           RestaurantLocation = new global::Location.Location();
         }
         RestaurantLocation.MergeFrom(other.RestaurantLocation);
+      }
+      if (other.RestaurantId != 0) {
+        RestaurantId = other.RestaurantId;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1350,6 +1386,10 @@ namespace Signin {
             input.ReadMessage(RestaurantLocation);
             break;
           }
+          case 24: {
+            RestaurantId = input.ReadInt32();
+            break;
+          }
         }
       }
     #endif
@@ -1374,6 +1414,425 @@ namespace Signin {
               RestaurantLocation = new global::Location.Location();
             }
             input.ReadMessage(RestaurantLocation);
+            break;
+          }
+          case 24: {
+            RestaurantId = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class getRestaurantsInProximityRequest : pb::IMessage<getRestaurantsInProximityRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<getRestaurantsInProximityRequest> _parser = new pb::MessageParser<getRestaurantsInProximityRequest>(() => new getRestaurantsInProximityRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<getRestaurantsInProximityRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Signin.SignInReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityRequest(getRestaurantsInProximityRequest other) : this() {
+      userLocation_ = other.userLocation_ != null ? other.userLocation_.Clone() : null;
+      proximity_ = other.proximity_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityRequest Clone() {
+      return new getRestaurantsInProximityRequest(this);
+    }
+
+    /// <summary>Field number for the "userLocation" field.</summary>
+    public const int UserLocationFieldNumber = 1;
+    private global::Location.Location userLocation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Location.Location UserLocation {
+      get { return userLocation_; }
+      set {
+        userLocation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "proximity" field.</summary>
+    public const int ProximityFieldNumber = 2;
+    private float proximity_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float Proximity {
+      get { return proximity_; }
+      set {
+        proximity_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as getRestaurantsInProximityRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(getRestaurantsInProximityRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(UserLocation, other.UserLocation)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Proximity, other.Proximity)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (userLocation_ != null) hash ^= UserLocation.GetHashCode();
+      if (Proximity != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Proximity);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (userLocation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UserLocation);
+      }
+      if (Proximity != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Proximity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (userLocation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(UserLocation);
+      }
+      if (Proximity != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(Proximity);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (userLocation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UserLocation);
+      }
+      if (Proximity != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(getRestaurantsInProximityRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.userLocation_ != null) {
+        if (userLocation_ == null) {
+          UserLocation = new global::Location.Location();
+        }
+        UserLocation.MergeFrom(other.UserLocation);
+      }
+      if (other.Proximity != 0F) {
+        Proximity = other.Proximity;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (userLocation_ == null) {
+              UserLocation = new global::Location.Location();
+            }
+            input.ReadMessage(UserLocation);
+            break;
+          }
+          case 21: {
+            Proximity = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (userLocation_ == null) {
+              UserLocation = new global::Location.Location();
+            }
+            input.ReadMessage(UserLocation);
+            break;
+          }
+          case 21: {
+            Proximity = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class getRestaurantsInProximityResponse : pb::IMessage<getRestaurantsInProximityResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<getRestaurantsInProximityResponse> _parser = new pb::MessageParser<getRestaurantsInProximityResponse>(() => new getRestaurantsInProximityResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<getRestaurantsInProximityResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Signin.SignInReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityResponse(getRestaurantsInProximityResponse other) : this() {
+      restaurants_ = other.restaurants_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public getRestaurantsInProximityResponse Clone() {
+      return new getRestaurantsInProximityResponse(this);
+    }
+
+    /// <summary>Field number for the "restaurants" field.</summary>
+    public const int RestaurantsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Signin.RestaurantInfoReply> _repeated_restaurants_codec
+        = pb::FieldCodec.ForMessage(10, global::Signin.RestaurantInfoReply.Parser);
+    private readonly pbc::RepeatedField<global::Signin.RestaurantInfoReply> restaurants_ = new pbc::RepeatedField<global::Signin.RestaurantInfoReply>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Signin.RestaurantInfoReply> Restaurants {
+      get { return restaurants_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as getRestaurantsInProximityResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(getRestaurantsInProximityResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!restaurants_.Equals(other.restaurants_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= restaurants_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      restaurants_.WriteTo(output, _repeated_restaurants_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      restaurants_.WriteTo(ref output, _repeated_restaurants_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += restaurants_.CalculateSize(_repeated_restaurants_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(getRestaurantsInProximityResponse other) {
+      if (other == null) {
+        return;
+      }
+      restaurants_.Add(other.restaurants_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            restaurants_.AddEntriesFrom(input, _repeated_restaurants_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            restaurants_.AddEntriesFrom(ref input, _repeated_restaurants_codec);
             break;
           }
         }

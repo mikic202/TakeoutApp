@@ -31,4 +31,14 @@ message RestaurantInfoRequest {
 message RestaurantInfoReply {
 	string restaurantName = 1;
 	location.Location restaurantLocation = 2;
+	int32 restaurantId = 3;
+}
+
+message getRestaurantsInProximityRequest{
+	location.Location userLocation = 1;
+	float proximity = 2;
+}
+
+message getRestaurantsInProximityResponse{
+	repeated RestaurantInfoReply restaurants = 1;
 }
