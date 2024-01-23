@@ -36,7 +36,7 @@
                         <tr>
                             <td>@order.OrderDate.ToDateTime().ToShortDateString()</td>
                             <td>@getDishesNames(order)</td>
-                            <td>@order.DeliveryLocation.ToString()</td>
+                            <td>@order.DeliveryLocation.Latitude.ToString(numberCulture)  @order.DeliveryLocation.Longitude.ToString(numberCulture)</td>
                             <td>
                                 <InputSelect id="department" @bind-Value=@order.OrderStatus>
                                     @foreach (int stat in STATUS_VALUE)
@@ -56,6 +56,7 @@
 </AuthorizeView>
 
 @code {
+    public System.Globalization.CultureInfo numberCulture = new System.Globalization.CultureInfo("en-US");
     private List<Dish.ProtoOrder> orders = new List<Dish.ProtoOrder>();
     private readonly int[] STATUS_VALUE = { 0, 1, 2, 3 };
     protected override async Task OnInitializedAsync()

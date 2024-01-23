@@ -266,6 +266,29 @@ namespace Takeout_Server.Services
             return reply;
         }
 
+        public override async Task<getTimeToOrderReply>GetTimeToOrder(getTimeToOrderRequest request, ServerCallContext context)
+        {
+            var reply = new getTimeToOrderReply() {TimeToOrder = 0 };
+            int[] minutesForStep = {10, 10 };
+            int minutesForDegree = 50;
+            using (var conn = new MySqlConnection(DatsbseInteractors.ConnectionBuilder.getConnectionString()))
+            {
+                conn.Open();
+                var order = await OrdersDatabaseInteractor.getOrderInfo(request.OrderId, conn);
+                var restaurantInfo = await RestaurantDatabaseInteractor.getRestaurantInformation(order.restaurantId, conn);
+                if(order.status < 3)
+                {
+                    reply.TimeToOrder += (int)(minutesForDegree * Math.Sqrt(Math.Pow(order.latitude - float.Parse(restaurantInfo["Latitude"]), 2) + Math.Pow(order.longitude - float.Parse(restaurantInfo["Longitude"]), 2)));
+                }
+                for (int i = order.status; i < 3; i++)
+                {
+                    reply.TimeToOrder += minutesForStep[i];
+                }
+                conn.Close();
+            }
+            return reply;
+        }
+
     }
 
 }

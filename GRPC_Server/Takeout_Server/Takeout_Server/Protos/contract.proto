@@ -22,4 +22,5 @@ service TakeOutService {
   rpc GetRestaurantInfo(signin.RestaurantInfoRequest) returns (signin.RestaurantInfoReply);
   rpc DeleteDish(dish.deleteDishRequest) returns (dish.deleteDishResponse);
   rpc GetRestaurantsInProximity(signin.getRestaurantsInProximityRequest) returns (signin.getRestaurantsInProximityResponse);
+  rpc GetTimeToOrder(dish.getTimeToOrderRequest) returns (dish.getTimeToOrderReply);
 }
