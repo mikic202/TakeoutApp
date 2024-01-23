@@ -11,3 +11,15 @@ Debug/
 *.protodep
 *.pdb
 */bin/*
+*/PublishProfiles/*
+*/Release/*
+*.json
+*.props
+*.cs
+*.CopyComplete
+*.editorconfig
+*.txt
+*.user
+*.pubxml
+*.xml
+*.config

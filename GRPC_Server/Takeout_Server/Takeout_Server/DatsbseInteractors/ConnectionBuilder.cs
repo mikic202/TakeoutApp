@@ -7,11 +7,11 @@ namespace Takeout_Server.DatsbseInteractors
     {
         public static MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder
         {
-            Server = "127.0.0.1",
+            Server = "takeout.mysql.database.azure.com",
             Port = 3306,
             Database = "takout_db",
-            UserID = "root",
-            Password = "",
+            UserID = "mchomans",
+            Password = "___",
         };
 
         public static string getConnectionString()

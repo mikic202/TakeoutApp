@@ -30,7 +30,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services
 	.AddGrpcClient<TakeOutService.TakeOutServiceClient>(options =>
 	{
-		options.Address = new Uri("https://localhost:7073");
+		options.Address = new Uri("https://takeoutserver20240123213756.azurewebsites.net");
 	})
 	.ConfigurePrimaryHttpMessageHandler(
 		() => new GrpcWebHandler(new HttpClientHandler()));
