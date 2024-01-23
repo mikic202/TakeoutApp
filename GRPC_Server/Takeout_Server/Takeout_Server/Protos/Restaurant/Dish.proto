@@ -93,3 +93,11 @@ message deleteDishRequest{
 message deleteDishResponse{
 	bool outcome = 1;
 }
+
+message getTimeToOrderRequest{
+	int32 orderId = 1;              
+}
+
+message getTimeToOrderReply{
+	int32 timeToOrder = 1;              
+}
